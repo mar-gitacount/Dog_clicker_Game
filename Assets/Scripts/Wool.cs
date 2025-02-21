@@ -6,6 +6,14 @@ public class Wool : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D _rigidbody2D;
+    public int price = 100;
+
+    // 売却処理
+    public void sell(Wallet wallet)
+    {
+        wallet.money += price;
+        Destroy(gameObject);
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
