@@ -103,7 +103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheepRenderder: {fileID: 1657559390486864545}
   cutSheepSprite: {fileID: -6112116946375757038, guid: b3254db5a7ca8da419996bddf0dc4062, type: 3}
+  Dogssprites:
+  - {fileID: -4265454589113538591, guid: 85797e8ef9b3e0040b4267db6e31e675, type: 3}
+  - {fileID: -8636221404721523813, guid: 728ffa2d299f4414bac5a1bea6b2c4a2, type: 3}
   woolPrefab: {fileID: 199545855617931964, guid: 8dcace5ac0cbf9348a764ddd4bdd478b, type: 3}
+  dogData: {fileID: 11400000, guid: 1ac2eb59aa05f23419d791d73a6bcc07, type: 2}
 --- !u!60 &7647897334730452436
 PolygonCollider2D:
   m_ObjectHideFlags: 0
