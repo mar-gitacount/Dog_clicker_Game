@@ -11,6 +11,8 @@ public class DogData : ScriptableObject
     [SerializeField]private SpriteRenderer sheepRenderder;
     // ?犬の種類
     public string dogkinds;
+    // 犬の画像パス 
+    public string picturePath;
     // 以下を犬のデータにする。
     public Color color;
     // 初期値段

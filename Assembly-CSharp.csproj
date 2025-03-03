@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\DogButton.cs" />
     <Compile Include="Assets\Scripts\Sheep.cs" />
+    <Compile Include="Assets\Scripts\Shop.cs" />
     <Compile Include="Assets\Scripts\DogGenerator.cs" />
     <Compile Include="Assets\Scripts\GameMain.cs" />
     <Compile Include="Assets\Scripts\DogData.cs" />
