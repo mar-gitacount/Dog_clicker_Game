@@ -19,6 +19,7 @@ public class Wool : MonoBehaviour
     {
         _rigidbody2D.AddForce(Quaternion.Euler(0, 0, Random.Range(-15.0f, 15.0f)) * Vector2.up * 4, ForceMode2D.Impulse);
         transform.localScale = Vector3.one * Random.Range(0.4f, 1.5f);
+        
 
     }
 
