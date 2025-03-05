@@ -70,18 +70,16 @@ public class Sheep : MonoBehaviour
         //? 刈り取る毛がない。
         if(woolCnt <= 0)return;
         // ?　3-40パーセントの毛を刈り取る.
+        // ?ここで毛の金額の値段を設定する。
         var shavingWool = (int)(dogData.woolCnt * Random.Range(0.3f,0.4f));
         //?今犬に残ってる毛よりおおい毛は取れないので上限。
         if(woolCnt < shavingWool) shavingWool = woolCnt;
         // ?今回刈り取る分を毛から減らす。
         woolCnt -= shavingWool;
-        // !以下の処理に入らない
         if(woolCnt <= 0)
         {
             // ?毛を刈り取ったあとの画像に差し替える。
-            
             sheepRenderder.sprite = cutSheepSprite;
-            Debug.Log("毛がなくなった。");
             // sheepRenderder.color = Color.white;
             // 犬データに準拠した色になる。
             sheepRenderder.color = dogData.color;
@@ -91,6 +89,10 @@ public class Sheep : MonoBehaviour
         // ここも、犬のカット後の処理に変更する。
         // sheepRenderder.sprite = cutSheepSprite;
         var wool = Instantiate(woolPrefab,transform.position,transform.rotation); 
+        // Woolオブジェクトに今回刈り取った毛を渡す。
+        wool.price = shavingWool;
+        // 犬の色データを代入する。
+        wool.woolColor = dogData.color;
     }
 
     // Update is called once per frame
