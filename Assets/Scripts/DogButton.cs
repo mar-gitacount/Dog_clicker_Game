@@ -61,7 +61,7 @@ public class DogButton : MonoBehaviour
         // 犬の種類の変数
         var dogkinds = dogdata.dogkinds;
         var picPath = dogdata.picturePath;
-        // 画像差し替え。
+        // !画像差し替え。
         Sprite newSprite = Resources.Load<Sprite>("Images/"+picPath);
         //  Sprite newSprite = Resources.Load<Sprite>("Images/ビションフリーゼ");
 

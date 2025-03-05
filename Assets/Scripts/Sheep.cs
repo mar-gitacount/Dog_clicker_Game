@@ -24,8 +24,25 @@ public class Sheep : MonoBehaviour
     // 初期化処理
     private void Initialize()
     {
-        // スプライトレンダー内の画像がセットされている。
+        // デフォルトでは、スプライトレンダー内の画像がセットされている。
         sheepRenderder.sprite = defaultSprite;
+        // !以下を画像に変える。
+        Sprite newSprite = Resources.Load<Sprite>("Images/"+dogData.picturePath);
+
+
+        // ?サイズを確認するテストコードリサイズする場合はDogdataに代入する。
+        Vector2 worldSize = sheepRenderder.sprite.bounds.size;
+        Vector3 scale = sheepRenderder.transform.lossyScale;
+        Vector2 actualSize = new Vector2(worldSize.x * scale.x, worldSize.y * scale.y);
+        Debug.Log($"{dogData.picturePath}:のサイズ→ {actualSize}");
+
+
+
+        // 画像が存在する場合、セットする。
+        if(newSprite != null)
+        {
+            sheepRenderder.sprite = newSprite;
+        }
         // transform.position = new Vector3(5,0,0);
         transform.position = new Vector3(5,Random.Range(0.0f,4.0f),0); //初期位置をセット
         moveSpeed = -Random.Range(1.0f,2.0f);
@@ -62,9 +79,12 @@ public class Sheep : MonoBehaviour
         if(woolCnt <= 0)
         {
             // ?毛を刈り取ったあとの画像に差し替える。
+            
             sheepRenderder.sprite = cutSheepSprite;
             Debug.Log("毛がなくなった。");
-            sheepRenderder.color = Color.white;
+            // sheepRenderder.color = Color.white;
+            // 犬データに準拠した色になる。
+            sheepRenderder.color = dogData.color;
         }
 
 
