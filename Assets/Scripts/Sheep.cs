@@ -83,6 +83,7 @@ public class Sheep : MonoBehaviour
             // sheepRenderder.color = Color.white;
             // 犬データに準拠した色になる。
             sheepRenderder.color = dogData.color;
+            SoundManeger.Instance.Play("ワン");
         }
 
 
@@ -93,6 +94,7 @@ public class Sheep : MonoBehaviour
         wool.price = shavingWool;
         // 犬の色データを代入する。
         wool.woolColor = dogData.color;
+        SoundManeger.Instance.Play("刈り取り");
     }
 
     // Update is called once per frame

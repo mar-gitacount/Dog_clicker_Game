@@ -31,7 +31,8 @@ public class SoundTest : MonoBehaviour
         {
             soundManeger.Play("Yキー");
         }
-        if(Input.GetKeyDown(KeyCode.C))
+        // 改悪にした。押し続けるとなる
+        if(Input.GetKey(KeyCode.C))
         {
             soundManeger.Play("Cキー");
         }

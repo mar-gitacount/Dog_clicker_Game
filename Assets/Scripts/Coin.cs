@@ -32,6 +32,7 @@ public class Coin : MonoBehaviour
         {
             wallet.money += value;
             Destroy(gameObject);
+            SoundManeger.Instance.Play("コイン");
         }
     }
 }
