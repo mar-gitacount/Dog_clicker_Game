@@ -40,6 +40,7 @@ public class DogButton : MonoBehaviour
         // 購入した分、所持金からマイナス
         wallet.money -= price;
         currentCnt ++;
+        SoundManeger.Instance.Play("ワン");
 
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
