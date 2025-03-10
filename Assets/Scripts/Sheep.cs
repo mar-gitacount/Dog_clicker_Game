@@ -24,8 +24,25 @@ public class Sheep : MonoBehaviour
     // 初期化処理
     private void Initialize()
     {
-        // スプライトレンダー内の画像がセットされている。
+        // デフォルトでは、スプライトレンダー内の画像がセットされている。
         sheepRenderder.sprite = defaultSprite;
+        // !以下を画像に変える。
+        Sprite newSprite = Resources.Load<Sprite>("Images/"+dogData.picturePath);
+
+
+        // ?サイズを確認するテストコードリサイズする場合はDogdataに代入する。
+        Vector2 worldSize = sheepRenderder.sprite.bounds.size;
+        Vector3 scale = sheepRenderder.transform.lossyScale;
+        Vector2 actualSize = new Vector2(worldSize.x * scale.x, worldSize.y * scale.y);
+        Debug.Log($"{dogData.picturePath}:のサイズ→ {actualSize}");
+
+
+
+        // 画像が存在する場合、セットする。
+        if(newSprite != null)
+        {
+            sheepRenderder.sprite = newSprite;
+        }
         // transform.position = new Vector3(5,0,0);
         transform.position = new Vector3(5,Random.Range(0.0f,4.0f),0); //初期位置をセット
         moveSpeed = -Random.Range(1.0f,2.0f);
@@ -53,24 +70,31 @@ public class Sheep : MonoBehaviour
         //? 刈り取る毛がない。
         if(woolCnt <= 0)return;
         // ?　3-40パーセントの毛を刈り取る.
+        // ?ここで毛の金額の値段を設定する。
         var shavingWool = (int)(dogData.woolCnt * Random.Range(0.3f,0.4f));
         //?今犬に残ってる毛よりおおい毛は取れないので上限。
         if(woolCnt < shavingWool) shavingWool = woolCnt;
         // ?今回刈り取る分を毛から減らす。
         woolCnt -= shavingWool;
-        // !以下の処理に入らない
         if(woolCnt <= 0)
         {
             // ?毛を刈り取ったあとの画像に差し替える。
             sheepRenderder.sprite = cutSheepSprite;
-            Debug.Log("毛がなくなった。");
-            sheepRenderder.color = Color.white;
+            // sheepRenderder.color = Color.white;
+            // 犬データに準拠した色になる。
+            sheepRenderder.color = dogData.color;
+            SoundManeger.Instance.Play("ワン");
         }
 
 
         // ここも、犬のカット後の処理に変更する。
         // sheepRenderder.sprite = cutSheepSprite;
         var wool = Instantiate(woolPrefab,transform.position,transform.rotation); 
+        // Woolオブジェクトに今回刈り取った毛を渡す。
+        wool.price = shavingWool;
+        // 犬の色データを代入する。
+        wool.woolColor = dogData.color;
+        SoundManeger.Instance.Play("刈り取り");
     }
 
     // Update is called once per frame

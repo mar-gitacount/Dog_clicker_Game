@@ -40,6 +40,7 @@ public class DogButton : MonoBehaviour
         // 購入した分、所持金からマイナス
         wallet.money -= price;
         currentCnt ++;
+        SoundManeger.Instance.Play("ワン");
 
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -61,7 +62,7 @@ public class DogButton : MonoBehaviour
         // 犬の種類の変数
         var dogkinds = dogdata.dogkinds;
         var picPath = dogdata.picturePath;
-        // 画像差し替え。
+        // !画像差し替え。
         Sprite newSprite = Resources.Load<Sprite>("Images/"+picPath);
         //  Sprite newSprite = Resources.Load<Sprite>("Images/ビションフリーゼ");
 

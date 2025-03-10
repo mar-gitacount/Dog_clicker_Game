@@ -103,6 +103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 7952636407930082325}
+  coinPrefab: {fileID: 8061720179789073811, guid: f1cc6e429ac6d4d488587452fe8748de, type: 3}
+  woolSpriteRenderer: {fileID: 3633150746095524449}
+  woolColor: {r: 1, g: 1, b: 1, a: 0}
+  price: 100
 --- !u!50 &7952636407930082325
 Rigidbody2D:
   serializedVersion: 5

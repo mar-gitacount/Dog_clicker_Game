@@ -13,6 +13,9 @@ public class DogData : ScriptableObject
     public string dogkinds;
     // 犬の画像パス 
     public string picturePath;
+
+    // 犬の毛を切ったあとの画像パス
+    public string cutPicturePath;
     // 以下を犬のデータにする。
     public Color color;
     // 初期値段

@@ -1,0 +1,12 @@
+# ninja log v5
+79	626	7633190319482741	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	a79a30da7e84c550
+628	1404	7633190325306108	D:/game/Dog Clicker project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4f3a1o4b/obj/armeabi-v7a/libswappywrapper.so	1b4ce1438ae9b447
+34	3060	7633190344029731	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c9f783f9eb2a3eee
+25	3089	7633190344177051	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	b5fa454adef58985
+17	3135	7633190344763442	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	b064157db7295a43
+69	3274	7633190346187537	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	9a177d861c5d6a5d
+56	3389	7633190347467039	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	73b6f17fa9945180
+9	3545	7633190348947688	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	1c2938af2449a0eb
+46	3922	7633190352904295	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	bb2de87e349cab33
+2	4185	7633190355414864	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	d4e76d4ec0ba3819
+4186	4358	7633190357313259	D:/game/Dog Clicker project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4f3a1o4b/obj/armeabi-v7a/libgame.so	e08f65931721fa08

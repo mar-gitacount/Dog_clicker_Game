@@ -21,6 +21,7 @@ public class GameMain : MonoBehaviour
         {
             wool.sell(wallet);
         }
+        SoundManeger.Instance.Play("コイン");
 
     }
 
