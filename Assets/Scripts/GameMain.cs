@@ -15,6 +15,8 @@ public class GameMain : MonoBehaviour
     // 売却ボタンを押下した時に呼ばれる関数,表示されている毛を全て取得し、所持金に追加する。
     private void SellAllWool()
     {
+        // 売却ボタンが動かないのでテスト
+        Debug.Log("売却ボタンテスト");
         //画面上の全てのWoolスクリプトが付いたオブジェクトを検索してWool配列woolsに格納
         var wools = FindObjectsByType<Wool>(FindObjectsSortMode.None);
         foreach(var wool in wools)
@@ -29,7 +31,14 @@ public class GameMain : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (sellButton == null)
+    {
+        Debug.LogError("sellButton が設定されていません！");
+        return;
+    }
         sellButton.onClick.AddListener(SellAllWool);
+        
+
     }
 
     // Update is called once per frame

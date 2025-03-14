@@ -1,0 +1,8 @@
+E:/game2/Dog_clicker_Game/.utmp/RelWithDebInfo/464l5cl3/arm64-v8a/CMakeFiles/edit_cache.dir
+E:/game2/Dog_clicker_Game/.utmp/RelWithDebInfo/464l5cl3/arm64-v8a/CMakeFiles/rebuild_cache.dir
+E:/game2/Dog_clicker_Game/.utmp/RelWithDebInfo/464l5cl3/arm64-v8a/GameActivity/CMakeFiles/game.dir
+E:/game2/Dog_clicker_Game/.utmp/RelWithDebInfo/464l5cl3/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+E:/game2/Dog_clicker_Game/.utmp/RelWithDebInfo/464l5cl3/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
+E:/game2/Dog_clicker_Game/.utmp/RelWithDebInfo/464l5cl3/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+E:/game2/Dog_clicker_Game/.utmp/RelWithDebInfo/464l5cl3/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+E:/game2/Dog_clicker_Game/.utmp/RelWithDebInfo/464l5cl3/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir
