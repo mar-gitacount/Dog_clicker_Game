@@ -43,11 +43,14 @@ public class SaveLoadManager : MonoBehaviour
         // 全ての犬の頭数をロードする。
         for(var index = 0; index < shop.dogButtonList.Count; index ++ )
         {
+            
             var dogButton = shop.dogButtonList[index];
+            // セーブデータ=犬の数
             var dogCnt = saveData.LoadDogCnt(index);
             dogButton.currentCnt = dogCnt;
             for(var i = 0; i < dogCnt; i++)
             {
+                // ロード時にここで犬のオブジェクトを生成している。?
                 dogButton.dogGenerator.CreateDog(dogButton.dogdata);
             }
 

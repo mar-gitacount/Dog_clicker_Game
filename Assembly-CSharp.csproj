@@ -65,19 +65,24 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\SceneChange.cs" />
     <Compile Include="Assets\Scripts\DogButton.cs" />
+    <Compile Include="Assets\Scripts\TitleScene.cs" />
     <Compile Include="Assets\Scripts\Sheep.cs" />
+    <Compile Include="Assets\Scripts\SceneDatas.cs" />
     <Compile Include="Assets\Scripts\PlayerPrefsSaveData.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
     <Compile Include="Assets\Scripts\AspectKeeper.cs" />
     <Compile Include="Assets\Scripts\ISaveData.cs" />
     <Compile Include="Assets\Scripts\SoundTest.cs" />
+    <Compile Include="Assets\Scripts\SceneManagerImplementation .cs" />
     <Compile Include="Assets\Scripts\DogGenerator.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\GameMain.cs" />
     <Compile Include="Assets\Scripts\SaveLoadManager.cs" />
     <Compile Include="Assets\Scripts\DogData.cs" />
     <Compile Include="Assets\Scripts\Wallet.cs" />
+    <Compile Include="Assets\Scripts\ISceneManager.cs" />
     <Compile Include="Assets\Scripts\SoundManeger.cs" />
     <Compile Include="Assets\Scripts\Wool.cs" />
     <Compile Include="Assets\Scripts\DebugSaveData.cs" />

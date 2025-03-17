@@ -19,9 +19,9 @@ public class Shop : MonoBehaviour
     {
         // 受け取ったDogDataの数だけDogButtonを作成。
         // !ここでボタンスクリプトに渡す?
+        // ゲームスタート時に犬データの数だけループして、ボタンを作る
         foreach(var dogData in dogDatas)
         {
-            // 犬の画像を動的にする。
             var dogButton = Instantiate(dogbuttonPrefab, transform);   
             dogButton.dogdata = dogData;
             dogButtonList.Add(dogButton);

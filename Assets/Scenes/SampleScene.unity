@@ -514,7 +514,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u58F2\u5374\n"
+  m_Text: "\u6BDB\u3092\u305D\u3046\u3058\u3059\u308B\n"
 --- !u!222 &256292868
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -812,9 +812,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.275
+    x: 0.374
     y: 0
-    width: 0.45
+    width: 0.252
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
