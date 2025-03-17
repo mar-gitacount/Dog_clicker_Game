@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DogGenerator : MonoBehaviour
 {
-    // ドッグプレハブ＝画像を生成する。画像を生成するのでここをいじる？
+    // ドッグプレハブに値を渡して、犬オブジェクトを生成するクラス。
     // デフォルトの犬の画像がセットされている。
     [SerializeField]private Sheep dogPrefab;
     // ドッグデータをランダムで受け取って生成する。

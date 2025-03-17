@@ -32,7 +32,8 @@ public class DogButton : MonoBehaviour
     }
     public void CreateDog()
     {
-        // ここで犬を召喚している。
+        //! ここで犬を召喚(作成)している。
+        // !初めて召喚
         dogGenerator.CreateDog(dogdata);
 
         // 現在の頭数から、次の購入金額を計算する。
@@ -40,13 +41,14 @@ public class DogButton : MonoBehaviour
         // 購入した分、所持金からマイナス
         wallet.money -= price;
         currentCnt ++;
+        // 鳴き声音声ファイル実行
         SoundManeger.Instance.Play("ワン");
 
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // 犬を生成するメソッドを実行する。種類は参照先で選択する。
+        // 犬を生成するメソッドを実行するイベントリスナーを加えている。
         button.onClick.AddListener(CreateDog);
         
     }
@@ -57,8 +59,6 @@ public class DogButton : MonoBehaviour
 
         // 現在の頭数から次の購入金額を計算。
         var price = GetPrice();
-        // ?犬の色をセットもしかして消すかも→そもそも画像も動的にしなければならない。
-        Debug.Log($"{dogdata.dogkinds}は犬の種類これを元にセットする。");
         // 犬の種類の変数
         var dogkinds = dogdata.dogkinds;
         var picPath = dogdata.picturePath;

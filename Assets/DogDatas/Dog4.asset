@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheepRenderder: {fileID: 0}
   dogkinds: sheep
-  picturePath: "\u30D3\u30B7\u30E7\u30F3\u30D5\u30EA\u30FC\u30BC"
-  cutPicturePath: 
-  color: {r: 0.9764706, g: 1, b: 0.5254902, a: 1}
+  picturePath: "\u30B7\u30FC\u30BA\u30FC"
+  cutPicturePath: "\u30B7\u30FC\u30BA\u30FC\u30AB\u30C3\u30C8\u5F8C"
+  color: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
   basePrice: 12000
   extendetPrice: 6000
   maxCount: 10
