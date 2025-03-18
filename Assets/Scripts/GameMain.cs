@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 using UnityEngine.SceneManagement;
 
 public class GameMain : MonoBehaviour
 {
+    
     [SerializeField]
     private Button sellButton;
 
     [SerializeField]
     private Wallet wallet;
   
+    private bool isPaused = false;
+    public GameObject pauseMenu;
     // 売却ボタンを押下した時に呼ばれる関数,表示されている毛を全て取得し、所持金に追加する。
     private void SellAllWool()
     {
@@ -38,7 +43,6 @@ public class GameMain : MonoBehaviour
             Debug.LogError("sellButton が設定されていません！");
             return;
         }
-        Debug.Log("メインゲームテスト");
         sellButton.onClick.AddListener(SellAllWool);
         
 
@@ -47,6 +51,21 @@ public class GameMain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("メインのアップデートテスト");
+        // ?以下をボタンに変えなければならない。
+         if(Input.GetKeyDown(KeyCode.P))
+        {
+            TogglePause();
+        }
+    }
+
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0 : 1;
+
+        pauseMenu.SetActive(isPaused);
+        // EventSystem.current.enabled = !isPaused;
     }
 }

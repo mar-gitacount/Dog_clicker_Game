@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SaveLoadManager : MonoBehaviour
 {
+    // !ゲーム開始時に実行される。
     // 保存対象所持金
     [SerializeField]private Wallet wallet;
     // 犬の頭数
@@ -41,6 +42,9 @@ public class SaveLoadManager : MonoBehaviour
         wallet.money = saveData.LoadMoney();
         // wallet.money = BigInteger.Parse(PlayerPrefs.GetString("MONEY","0"));
         // 全ての犬の頭数をロードする。
+        // ショップの処理に準拠しているので、"犬のデータ一覧"そこが抜けてしまうと動かない。
+        // !なので、それを変える。
+        
         for(var index = 0; index < shop.dogButtonList.Count; index ++ )
         {
             
@@ -50,7 +54,7 @@ public class SaveLoadManager : MonoBehaviour
             dogButton.currentCnt = dogCnt;
             for(var i = 0; i < dogCnt; i++)
             {
-                // ロード時にここで犬のオブジェクトを生成している。?
+                // ロード時にここで犬のオブジェクトを生成している。
                 dogButton.dogGenerator.CreateDog(dogButton.dogdata);
             }
 
