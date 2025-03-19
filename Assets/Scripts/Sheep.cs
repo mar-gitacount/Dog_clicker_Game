@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 public class Sheep : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class Sheep : MonoBehaviour
     // 毛の量
     private int woolCnt;
 
+    //? 一時停止フラグ
+    private bool isPaused = false;
+    // ? 
+    public GameObject pauseMenu;
+
     // 初期化処理
     private void Initialize()
     {
@@ -33,7 +39,6 @@ public class Sheep : MonoBehaviour
         Vector2 worldSize = sheepRenderder.sprite.bounds.size;
         Vector3 scale = sheepRenderder.transform.lossyScale;
         Vector2 actualSize = new Vector2(worldSize.x * scale.x, worldSize.y * scale.y);
-        Debug.Log($"{dogData.picturePath}:のサイズ→ {actualSize}");
 
 
 
@@ -45,6 +50,7 @@ public class Sheep : MonoBehaviour
         // transform.position = new Vector3(5,0,0);
         //初期位置をセット
         transform.position = new Vector3(5,Random.Range(0.0f,4.0f),0); 
+        // transform.position = new Vector3(5,-4.0f,0); 
         moveSpeed = -Random.Range(1.0f,2.0f);
 
         // ?色のデータ
@@ -68,9 +74,14 @@ public class Sheep : MonoBehaviour
     }
     private void Shaving()
     {
+        // !ポージングしているとき
+        if(isPaused)
+        {
+            return;
+        }
         //? 刈り取る毛がない。
         if(woolCnt <= 0)return;
-        // ?　3-40パーセントの毛を刈り取る.
+        // ?　3-40パーセントの毛を刈り取る。
         // ?ここで毛の金額の値段を設定する。
         // !後で変える
         // var shavingWool = (int)(dogData.woolCnt * Random.Range(0.3f,0.4f));
@@ -118,6 +129,12 @@ public class Sheep : MonoBehaviour
 
     {
         transform.position += new Vector3(moveSpeed,0) * Time.deltaTime;
+        // !イベント
+        // if(Input.GetKeyDown(KeyCode.P))
+        // {
+        //     TogglePause();
+        // }
+
         if(transform.position.x < -5)
         {
             // 画面の外に行ったら初期化する。
@@ -126,6 +143,14 @@ public class Sheep : MonoBehaviour
         
 
     
+    }
+    // !ポーズ関数→もしかしたらイベントリスナーに訂正する可能性アリ
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0 : 1;
+        pauseMenu.SetActive(isPaused);
+        EventSystem.current.enabled = !isPaused;
     }
 
     private void OnMouseOver()
