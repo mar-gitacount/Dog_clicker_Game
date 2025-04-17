@@ -48,7 +48,8 @@ public class ItemButton : MonoBehaviour
         // button.onClick.AddListener(Click);
         //? 値段(仮)
         var price = 0;
-        priceText.text = price.ToString("C0");
+        // priceText.text = price.ToString("C0");
+        priceText.text = price.ToString();
         //? 
         infoText.text = "仮";
         

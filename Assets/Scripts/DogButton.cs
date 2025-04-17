@@ -91,7 +91,9 @@ public class DogButton : MonoBehaviour
         }
         dogImage.color = dogdata.color;
         // 金額表示なので、"C0"をセットする。
-        priceText.text = price.ToString("C0");
+        // priceText.text = price.ToString("C0");
+        priceText.text = price.ToString();
+
         // 現在の頭数と上限値。
 
         countText.text = $"{currentCnt}頭/{dogdata.maxCount}頭";
