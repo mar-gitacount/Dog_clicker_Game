@@ -18,7 +18,9 @@ public class Wallet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waletText.text = money.ToString("C0");
+        // waletText.text = money.ToString("C0");
+        waletText.text = money.ToString();
+
         
     }
 }
