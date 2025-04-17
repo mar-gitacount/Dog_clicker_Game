@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8050372408605354090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4611200296394853539}
+  - component: {fileID: 3206756122751993398}
+  - component: {fileID: 6121346937658426674}
+  - component: {fileID: 3412223598554502179}
+  m_Layer: 5
+  m_Name: DogtestContent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4611200296394853539
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050372408605354090}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 76.694916, y: NaN}
+  m_SizeDelta: {x: -92.22003, y: 0}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &3206756122751993398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050372408605354090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &6121346937658426674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050372408605354090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5459aa425c93444f84fdb9ba9fad5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dogbuttonPrefab: {fileID: 1211112170711456464, guid: fcae22efa52df4d449e1a76ecc06f891, type: 3}
+  dogDatas:
+  - {fileID: 11400000, guid: 1ac2eb59aa05f23419d791d73a6bcc07, type: 2}
+  - {fileID: 11400000, guid: 921314b5cea0cc84daa4f9107e81f4df, type: 2}
+  - {fileID: 11400000, guid: ce2687b6d1426094ba64bab0e9ba5dc9, type: 2}
+  - {fileID: 11400000, guid: a46c202b96324e4408ad793419ad7483, type: 2}
+  - {fileID: 11400000, guid: 248d89dc6154c6d42bd2b6a15da296b5, type: 2}
+  - {fileID: 11400000, guid: eaea39d77e261ff48bc7eedcc88b0ad5, type: 2}
+  - {fileID: 11400000, guid: 9e7714b3ddcc3dc46b04bcd2c7cfcd98, type: 2}
+  - {fileID: 11400000, guid: f11a55da347683945a0a9541f1b70e15, type: 2}
+  dogButtonList: []
+  dogGenerator: {fileID: 0}
+  wallet: {fileID: 0}
+--- !u!114 &3412223598554502179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050372408605354090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2

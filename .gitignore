@@ -1,0 +1,24 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+Obj/
+Build/
+Builds/
+
+# User-specific files
+[Dd]ebug/
+[Dd]ebugLog/
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Unity generated file (excluding important settings)
+.vs/
+.idea/
+.vscode/
+
+# .log files
+*.log
