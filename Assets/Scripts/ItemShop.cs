@@ -13,6 +13,7 @@ public class ItemShop : MonoBehaviour
         foreach(var itemData in itemDatas)
         {
             // !ここでitemData内のメソッドをボタンに渡してみる。
+            // itemDataの一意の値が代入されている。
             var itemButton = Instantiate(itembuttonPrefab,transform);
             itemButton.itemData = itemData;
             itemButtonList.Add(itemButton);

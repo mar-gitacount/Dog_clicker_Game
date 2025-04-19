@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 705024e7410625545bc063f266b0ff06, type: 3}
-  m_Name: Dog1
+  m_Name: Dog3
   m_EditorClassIdentifier: 
   sheepRenderder: {fileID: 0}
   dogkinds: sheep
-  picturePath: sheep
-  cutPicturePath: 
-  color: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
-  basePrice: 10
-  extendetPrice: 5
+  picturePath: "\u307D\u3081"
+  cutPicturePath: "\u307D\u3081\u30AB\u30C3\u30C8"
+  color: {r: 0.98039216, g: 0.8666667, b: 0.63529414, a: 1}
+  basePrice: 1100
+  extendetPrice: 500
   maxCount: 10
-  woolCnt: 5
+  woolCnt: 400

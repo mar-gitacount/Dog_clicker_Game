@@ -27,6 +27,7 @@ public class ItemData : ScriptableObject
         }
     }
     // ?あとで適した名前に変える。今はめんどくさいからあとで
+    // 現段階では、アイテムの挙動の関数は全て、このスクリプト内に格納されている。
     private void test()
     {
         GameObject[] allObjects = FindObjectsOfType<GameObject>();
