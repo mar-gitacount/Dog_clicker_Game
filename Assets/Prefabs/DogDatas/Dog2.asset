@@ -15,7 +15,7 @@ MonoBehaviour:
   sheepRenderder: {fileID: 0}
   dogkinds: sheep
   picturePath: "\u30B7\u30FC\u30BA\u30FC"
-  cutPicturePath: "\u30B7\u30FC\u30BA\u30FC\u30AB\u30C3\u30C8\u5F8C"
+  cutPicturePath: "\u30B7\u30FC\u30BA\u30FC\u30AB\u30C3\u30C8"
   color: {r: 1, g: 0.7490196, b: 0.7490196, a: 1}
   basePrice: 100
   extendetPrice: 50

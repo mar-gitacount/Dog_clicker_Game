@@ -52,6 +52,23 @@ public class ItemButton : MonoBehaviour
         priceText.text = price.ToString();
         //? 
         infoText.text = "仮";
+        // 画像データのパスを取得する。
+        var picPath = itemData.picturePath;
+
+        Sprite newSprite = Resources.Load<Sprite>("Images/"+picPath);
+
+        if(newSprite != null)
+        {
+            itemimage.sprite = newSprite;
+        }
+        else
+        {
+            Debug.LogError($"画像が見つかりません: {picPath}");
+        }
+
+        // 画像の場合、item.Data.picturePathを取得
+        Debug.Log($"アイテムボタンの画像情報は、{itemData.picturePath}です。");
+        
         
     }
 }
