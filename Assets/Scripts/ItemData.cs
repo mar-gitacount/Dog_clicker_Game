@@ -13,10 +13,21 @@ public class ItemData : ScriptableObject
     [SerializeField] private UnityEvent onAction;
     // !関数名
     [SerializeField] public string functionName;
+    public Wallet wallet;
     // 設定した関数
-    public void InvokeFunction()
+    public void InvokeFunction(ItemButton itemButton)
     {
+        if(itemButton.wallet.money < basePrice)
+        {
+            Debug.Log("お金が足りません。");
+            itemButton.DisableButton();
+            return;
+        }
         MethodInfo method = GetType().GetMethod(functionName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+        // if(wallet.money < basePrice){
+        //     Debug.Log("お金が足りません。");
+        //     return;
+        // }
         if(method != null)
         {
             method.Invoke(this,null);

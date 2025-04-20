@@ -99,13 +99,13 @@ public class DogButton : MonoBehaviour
         countText.text = $"{currentCnt}頭/{dogdata.maxCount}頭";
         if(currentCnt >= dogdata.maxCount)
         {
-            infoText.text = "完売";
+            infoText.text = "全員揃いました";
             button.interactable = false;
         }
         // 所持金が上
         else if (wallet.money >= price)
         {
-            infoText.text = "購入";
+            infoText.text = "呼ぶ";
             button.interactable = true;
 
         }
