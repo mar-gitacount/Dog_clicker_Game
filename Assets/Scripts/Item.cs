@@ -32,6 +32,6 @@ public class Item : MonoBehaviour
    {
      if(Input.GetMouseButton(0)== false) return;
      Debug.Log("クリックされました。");
-     itemData.InvokeFunction();
+    //  itemData.InvokeFunction();
    }
 }

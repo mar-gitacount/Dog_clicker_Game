@@ -22,6 +22,9 @@ public class ItemButton : MonoBehaviour
     public Wallet wallet;
     public int currentCnt;
 
+
+
+    
     // 
     public void CreateItem()
     {
@@ -30,10 +33,22 @@ public class ItemButton : MonoBehaviour
         // itemGenerator.CreateItem(itemData);
         
     }
+      public int GetPrice()
+    {
+        // 現在の頭数から、次の購入金額を計算する。
+        // return itemData.basePrice + dogdata.extendetPrice * currentCnt;
+        return itemData.basePrice;
+    }
     public void Click()
     {
+        if(button.interactable == false) return;
         // アイテムの関数実行。
-        itemData.InvokeFunction();
+        itemData.InvokeFunction(this);
+    }
+    public void DisableButton()
+    {
+        // アイテムの関数実行。
+        button.interactable = false;
     }
     void Start()
     {
@@ -47,7 +62,7 @@ public class ItemButton : MonoBehaviour
     {
         // button.onClick.AddListener(Click);
         //? 値段(仮)
-        var price = 0;
+        var price = GetPrice();
         // priceText.text = price.ToString("C0");
         priceText.text = price.ToString();
         //? 
@@ -68,6 +83,19 @@ public class ItemButton : MonoBehaviour
 
         // 画像の場合、item.Data.picturePathを取得
         Debug.Log($"アイテムボタンの画像情報は、{itemData.picturePath}です。");
+        if(wallet == null)
+        {
+            Debug.LogError("Walletが設定されていません！");
+            return;
+        }
+        if(wallet.money <= price)
+        {
+            button.interactable = false;
+        }
+        else if (wallet.money >= price)
+        {
+            button.interactable = true;
+        }
         
         
     }

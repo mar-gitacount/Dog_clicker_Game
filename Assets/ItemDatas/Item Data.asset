@@ -16,12 +16,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   functionName: test
+  wallet: {fileID: 0}
   sheepRenderder: {fileID: 0}
   dogkinds: 
-  picturePath: 
+  picturePath: "\u307D\u3081\u30AB\u30C3\u30C8"
   cutPicturePath: 
   color: {r: 0, g: 0, b: 0, a: 0}
-  basePrice: 0
+  basePrice: 593037
   extendetPrice: 0
-  maxCount: 0
+  maxCount: 1
   woolCnt: 0

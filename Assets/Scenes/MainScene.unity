@@ -3923,6 +3923,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f3b2def4982771146ace498db99e284a, type: 2}
   - {fileID: 11400000, guid: 50dcebfe6b28d49479f3c1c5b347165d, type: 2}
   itemButtonList: []
+  wallet: {fileID: 143259305}
 --- !u!114 &2056354744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4422,7 +4423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 702361610692843922, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -201.64996
+      value: -201.64998
       objectReference: {fileID: 0}
     - target: {fileID: 702361610692843922, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
       propertyPath: m_AnchoredPosition.y
