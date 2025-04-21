@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d710ae915a8e5814f821c8d599fa5e42, type: 3}
   m_Name: Item Data 2
   m_EditorClassIdentifier: 
+  conditions: []
   onAction:
     m_PersistentCalls:
       m_Calls: []
   functionName: test2
+  wallet: {fileID: 0}
   sheepRenderder: {fileID: 0}
   dogkinds: 
-  picturePath: 
+  picturePath: "\u307D\u3081\u30AB\u30C3\u30C8"
   cutPicturePath: 
   color: {r: 0, g: 0, b: 0, a: 0}
   basePrice: 0
