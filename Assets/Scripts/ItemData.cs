@@ -9,6 +9,22 @@ using System.Reflection;
 // 犬データの動きの基本設計コード?
 public class ItemData : ScriptableObject
 {
+    // 関数が実行される条件を設定する。
+    [SerializeField] private ConditionData[] conditions;
+    // 関数を設定する。
+    [SerializeField] private ActionData[] actions;       // アクションリスト
+
+    public bool CanUse(ItemButton itemButton){
+        foreach (var condition in conditions)
+        {
+            if (!condition.IsConditionMet(itemButton))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // !メソッドを設定
     [SerializeField] private UnityEvent onAction;
     // !関数名
@@ -17,9 +33,16 @@ public class ItemData : ScriptableObject
     // 設定した関数
     public void InvokeFunction(ItemButton itemButton)
     {
-        if(itemButton.wallet.money < basePrice)
+        //!後で消す
+        // if(itemButton.wallet.money < basePrice)
+        // {
+        //     Debug.Log("お金が足りません。");
+        //     itemButton.DisableButton();
+        //     return;
+        // }
+        if(!CanUse(itemButton))
         {
-            Debug.Log("お金が足りません。");
+            Debug.Log("条件を満たしていません。");
             itemButton.DisableButton();
             return;
         }
@@ -28,6 +51,11 @@ public class ItemData : ScriptableObject
         //     Debug.Log("お金が足りません。");
         //     return;
         // }
+        foreach (var action in actions)
+        {
+            action.Execute(itemButton);
+        }
+        return;
         if(method != null)
         {
             method.Invoke(this,null);
@@ -49,6 +77,7 @@ public class ItemData : ScriptableObject
             {
                 script.Shaving();
             }
+            // Debug.Log($"{wallet.money}は関数内で料金を確認する。");
             Debug.Log($"{obj.name}はオブジェクトを取得する。");
         }
         Debug.Log("テスト関数が実行されました！！");

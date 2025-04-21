@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d710ae915a8e5814f821c8d599fa5e42, type: 3}
   m_Name: Item Data
   m_EditorClassIdentifier: 
+  conditions:
+  - {fileID: 0}
   onAction:
     m_PersistentCalls:
       m_Calls: []
