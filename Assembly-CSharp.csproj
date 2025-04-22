@@ -73,7 +73,9 @@
     <Compile Include="Assets\Scripts\ItemShop.cs" />
     <Compile Include="Assets\Scripts\TitleScene.cs" />
     <Compile Include="Assets\Scripts\Sheep.cs" />
+    <Compile Include="Assets\Scripts\SheepManager.cs" />
     <Compile Include="Assets\Scripts\DogGenerator.cs" />
+    <Compile Include="Assets\Scripts\ItemCoditions\WoolTenCount.cs" />
     <Compile Include="Assets\Scripts\PlayerPrefsSaveData.cs" />
     <Compile Include="Assets\Scripts\ActionData.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />

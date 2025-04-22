@@ -31,6 +31,16 @@ public class ItemData : ScriptableObject
     [SerializeField] public string functionName;
     public Wallet wallet;
     // 設定した関数
+    public void initializeButtonState(ItemButton itemButton){
+        if(!CanUse(itemButton))
+        {
+            itemButton.DisableButton();
+        }
+        else
+        {
+            itemButton.EnableButton();
+        }
+    }
     public void InvokeFunction(ItemButton itemButton)
     {
         //!後で消す

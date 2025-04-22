@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Item Data
   m_EditorClassIdentifier: 
   conditions:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 463d7550683038440b0e3d89e9f574c0, type: 2}
+  actions:
+  - {fileID: 11400000, guid: ea950c5e8b8381c41afa641cfb0e98d5, type: 2}
   onAction:
     m_PersistentCalls:
       m_Calls: []
@@ -24,7 +26,7 @@ MonoBehaviour:
   picturePath: "\u307D\u3081\u30AB\u30C3\u30C8"
   cutPicturePath: 
   color: {r: 0, g: 0, b: 0, a: 0}
-  basePrice: 593037
+  basePrice: 10
   extendetPrice: 0
   maxCount: 1
   woolCnt: 0

@@ -23,6 +23,7 @@ public class ItemButton : MonoBehaviour
     public int currentCnt;
 
 
+    // ここでアイテムが利用可能か判定する。
 
     
     // 
@@ -45,6 +46,11 @@ public class ItemButton : MonoBehaviour
         // アイテムの関数実行。
         itemData.InvokeFunction(this);
     }
+    public void EnableButton()
+    {
+        // アイテムの関数実行。
+        button.interactable = true;
+    }
     public void DisableButton()
     {
         // アイテムの関数実行。
@@ -54,6 +60,7 @@ public class ItemButton : MonoBehaviour
     {
         // ここでアイテムを生成するメソッドを付与する。
         button.onClick.AddListener(Click);
+        itemData.initializeButtonState(this);
 
     }
 
@@ -88,14 +95,24 @@ public class ItemButton : MonoBehaviour
             Debug.LogError("Walletが設定されていません！");
             return;
         }
-        if(wallet.money <= price)
+        if(itemData.CanUse(this) == false)
         {
             button.interactable = false;
+            infoText.text = "条件を満たしていません。";
         }
-        else if (wallet.money >= price)
+        else if(itemData.CanUse(this) == true)
         {
             button.interactable = true;
+            infoText.text = "購入可能";
         }
+        // if(wallet.money <= price)
+        // {
+        //     button.interactable = false;
+        // }
+        // else if (wallet.money >= price)
+        // {
+        //     button.interactable = true;
+        // }
         
         
     }

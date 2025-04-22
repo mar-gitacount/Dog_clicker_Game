@@ -28,6 +28,15 @@ public class Sheep : MonoBehaviour
     // ? 
     public GameObject pauseMenu;
 
+    private void OnEnable()
+    {
+        Debug.Log("犬データがアクティブです");
+        SheepManager.Instance?.RegisterSheep(this);        
+    }
+    private void OnDisable()
+    {
+        SheepManager.Instance?.UnregisterSheep(this);
+    }
     // 初期化処理
     private void Initialize()
     {
@@ -151,6 +160,7 @@ public class Sheep : MonoBehaviour
 
         if(transform.position.x < -5)
         {
+
             // 画面の外に行ったら初期化する。
             Initialize();
         }
