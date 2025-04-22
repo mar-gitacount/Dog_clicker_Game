@@ -1,24 +1,27 @@
 using UnityEngine;
-
+// using Game.Managers; // SheepManagerが属する名前空間を指定
+// 画面上の犬の毛をすべて刈るアクションを実行するクラス
+// 毛を全て掃除する。
+using System.Collections.Generic; 
 [CreateAssetMenu(menuName = "ItemActions/TestAction")]
 public class TestAction : ActionData
 {
     public override void Execute(ItemButton itemButton)
     {
-        // ここにアクションの実行内容を記述
         Debug.Log("TestAction executed!");
-        // itemButton.wallet.money -= itemButton.itemData.basePrice;
-        // itemButton.DisableButton();
-        GameObject[] allObjects = FindObjectsOfType<GameObject>();
-        foreach (GameObject obj in allObjects)
+
+        if (SheepManager.Instance == null)
         {
-            Sheep script = obj.GetComponent<Sheep>();
-            if(script != null)
-            {
-                script.Shaving();
-            }
-            // Debug.Log($"{wallet.money}は関数内で料金を確認する。");
-            Debug.Log($"{obj.name}はオブジェクトを取得する。");
+            Debug.LogError("SheepManager.Instance is null. Make sure SheepManager is in the scene.");
+            return;
         }
+
+        List<Sheep> sheepList = SheepManager.Instance.GetAllSheep();
+        foreach (Sheep sheep in sheepList)
+        {
+            sheep.Shaving();
+        }
+
+        Debug.Log($"Sheep count: {sheepList.Count}");
     }
 }
