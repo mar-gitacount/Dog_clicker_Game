@@ -119,5 +119,7 @@ public class ItemData : ScriptableObject
     public int maxCount;
     // 毛の量
     public int woolCnt;
+    // アイテムタイトル
+    public string itemTitle;
 
 }

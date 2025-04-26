@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+// using System.Diagnostics;
 
 public class Wool : MonoBehaviour
 {
@@ -37,10 +37,15 @@ public class Wool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < -5)
+        // 現在の座標をデバッグログに表示
+         Debug.Log($"Woolの現在位置: {transform.position}");
+
+        // y座標が-5未満の場合、オブジェクトを削除
+        if (transform.position.y < -5)
         {
-            Destroy(gameObject);
+            Debug.Log($"Woolが画面外に出ました。削除します: {transform.position}");
+            // !画面外に落ちた場合削除する。アイテムの都合上一旦コメントアウト
+            // Destroy(gameObject);
         }
-        
     }
 }
