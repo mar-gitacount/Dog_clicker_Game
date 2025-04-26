@@ -22,3 +22,6 @@ Thumbs.db
 
 # .log files
 *.log
+# Keystore file (for Android signing)
+Assets/Plugins/user.keystore
+Assets/Plugins/user.keystore.meta

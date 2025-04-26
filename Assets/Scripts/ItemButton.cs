@@ -8,7 +8,7 @@ public class ItemButton : MonoBehaviour
 {
     [SerializeField]private Button button;
     // 金額テキスト
-    [SerializeField]private Text priceText;
+    // [SerializeField]private Text priceText;
     // アイテム数(仮)
     [SerializeField] private Text coutnText;
     // 利用可否及び購入テキスト
@@ -71,9 +71,17 @@ public class ItemButton : MonoBehaviour
         //? 値段(仮)
         var price = GetPrice();
         // priceText.text = price.ToString("C0");
-        priceText.text = price.ToString();
-        //? 
-        infoText.text = "仮";
+        // priceText.text = price.ToString();
+        //? アイテムタイトル
+        infoText.text = itemData.itemTitle;
+        if(itemData.itemTitle == null)
+        {
+            infoText.text = "仮タイトル";
+        }
+        else{
+            infoText.text = itemData.itemTitle;
+        }
+        // infoText.text = "仮タイトル";
         // 画像データのパスを取得する。
         var picPath = itemData.picturePath;
 
@@ -90,20 +98,20 @@ public class ItemButton : MonoBehaviour
 
         // 画像の場合、item.Data.picturePathを取得
         Debug.Log($"アイテムボタンの画像情報は、{itemData.picturePath}です。");
-        if(wallet == null)
-        {
-            Debug.LogError("Walletが設定されていません！");
-            return;
-        }
+        // if(wallet == null)
+        // {
+        //     Debug.LogError("Walletが設定されていません！");
+        //     return;
+        // }
         if(itemData.CanUse(this) == false)
         {
             button.interactable = false;
-            infoText.text = "条件を満たしていません。";
+            // infoText.text = "条件を満たしていません。";
         }
         else if(itemData.CanUse(this) == true)
         {
             button.interactable = true;
-            infoText.text = "購入可能";
+            // infoText.text = "購入可能";
         }
         // if(wallet.money <= price)
         // {

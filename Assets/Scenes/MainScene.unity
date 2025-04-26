@@ -2640,6 +2640,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 303f6897fc6ee0f479b5f8457f629cc2, type: 3}
+--- !u!114 &1214606201 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8657235393174359542, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
+  m_PrefabInstance: {fileID: 8035270915704815251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1216351163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3644,6 +3655,13 @@ MonoBehaviour:
   pauseText: {fileID: 2029988826}
   button: {fileID: 1578200974}
   PauseFilter: {fileID: 341201880}
+  comments:
+  - "\u3053\u3093\u306B\u3061\u306F\uFF01"
+  - "\u30B2\u30FC\u30E0\u3092\u697D\u3057\u3093\u3067\u304F\u3060\u3055\u3044\uFF01"
+  - "\u6B21\u306E\u30EC\u30D9\u30EB\u306B\u9032\u307F\u307E\u3057\u3087\u3046\uFF01"
+  - "\u7D20\u6674\u3089\u3057\u3044\u30D7\u30EC\u30A4\u3067\u3059\uFF01"
+  - "\u9811\u5F35\u3063\u3066\u304F\u3060\u3055\u3044\uFF01"
+  commentText: {fileID: 1214606201}
 --- !u!4 &1634631662
 Transform:
   m_ObjectHideFlags: 0
@@ -4457,22 +4475,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 702361610692843922, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.49999985
-      objectReference: {fileID: 0}
-    - target: {fileID: 702361610692843922, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 702361610692843922, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -201.64998
-      objectReference: {fileID: 0}
-    - target: {fileID: 702361610692843922, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -749.99994
-      objectReference: {fileID: 0}
     - target: {fileID: 834391564012819377, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
@@ -4557,18 +4559,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3560317442408816302, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7862332366670272296, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 7862332366670272296, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
