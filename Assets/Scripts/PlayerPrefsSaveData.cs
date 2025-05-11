@@ -1,33 +1,132 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
- 
+using Unity.Services.CloudSave;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using System.Threading.Tasks;
+
 public class PlayerPrefsSaveData : ISaveData
 {
-    //所持金のセーブ
     public void SaveMoney(BigInteger money)
     {
-        //PlayerPrefsを使用した場合の所持金セーブ処理
-        PlayerPrefs.SetString("MONEY", money.ToString()); 
+        PlayerPrefs.SetString("MONEY", money.ToString());
+        Debug.Log($"所持金を保存しました: {money}");
+        PlayerPrefs.Save();
     }
-    //羊頭数のセーブ
+
     public void SaveDogCnt(int id, int cnt)
     {
-        //PlayerPrefsを使用した場合の頭数セーブ処理
         PlayerPrefs.SetInt($"SHEEP{id}", cnt);
     }
-    //所持金のロード
+
     public BigInteger LoadMoney()
     {
-        //PlayerPrefsを使用した場合の所持金ロード処理
+        Debug.Log($"所持金をロードしました: {PlayerPrefs.GetString("MONEY", "0")}");
         return BigInteger.Parse(PlayerPrefs.GetString("MONEY", "0"));
     }
-    //羊頭数のロード
+
     public int LoadDogCnt(int id)
     {
-        //PlayerPrefsを使用した場合の頭数ロード処理
         return PlayerPrefs.GetInt($"SHEEP{id}", 0);
     }
+
+    public void UserName(string name)
+    {
+        PlayerPrefs.SetString("USERNAME", name);
+    }
+
+    public string LoadUserName()
+    {
+        return PlayerPrefs.GetString("USERNAME", "");
+    }
+
+    public void password(string password)
+    {
+        PlayerPrefs.SetString("PASSWORD", password);
+    }
+
+    public string LoadPassword()
+    {
+        return PlayerPrefs.GetString("PASSWORD", "");
+    }
+
+    // クラウド用のデータ構造
+    // [System.Serializable]
+    // public class SaveData
+    // {
+    //     public string money;
+    //     public string username;
+    //     public string password;
+    //     public Dictionary<string, int> sheepCounts = new Dictionary<string, int>();
+    // }
+
+    // public async Task SaveToCloud()
+    // {
+    //     await EnsureUnityServices();
+
+    //     SaveData data = new SaveData();
+    //     data.money = LoadMoney().ToString();
+    //     data.username = LoadUserName();
+    //     data.password = LoadPassword();
+
+    //     // 羊の数を仮に10頭分保存
+    //     for (int i = 0; i < 10; i++)
+    //     {
+    //         data.sheepCounts[$"SHEEP{i}"] = LoadDogCnt(i);
+    //     }
+
+    //     string json = JsonUtility.ToJson(data);
+    //     var saveData = new Dictionary<string, object>
+    //     {
+    //         { "save_data", json }
+    //    };
+    //    // SaveAsyncに渡す前に、適切な型であることを確認
+    //    await CloudSaveService.Instance.Data.Player.SaveAsync(saveData);
+    //    Debug.Log("クラウドに保存完了");
+    // }
+
+    // public async Task LoadFromCloud()
+    // {
+    //     await EnsureUnityServices();
+
+    //     // var result = await CloudSaveService.Instance.Data.LoadAsync(new HashSet<string> { "save_data" });
+    //     var result = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string> { "save_data" });
+
+    //     if (result.TryGetValue("save_data", out var item))
+    //     {
+    //         // string json = item; // ここで直接代入すればOK
+    //         string json = item.Value.GetAsString();
+    //         SaveData loaded = JsonUtility.FromJson<SaveData>(json);
+    //         SaveMoney(BigInteger.Parse(loaded.money));
+    //         UserName(loaded.username);
+    //         password(loaded.password);
+    //         foreach (var pair in loaded.sheepCounts)
+    //         {
+    //             int id = int.Parse(pair.Key.Replace("SHEEP", ""));
+    //             SaveDogCnt(id, pair.Value);
+    //      }
+
+    //     Debug.Log("クラウドからロード完了");
+    //     }
+        
+    //     else
+    //     {
+    //         Debug.LogWarning("クラウドデータが存在しません");
+    //     }
+    // }
+
+    // private async Task EnsureUnityServices()
+    // {
+    //     if (!UnityServices.State.Equals(ServicesInitializationState.Initialized))
+    //     {
+    //         await UnityServices.InitializeAsync();
+    //     }
+
+    //     if (!AuthenticationService.Instance.IsSignedIn)
+    //     {
+    //         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    //     }
+    // }
 }
