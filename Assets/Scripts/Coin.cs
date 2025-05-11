@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class Coin : MonoBehaviour
 {
     // 加算する金額

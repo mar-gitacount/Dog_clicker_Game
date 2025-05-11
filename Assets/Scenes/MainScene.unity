@@ -4475,6 +4475,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 702361610692843922, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -201.64996
+      objectReference: {fileID: 0}
     - target: {fileID: 834391564012819377, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
       propertyPath: m_Name
       value: PauseCanvas

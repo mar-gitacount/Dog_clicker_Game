@@ -22,4 +22,21 @@ public class DebugSaveData : ISaveData
     {
         return 5;
     }
+    public void UserName(string name)
+    {
+        
+    }
+    public string LoadUserName()
+    {
+        return "DebugUserName";
+    }
+    public void password(string password)
+    {
+        
+    }
+    public string LoadPassword()
+    {
+        return "DebugPassword";
+    }
+    // Task SaveToCloud();
 }
