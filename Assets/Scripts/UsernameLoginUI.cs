@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Services.Core;
+using UnityEngine.SceneManagement;
 using Unity.Services.Authentication;
 using System.Threading.Tasks;
 
@@ -91,6 +92,8 @@ public class UsernameLoginUI : MonoBehaviour
                 saveData.password(password);
 
                 Log($"ログイン成功！UserID: {AuthenticationService.Instance.PlayerId}");
+                // ここでタイトル画面に行く
+                SceneManager.LoadScene("TitleScene"); // タイトル画面のシーン名に変更してください
             }
             catch (AuthenticationException e)
             {

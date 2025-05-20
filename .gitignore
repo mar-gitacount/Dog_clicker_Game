@@ -25,3 +25,4 @@ Thumbs.db
 # Keystore file (for Android signing)
 Assets/Plugins/user.keystore
 Assets/Plugins/user.keystore.meta
+ProjectSettings/GvhProjectSettings.xml
