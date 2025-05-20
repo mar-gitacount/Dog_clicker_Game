@@ -61,7 +61,10 @@ public class TitleSchene : MonoBehaviour
     // ゲームシーンへチェンジする関数。
     public void ChangeScene()
     {
+        // ユーザー登録していた場合、ユーザー画面遷移
         SceneManager.LoadScene("MainScene");
+        // ログインしてない場合、ログイン画面遷移
+        
     }
 
 

@@ -19,6 +19,7 @@ public class PlayerPrefsSaveData : ISaveData
     public void SaveDogCnt(int id, int cnt)
     {
         PlayerPrefs.SetInt($"SHEEP{id}", cnt);
+        PlayerPrefs.Save();
     }
 
     public BigInteger LoadMoney()
