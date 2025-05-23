@@ -26,3 +26,6 @@ Thumbs.db
 Assets/Plugins/user.keystore
 Assets/Plugins/user.keystore.meta
 ProjectSettings/GvhProjectSettings.xml
+# Unity editor settings
+/[Uu]serSettings/
+/[Pp]rojectSettings/EditorBuildSettings.asset

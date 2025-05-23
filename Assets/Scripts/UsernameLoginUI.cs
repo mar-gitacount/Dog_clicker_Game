@@ -35,7 +35,7 @@ public class UsernameLoginUI : MonoBehaviour
             Log($"パスワード: {saveData.LoadPassword()}");
             usernameInput.text = saveData.LoadUserName();
             passwordInput.text = saveData.LoadPassword();
-            Login();  // ロードされた情報でログインを試みる
+            // Login();  // ロードされた情報でログインを試みる
         }
 
         signUpButton.onClick.AddListener(() => SignUp());
