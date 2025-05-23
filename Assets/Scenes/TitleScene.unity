@@ -1530,6 +1530,7 @@ MonoBehaviour:
   dogbuttonPrefab: {fileID: 1211112170711456464, guid: fcae22efa52df4d449e1a76ecc06f891, type: 3}
   wallet: {fileID: 0}
   button: {fileID: 854440998}
+  GameStartText: {fileID: 256292867}
 --- !u!4 &688859263
 Transform:
   m_ObjectHideFlags: 0
