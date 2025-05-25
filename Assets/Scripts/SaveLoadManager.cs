@@ -123,7 +123,7 @@ public class SaveLoadManager : MonoBehaviour
             data.money = wallet.money.ToString();
             if(shop.dogButtonList.Count != 0)
             {
-                Debug.LogError("sheepCounts にデータがあります。");
+                Debug.Log("sheepCounts にデータがあります。");
             }
             // 犬の頭数を保存
             for (var index = 0; index < shop.dogButtonList.Count; index++)

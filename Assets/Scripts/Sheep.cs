@@ -61,8 +61,9 @@ public class Sheep : MonoBehaviour
         //初期位置をセット
         transform.position = new Vector3(5,Random.Range(0.0f,4.0f),0); 
         // transform.position = new Vector3(5,-4.0f,0); 
-        moveSpeed = -Random.Range(1.0f,2.0f);
-
+        // moveSpeed = -Random.Range(1.0f,2.0f);
+        moveSpeed = -Random.Range(0.5f,1.0f);
+        
         // ?色のデータ
         sheepRenderder.color = dogData.color;
         // ?毛のデータ
@@ -149,7 +150,6 @@ public class Sheep : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-
     {
         transform.position += new Vector3(moveSpeed,0) * Time.deltaTime;
         // !イベント
@@ -157,10 +157,16 @@ public class Sheep : MonoBehaviour
         // {
         //     TogglePause();
         // }
-
-        if(transform.position.x < -5)
+        int sheepCount = SheepManager.Instance.GetSheepCountInView();
+        Debug.Log($"現在の犬の数: {sheepCount}");
+        // if(sheepCount > 5)
+        // {
+        //     // ?犬の数が多すぎる場合、犬を削除する。
+        //     return;
+        //     Destroy(gameObject);
+        // }
+        if (transform.position.x < -5)
         {
-
             // 画面の外に行ったら初期化する。
             Initialize();
         }
