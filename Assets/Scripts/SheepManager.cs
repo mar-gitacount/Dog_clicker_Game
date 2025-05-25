@@ -33,9 +33,31 @@ public class SheepManager : MonoBehaviour
             sheepList.Remove(sheep);
         }
     }
-
+    public int GetSheepListLength()
+    {
+        Debug.Log($"羊の数: {sheepList.Count}");
+        return sheepList.Count;
+    }
     public List<Sheep> GetAllSheep()
     {
         return sheepList;
+    }
+        public int GetSheepCountInView()
+    {
+        int count = 0;
+        foreach (var sheep in sheepList)
+        {
+            if (IsInView(sheep.transform.position))
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+    private bool IsInView(Vector3 position)
+    {
+        Camera camera = Camera.main;
+        Vector3 screenPoint = camera.WorldToViewportPoint(position);
+        return screenPoint.x >= 0 && screenPoint.x <= 1 && screenPoint.y >= 0 && screenPoint.y <= 1 && screenPoint.z > 0;
     }
 }
