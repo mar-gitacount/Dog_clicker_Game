@@ -13,6 +13,7 @@ public class ItemShop : MonoBehaviour
     {
         foreach(var itemData in itemDatas)
         {
+            Debug.Log("アイテムショップテスト。");
             // !ここでitemData内のメソッドをボタンに渡してみる。
             // itemDataの一意の値が代入されている。
             // アイテムボタンのインスタンスを作成する。
