@@ -82,24 +82,29 @@ public class TitleSchene : MonoBehaviour
     async public void ChangeScene()
     {
         button.interactable = false;
-        // GameStartText.text = "ロード中...";
-        // ロード中のアニメーションを開始
         var loadingTask = ShowLoadingAnimation();
-        if (saveData.LoadUserName() != "")
-        {
-            await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(saveData.LoadUserName(), saveData.LoadPassword());
-            Debug.Log($"ユーザー名: {saveData.LoadUserName()}");
-            Debug.Log($"パスワード: {saveData.LoadPassword()}");
-            SceneManager.LoadScene("MainScene");
-        }
-        // ログインしてない場合、ログイン画面遷移
+
+        // すでにサインイン済みかチェック
         if (!AuthenticationService.Instance.IsSignedIn)
         {
-            SceneManager.LoadScene("LoginOrSinUpScene 1");
-            return;
+            if (saveData.LoadUserName() != "")
+            {
+                await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(saveData.LoadUserName(), saveData.LoadPassword());
+                Debug.Log($"ユーザー名: {saveData.LoadUserName()}");
+                Debug.Log($"パスワード: {saveData.LoadPassword()}");
+                SceneManager.LoadScene("MenuScene");
+                return;
+            }
+            else
+            {
+                // ログインしてない場合、ログイン画面遷移
+                SceneManager.LoadScene("LoginOrSinUpScene 1");
+                return;
+            }
         }
-        // ユーザー登録していた場合、ユーザー画面遷移
-        SceneManager.LoadScene("MainScene");
+
+        // サインイン済みならそのままメニューシーンへ
+        SceneManager.LoadScene("MenuScene");
     }
     // ロード中のアニメーション
     async Task ShowLoadingAnimation()

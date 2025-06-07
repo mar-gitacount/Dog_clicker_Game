@@ -19,14 +19,8 @@ public class UsernameLoginUI : MonoBehaviour
         await InitializeUnityServices();
         saveData = new PlayerPrefsSaveData();
 
-        // ログインされている場合、処理をスキップ
-        if (AuthenticationService.Instance.IsSignedIn)
-        {
-            Log($"既にログイン済み: {AuthenticationService.Instance.PlayerId}");
-            return;  // ログイン済みの場合は処理を終了
-        }
 
-        Log("ログインしていません。サインアップまたはログインしてください。");
+
 
         // ローカルに保存されたユーザー名とパスワードを取得
         if (saveData.LoadUserName() != "")
@@ -40,6 +34,14 @@ public class UsernameLoginUI : MonoBehaviour
 
         signUpButton.onClick.AddListener(() => SignUp());
         loginButton.onClick.AddListener(() => Login());
+                // ログインされている場合、処理をスキップ
+        if (AuthenticationService.Instance.IsSignedIn)
+        {
+            Log($"既にログイン済み: {AuthenticationService.Instance.PlayerId}");
+            return;  // ログイン済みの場合は処理を終了
+        }
+
+
     }
 
     async Task InitializeUnityServices()
@@ -103,6 +105,8 @@ public class UsernameLoginUI : MonoBehaviour
         else
         {
             Log("すでにログイン済みです");
+            SceneManager.LoadScene("TitleScene"); // タイトル画面のシーン名に変更してください
+
         }
     }
 

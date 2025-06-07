@@ -88,6 +88,7 @@
     <Compile Include="Assets\GoogleSignIn\GoogleSignInUser.cs" />
     <Compile Include="Assets\GoogleSignIn\GoogleSignInConfiguration.cs" />
     <Compile Include="Assets\Scripts\ActionData.cs" />
+    <Compile Include="Assets\Scripts\SelectMenu.cs" />
     <Compile Include="Assets\GoogleSignIn\Impl\NativeFuture.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Assets\Scripts\AspectKeeper.cs" />
     <Compile Include="Assets\Scripts\ItemGenerator.cs" />
     <Compile Include="Assets\Scripts\MenuButton.cs" />
+    <Compile Include="Assets\Scripts\SelectMenuButton.cs" />
     <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\DebugSaveData.cs" />
   </ItemGroup>
