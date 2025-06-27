@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SelectMenu : MonoBehaviour
 {
-       [SerializeField] private SelectMenuButton SelectmenuButtonPrefab;
-    // [SerializeField] private Transform buttonParent; // ボタンを並べる親
-    // [SerializeField] private GameObject ScrollObject;
+    [SerializeField] private SelectMenuButton SelectmenuButtonPrefab;
+    // [SerializeField] private SaveLoadManager saveLoadManager; // ← 追加
+    SaveLoadManager saveLoadManager;
 
     // シーン名の配列
     private (string sceneName, string displayName)[] sceneNames = {
@@ -19,13 +19,26 @@ public class SelectMenu : MonoBehaviour
 
     void Awake()
     {
+        if (saveLoadManager == null)
+        {
+            Debug.Log("SaveLoadManagerを探しています...");
+            saveLoadManager = FindObjectOfType<SaveLoadManager>();
+        }
+        if (saveLoadManager == null)
+        {
+            // Debug.LogError("SaveLoadManagerが見つかりません。SelectMenuを正しく機能させるために、シーンにSaveLoadManagerを追加してください。");
+            // return;
+        }
+
         foreach (var (sceneName, displayName) in sceneNames)
         {
             var menuButton = Instantiate(SelectmenuButtonPrefab, transform);
-            menuButton.SetLabel(displayName); // ボタンにシーン名を表示（MenuButton側で実装）
-            menuButton.SetOnClick(() => SceneManager.LoadScene(sceneName));
-            // menuButton.itemlastCurst(ScrollObject);
+            menuButton.SetLabel(displayName);
+            menuButton.SetOnClick(() =>
+            {
+                // saveLoadManager.SaveToCloud(); // ここでセーブ
+                SceneManager.LoadScene(sceneName); // シーン遷移
+            });
         }
     }
-    
 }
