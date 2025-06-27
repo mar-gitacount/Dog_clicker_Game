@@ -108,6 +108,7 @@ public class SaveLoadManager : MonoBehaviour
 
     public async void SaveToCloud()
     {
+        Debug.Log("クラウドセーブを開始します。");
         if (!IsNetworkAvailable())
         {
             Debug.LogError("ネットワーク接続がありません。クラウドセーブをスキップします。");

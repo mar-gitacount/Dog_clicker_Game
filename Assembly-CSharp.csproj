@@ -74,9 +74,11 @@
     <Compile Include="Assets\Scripts\SoundTest.cs" />
     <Compile Include="Assets\Scripts\ItemData.cs" />
     <Compile Include="Assets\GoogleSignIn\Impl\BaseObject.cs" />
+    <Compile Include="Assets\Scripts\PanelItemButton.cs" />
     <Compile Include="Assets\GoogleSignIn\Impl\GoogleSignInImpl.cs" />
     <Compile Include="Assets\Scripts\ItemShop.cs" />
     <Compile Include="Assets\Scripts\TitleScene.cs" />
+    <Compile Include="Assets\Scripts\PanelItem.cs" />
     <Compile Include="Assets\Scripts\Sheep.cs" />
     <Compile Include="Assets\GoogleSignIn\GoogleSignIn.cs" />
     <Compile Include="Assets\Scripts\SheepManager.cs" />
