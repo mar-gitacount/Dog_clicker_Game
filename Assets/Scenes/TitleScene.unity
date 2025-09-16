@@ -484,6 +484,7 @@ MonoBehaviour:
   passwordInput: {fileID: 363146523}
   signUpButton: {fileID: 1476100124}
   loginButton: {fileID: 1549301500}
+  logoutButton: {fileID: 0}
   logText: {fileID: 1993259180}
 --- !u!1 &223382617
 GameObject:

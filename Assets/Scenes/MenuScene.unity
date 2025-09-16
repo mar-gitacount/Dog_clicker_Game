@@ -484,6 +484,7 @@ MonoBehaviour:
   passwordInput: {fileID: 363146523}
   signUpButton: {fileID: 1476100124}
   loginButton: {fileID: 1549301500}
+  logoutButton: {fileID: 0}
   logText: {fileID: 1993259180}
 --- !u!1 &223382617
 GameObject:
@@ -3153,6 +3154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SelectMenuButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2300277741781922525, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3167,7 +3172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_AnchorMin.x
@@ -3175,15 +3180,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3215,11 +3220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 6467456724493389716, guid: 5d544fe205d9c2441af54964ca4f0023, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

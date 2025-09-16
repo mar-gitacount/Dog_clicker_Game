@@ -13,7 +13,7 @@ public class SelectMenu : MonoBehaviour
     private (string sceneName, string displayName)[] sceneNames = {
         ("TitleScene", "タイトル"),
         ("MainScene", "メイン"),
-        ("ShopScene", "ショップ"),
+        // ("ShopScene", "ショップ"),
         ("LoginOrSinUpScene 1", "ログイン")
     };
 
