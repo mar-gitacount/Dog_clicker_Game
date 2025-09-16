@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\u30A2\u30A4\u30C6\u30E0"
 --- !u!1 &1432846992481345893
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4265454589113538591, guid: 85797e8ef9b3e0040b4267db6e31e675, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfa110001d74e604d841de30b6864f6d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -292,3 +292,4 @@ MonoBehaviour:
   button: {fileID: 1931414261189026010}
   image: {fileID: 4497238665169633937}
   menuName: {fileID: 6181477670654802095}
+  PanelItem: {fileID: 0}
