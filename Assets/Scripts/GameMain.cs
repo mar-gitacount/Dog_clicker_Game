@@ -14,14 +14,22 @@ public class GameMain : MonoBehaviour
     private Wallet wallet;
 
     // ホラープレハブ
-    [SerializeField]private Face facePrefab;
-    
+    [SerializeField] private Face facePrefab;
+
     private SpriteRenderer bgRenderer;
-    
+
     private float timer = 0f;
     public GameObject gameOverScene;
     // タイトルシーンへ行くためのオブジェクト
     public GameObject toTitleScene;
+
+    [SerializeField] private Text TextObject;
+
+    // テキストデータの配列
+    public TextData[] textDataArray;
+
+    // バッドテキスト
+    public TextData[] badTextDataArray;
 
 
     // 売却ボタンを押下した時に呼ばれる関数,表示されている毛を全て取得し、所持金に追加する。
@@ -41,9 +49,12 @@ public class GameMain : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // !画像が出るかテスト
+
         // var face = Instantiate(facePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         sellButton.onClick.AddListener(SellAllWool);
+        ShowRandomText();
+
+
     }
 
     // Update is called once per frame
@@ -52,6 +63,11 @@ public class GameMain : MonoBehaviour
         // 異変起きていて、かつプレイヤーが異変に気付いてスペースをした場合、次の画面へ
         if (Input.GetKeyDown(KeyCode.Space) && timer > 0f)
         {
+            // TextObject.text = "こんにちは、おいそぎですか？";
+            // int randomIndex = Random.Range(0, textDataArray.Length);
+            // TextObject.text = textDataArray[randomIndex].text;
+            ShowRandomText();
+            Debug.Log($"選ばれたセリフ: {TextObject.text}");
             // フェイスオブジェクトを消す。
             Debug.Log("画面切り替え");
             // シーン切り替え処理をここに追加
@@ -120,7 +136,10 @@ public class GameMain : MonoBehaviour
             // 以下をランダムで実行する。
             // 画像パスをランダムに指定してfaceに渡す。
             var face = Instantiate(facePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-
+            // 文字に変える
+            // テキストプレハブを作り、それを複数つくって、配列にそのプレハブ群を入れる。
+            // TextObject.text += "\n"+ShowRandomBadText();
+            ShowRandomBadText();
             Debug.Log("怖い画像が出る");
             timer += Time.deltaTime;
         }
@@ -128,7 +147,7 @@ public class GameMain : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        
+
         // Update内で、1/3の確率を行い、画像に異変を加え、異変変数をtrueにする。5秒たったらゲームオーバーで怖いシーンに切り替える。
         // GameObject bgObject = GameObject.Find("bg");
         // SpriteRenderer bgsr = bgObject.GetComponent<SpriteRenderer>();
@@ -159,21 +178,35 @@ public class GameMain : MonoBehaviour
         //     }
         //     if (Input.GetKeyDown(KeyCode.Space) && bgRenderer != null)
         //     {
-                // bgRenderer.color = Color.red;
-                // sr.sprite = Resources.Load<Sprite>("Images/恐ろしい顔の怪物");
-                // sr.sortingOrder = bgsr.sortingOrder + 1;// 背景の上に表示されるようにする。
-                // bgObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+        // bgRenderer.color = Color.red;
+        // sr.sprite = Resources.Load<Sprite>("Images/恐ろしい顔の怪物");
+        // sr.sortingOrder = bgsr.sortingOrder + 1;// 背景の上に表示されるようにする。
+        // bgObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
 
         //     }
-            // SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            // Color bgColor = sr.color;
-            // Sprite bgSprite = sr.sprite;
-            // Debug.Log("背景色: " + bgColor);
-            // Debug.Log("背景スプライト: " + bgSprite.name);
+        // SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        // Color bgColor = sr.color;
+        // Sprite bgSprite = sr.sprite;
+        // Debug.Log("背景色: " + bgColor);
+        // Debug.Log("背景スプライト: " + bgSprite.name);
         // }
         // else
         // {
         //     Debug.LogWarning("bgがセットされていません！");
         // }
+    }
+
+    /// <summary>
+    /// textDataArrayからランダムにテキストを選び、TextObjectに表示する
+    /// </summary>
+    private void ShowRandomText()
+    {
+        int randomIndex = Random.Range(0, textDataArray.Length);
+        TextObject.text = textDataArray[randomIndex].text;
+    }
+    public void ShowRandomBadText()
+    {
+        int randomIndex = Random.Range(0, badTextDataArray.Length);
+        TextObject.text += "\n"+badTextDataArray[randomIndex].text;
     }
 }
