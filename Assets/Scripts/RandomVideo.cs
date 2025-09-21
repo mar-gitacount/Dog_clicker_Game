@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
-
+using UnityEngine.UI;
 public class RandomVideo : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public VideoClip[] videoClips;
+    // [SerializeField]private Text TextObject;
 
     void Start()
     {
         PlayRandomVideo();
+        // TextObject.text = "ランダムビデオテスト";
         Debug.Log("次のビデオへ");
         videoPlayer.loopPointReached += OnVideoEnded;
     }
