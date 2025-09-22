@@ -9,12 +9,16 @@ public class RandomVideo : MonoBehaviour
     public VideoClip[] videoClips;
     // [SerializeField]private Text TextObject;
 
+    // ?テストコード
+    [SerializeField] public Button PuseButton;
+
     void Start()
     {
         PlayRandomVideo();
         // TextObject.text = "ランダムビデオテスト";
         Debug.Log("次のビデオへ");
         videoPlayer.loopPointReached += OnVideoEnded;
+        PuseButton.onClick.AddListener(() => OnVideoPrepared(videoPlayer));
     }
 
     void Update()
@@ -41,10 +45,19 @@ public class RandomVideo : MonoBehaviour
 
 
 
+
+
     void OnVideoPrepared(VideoPlayer vp)
     {
-        vp.Play();
-
+        if (vp.isPlaying)
+        {
+            vp.Stop();
+            
+        }
+        else
+        {
+            vp.Play();
+        }
     }
     
     void OnVideoEnded(VideoPlayer vp)

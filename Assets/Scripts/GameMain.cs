@@ -31,6 +31,9 @@ public class GameMain : MonoBehaviour
     // バッドテキスト
     public TextData[] badTextDataArray;
 
+    // 一時停止ボタン
+    public Button pauseButton;
+
 
     // 売却ボタンを押下した時に呼ばれる関数,表示されている毛を全て取得し、所持金に追加する。
     private void SellAllWool()
@@ -54,12 +57,15 @@ public class GameMain : MonoBehaviour
         sellButton.onClick.AddListener(SellAllWool);
         ShowRandomText();
 
-
+        pauseButton.onClick.AddListener(TogglePause);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ポージングボタンが押下されているとき
+        if (isPaused) return;
+        
         // 異変起きていて、かつプレイヤーが異変に気付いてスペースをした場合、次の画面へ
         if (Input.GetKeyDown(KeyCode.Space) && timer > 0f)
         {
@@ -131,11 +137,12 @@ public class GameMain : MonoBehaviour
         }
 
         // 怖い画像フラグ判定。
-        if (Random.Range(0, 50) == 0 && timer == 0f)
+        if (Random.Range(0, 200) == 0 && timer == 0f)
         {
             // 以下をランダムで実行する。
             // 画像パスをランダムに指定してfaceに渡す。
-            var face = Instantiate(facePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            // ?消す
+            // var face = Instantiate(facePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             // 文字に変える
             // テキストプレハブを作り、それを複数つくって、配列にそのプレハブ群を入れる。
             // TextObject.text += "\n"+ShowRandomBadText();
@@ -208,5 +215,21 @@ public class GameMain : MonoBehaviour
     {
         int randomIndex = Random.Range(0, badTextDataArray.Length);
         TextObject.text += "\n"+badTextDataArray[randomIndex].text;
+    }
+
+    private bool isPaused = false;
+
+    private void TogglePause()
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 1f; // ゲーム再開
+            isPaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0f; // ゲーム一時停止
+            isPaused = true;
+        }
     }
 }

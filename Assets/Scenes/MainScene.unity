@@ -1877,6 +1877,8 @@ MonoBehaviour:
   videoClips:
   - {fileID: 32900000, guid: 565e692aa9fc4db4da2f702ea80f3226, type: 3}
   - {fileID: 32900000, guid: 3ab8050fb0dcd484db6cfd565b166772, type: 3}
+  - {fileID: 32900000, guid: 0bfe4729527c8784293b001600e5a9a0, type: 3}
+  PuseButton: {fileID: 1578200974}
 --- !u!1 &723045975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4819,10 +4821,30 @@ MonoBehaviour:
   TextObject: {fileID: 331767629}
   textDataArray:
   - {fileID: 11400000, guid: 94c837df42e0d46438ad63b58d6afabe, type: 2}
+  - {fileID: 11400000, guid: 73d70fc01e0ae7a43bd2da58dd223842, type: 2}
+  - {fileID: 11400000, guid: 18cf1ab202f8c694c9aa1d5b6bc74b91, type: 2}
+  - {fileID: 11400000, guid: 08b7483e84e44de4c881c4f91c5614cf, type: 2}
+  - {fileID: 11400000, guid: a3d4c12431d1f1b458a920a0c24da736, type: 2}
+  - {fileID: 11400000, guid: 895bedf18d3a820459c92144ac875e70, type: 2}
+  - {fileID: 11400000, guid: 4e65381878f10eb46bf1e5e8843b2026, type: 2}
+  - {fileID: 11400000, guid: eef1444096bd1d54db97fc6735d96c74, type: 2}
+  - {fileID: 11400000, guid: 0a25c237b49d1594d920d9b807248a47, type: 2}
+  - {fileID: 11400000, guid: 9f4c7a3ca2163904cb0437a4834112b2, type: 2}
+  - {fileID: 11400000, guid: e26a5478f1cc66c45bde81b4087d3d56, type: 2}
+  - {fileID: 11400000, guid: 9ef608234fc73c347b3069690cc759ef, type: 2}
+  - {fileID: 11400000, guid: c1882046c42e5904892c739825111b7e, type: 2}
+  - {fileID: 11400000, guid: 6c14bccc1e9464c4f837b0bad906d6f6, type: 2}
+  - {fileID: 11400000, guid: 10c9f31dc22298941bf738727629d7b1, type: 2}
+  - {fileID: 11400000, guid: 201ef2db73e5d4542a72924de3c5bdbf, type: 2}
+  - {fileID: 11400000, guid: 247e67f033d8525488ff671ef0dc4151, type: 2}
+  - {fileID: 11400000, guid: 184ee14af24d1cf499cb6d450240bce2, type: 2}
+  - {fileID: 11400000, guid: a20e6cfa420e94a4eb59bd828d34c442, type: 2}
+  - {fileID: 11400000, guid: 6bf4302da9e8fde44882cae09986f9dd, type: 2}
   badTextDataArray:
   - {fileID: 11400000, guid: e78f3e2611bd6b2498cd7c4d0d33fbeb, type: 2}
   - {fileID: 11400000, guid: 94e6b8f00787fa648b626d0a46ddb994, type: 2}
   - {fileID: 11400000, guid: a93b0e8e39988cc46b6473a62f563d29, type: 2}
+  pauseButton: {fileID: 1578200974}
 --- !u!1 &2119335794
 GameObject:
   m_ObjectHideFlags: 0
