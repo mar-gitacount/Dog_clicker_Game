@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 public class Sheep : MonoBehaviour
 {
     // 初期の犬の画像が格納されている。
@@ -28,10 +29,18 @@ public class Sheep : MonoBehaviour
     // ? 
     public GameObject pauseMenu;
 
+
+    [SerializeField]public GameObject gameOverScene;
+
+
+    [SerializeField]public GameObject toTitleScene;
+
+    // 触っていいフラグ
+    // private bool isTouchable = true;
     private void OnEnable()
     {
         Debug.Log("犬データがアクティブです");
-        SheepManager.Instance?.RegisterSheep(this);        
+        SheepManager.Instance?.RegisterSheep(this);
     }
     private void OnDisable()
     {
@@ -59,7 +68,9 @@ public class Sheep : MonoBehaviour
         }
         // transform.position = new Vector3(5,0,0);
         //初期位置をセット
-        transform.position = new Vector3(5,Random.Range(0.0f,4.0f),0); 
+        // transform.position = new Vector3(5,Random.Range(0.0f,4.0f),0); 
+        // ?テスト
+        transform.position = new Vector3(5, Random.Range(-1.0f, 0.0f), 0);
         // transform.position = new Vector3(5,-4.0f,0); 
         // moveSpeed = -Random.Range(1.0f,2.0f);
         moveSpeed = -Random.Range(0.5f,1.0f);
@@ -103,8 +114,29 @@ public class Sheep : MonoBehaviour
         {
             return;
         }
+        // ?触ってはいけない犬
+        if (dogData.isDontTouchble == true)
+        {
+            // 触ってはいけない犬は処理を抜ける。
+            Debug.Log("触ってはいけない犬です");
+            gameOverScene.SetActive(true);
+            toTitleScene.SetActive(true);
+            return;
+            GameObject scaryFaceObj = new GameObject("ScaryFace");
+            GameObject bgObject = GameObject.Find("bg");
+            SpriteRenderer bgsr = bgObject.GetComponent<SpriteRenderer>();
+
+            scaryFaceObj.transform.parent = bgObject.transform;
+            scaryFaceObj.transform.localPosition = new Vector3(0.5f, 0.5f, 0); // 親の中心に配置
+            SpriteRenderer sr = scaryFaceObj.AddComponent<SpriteRenderer>();
+            sr.sprite = Resources.Load<Sprite>("Images/恐ろしい顔の怪物");
+            sr.color = Color.white;
+            sr.sortingOrder = bgsr.sortingOrder + 1;// 背景の上に表示されるようにする。
+            scaryFaceObj.transform.localScale = Vector3.one;
+            return;
+        }
         //? 刈り取る毛がない。
-        if(woolCnt <= 0)return;
+        if (woolCnt <= 0) return;
         // ?　3-40パーセントの毛を刈り取る。
         // ?ここで毛の金額の値段を設定する。
         // !後で変える
@@ -168,6 +200,13 @@ public class Sheep : MonoBehaviour
         if (transform.position.x < -5)
         {
             // 画面の外に行ったら初期化する。
+            if (dogData.isTouchable == true)
+            {
+                // 触れない犬は消す。
+                // Destroy(gameObject);
+                Debug.Log("触れない犬が画面外に出たのでゲームオーバー");
+                // return;
+            }
             Initialize();
         }
         
