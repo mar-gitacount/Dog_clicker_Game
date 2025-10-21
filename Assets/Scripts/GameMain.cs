@@ -52,6 +52,7 @@ public class GameMain : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // 金額が0かつ犬がいない場合、ゲーム説明画面へ移動する。
 
         // var face = Instantiate(facePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         sellButton.onClick.AddListener(SellAllWool);
@@ -63,9 +64,15 @@ public class GameMain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ポージングボタンが押下されているとき
         if (isPaused) return;
-        
+
+        // 右クリックでSellAllWool実行
+        if (Input.GetMouseButtonDown(1))
+        {
+            SellAllWool();
+            Debug.Log("右クリックでSellAllWool実行");
+        }
+
         // 異変起きていて、かつプレイヤーが異変に気付いてスペースをした場合、次の画面へ
         if (Input.GetKeyDown(KeyCode.Space) && timer > 0f)
         {
@@ -108,7 +115,10 @@ public class GameMain : MonoBehaviour
         if (timer >= 5f)
         {
             Debug.Log("ゲームオーバーです。怖いシーンに切り替えます。");
-            // ゲームオーバー
+            
+            //? ゲームオーバータイトルに戻る処理ができたら消すかも
+            return;
+            // !いかがゲームオーバー時に表示される事確認済み
             gameOverScene.SetActive(true);
             // タイトル行き画面を表示する。
             toTitleScene.SetActive(true);
@@ -141,7 +151,7 @@ public class GameMain : MonoBehaviour
         {
             // 以下をランダムで実行する。
             // 画像パスをランダムに指定してfaceに渡す。
-            // ?消す
+            //消す
             // var face = Instantiate(facePrefab, new Vector3(0, 0, 0), Quaternion.identity);
             // 文字に変える
             // テキストプレハブを作り、それを複数つくって、配列にそのプレハブ群を入れる。

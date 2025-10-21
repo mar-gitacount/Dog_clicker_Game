@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class DogData : ScriptableObject
 {
     // ?犬の画像
-    [SerializeField]private SpriteRenderer sheepRenderder;
+    [SerializeField] private SpriteRenderer sheepRenderder;
     // ?犬の種類
     public string dogkinds;
     // 犬の画像パス 
@@ -26,5 +26,9 @@ public class DogData : ScriptableObject
     public int maxCount;
     // 毛の量
     public int woolCnt;
+    // 触らなければならないフラグ
+    public bool isTouchable = false;
+    // 触ってはいけないフラグ
+    public bool isDontTouchble = false;
 
 }

@@ -106,6 +106,8 @@ MonoBehaviour:
   woolPrefab: {fileID: 199545855617931964, guid: 8dcace5ac0cbf9348a764ddd4bdd478b, type: 3}
   dogData: {fileID: 11400000, guid: 1ac2eb59aa05f23419d791d73a6bcc07, type: 2}
   pauseMenu: {fileID: 834391564012819377, guid: bb24e73d6c5a6444a82d8a2bcf84dd80, type: 3}
+  gameOverScene: {fileID: 6961088085678890526, guid: b0ad55f8a8d2a2940bbb3d7c4c686de8, type: 3}
+  toTitleScene: {fileID: 921742208890202016, guid: 1dd3947ca2af26b4b823c4bd9245686c, type: 3}
 --- !u!60 &7647897334730452436
 PolygonCollider2D:
   m_ObjectHideFlags: 0

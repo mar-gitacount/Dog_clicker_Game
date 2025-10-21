@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UsernameLoginUI.cs" />
+    <Compile Include="Assets\Scripts\HP.cs" />
     <Compile Include="Assets\Scripts\SimpleGoogleLogin.cs" />
     <Compile Include="Assets\Scripts\ItemCoditions\EnoughMoneyCondition.cs" />
     <Compile Include="Assets\Scripts\ISaveData.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\SheepManager.cs" />
     <Compile Include="Assets\Scripts\GoogleLoginManager.cs" />
     <Compile Include="Assets\Scripts\DogGenerator.cs" />
+    <Compile Include="Assets\Scripts\Enamy.cs" />
     <Compile Include="Assets\Scripts\Face.cs" />
     <Compile Include="Assets\Scripts\ItemCoditions\WoolTenCount.cs" />
     <Compile Include="Assets\GoogleSignIn\GoogleSignInStatusCode.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Assets\GoogleSignIn\Impl\NativeFuture.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
+    <Compile Include="Assets\Scripts\EnamyBall.cs" />
     <Compile Include="Assets\Scripts\GameMain.cs" />
     <Compile Include="Assets\Scripts\SaveLoadManager.cs" />
     <Compile Include="Assets\Scripts\Comment.cs" />
@@ -105,6 +108,8 @@
     <Compile Include="Assets\Scripts\Wallet.cs" />
     <Compile Include="Assets\GoogleSignIn\Impl\SignInHelperObject.cs" />
     <Compile Include="Assets\Scripts\ScrollView.cs" />
+    <Compile Include="Assets\Scripts\EnamyBallSpane.cs" />
+    <Compile Include="Assets\Scripts\EnamyAtackGenerator.cs" />
     <Compile Include="Assets\Scripts\ItemButton.cs" />
     <Compile Include="Assets\Scripts\SoundManeger.cs" />
     <Compile Include="Assets\Scripts\Wool.cs" />

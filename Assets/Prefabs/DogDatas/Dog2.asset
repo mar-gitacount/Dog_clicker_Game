@@ -21,3 +21,5 @@ MonoBehaviour:
   extendetPrice: 50
   maxCount: 10
   woolCnt: 40
+  isTouchable: 0
+  isDontTouchble: 1
