@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class EnamyBall : MonoBehaviour
 {
@@ -13,7 +15,9 @@ public class EnamyBall : MonoBehaviour
     public HP hp;
 
     // ?ゲームオーバー
-    // public GameObject gameOverScene;
+    public GameObject gameOverScene;
+    // ?メニュー一覧
+
 
 
 
@@ -69,16 +73,19 @@ public class EnamyBall : MonoBehaviour
         // HP0になったらゲームオーバー
         GameObject bgObject = GameObject.Find("bg");
         SpriteRenderer bgsr = bgObject.GetComponent<SpriteRenderer>();
-        if (HP <= 0f)
+        if (hp.hp <= 0f)
         {
             Debug.Log("エネミーボールのHPが0になりました。ゲームオーバーです。");
-            // ?ゲームオーバーシーンへ
+            // ?ゲームオーバーシーンへ一番初めに表示する。
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
+            // UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
+
             // gameOverScene.SetActive(true);
 
             // bgより上に表示されるようにする。
-            Sprite newSprite = Resources.Load<Sprite>("Images/恐ろしい顔の怪物");
-            bgsr.sprite = newSprite;
-            bgsr.sortingOrder = 1;
+            // Sprite newSprite = Resources.Load<Sprite>("Images/恐ろしい顔の怪物");
+            // bgsr.sprite = newSprite;
+            // bgsr.sortingOrder = 1;
 
         }
         if (isFalling)

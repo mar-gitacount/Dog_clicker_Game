@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HP : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float hp = 5;
+    public float hp = 4;
     [SerializeField] private Text hpText;
     void Start()
     {

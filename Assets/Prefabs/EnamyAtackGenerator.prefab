@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enamyBallPrefab: {fileID: 4707647680068489607, guid: db94faa9f1f505c43a18a17686c9deb6, type: 3}
   enamyBallSpawner: {fileID: 704973661617260340, guid: 84785a2c781b9b84387fc551f58e6351, type: 3}
+  gameOverScene: {fileID: 3474994671520257051, guid: f007366c5ad60da4fb07be9119f4d139, type: 3}
+  wallet: {fileID: 0}
+  hp: {fileID: 0}
