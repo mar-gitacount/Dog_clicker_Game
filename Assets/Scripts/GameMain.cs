@@ -124,6 +124,7 @@ public class GameMain : MonoBehaviour
             toTitleScene.SetActive(true);
             // bgの上に怖い顔画像を重ねる
             GameObject bgObject = GameObject.Find("bg");
+            return;
             if (bgObject != null)
             {
                 SpriteRenderer bgsr = bgObject.GetComponent<SpriteRenderer>();

@@ -7,6 +7,7 @@ public class EnamyAtackGenerator : MonoBehaviour
     // ?以下はデフォルトでは、testballPrefabを入れている。都度変更する。処理、Enamyごとに変える。
     [SerializeField] private EnamyBall enamyBallPrefab;
     [SerializeField] private EnamyBallSpawner enamyBallSpawner;
+    [SerializeField] private GameObject gameOverScene;
     // Start is called before the first frame update
     private float spawnInterval = 2f;  // 生成間隔
 
@@ -25,6 +26,8 @@ public class EnamyAtackGenerator : MonoBehaviour
         // Instantiate(enamyBallPrefab, transform.position, Quaternion.identity);
         enamyBallPrefab.wallet = wallet;
         enamyBallPrefab.hp = hp;
+        // ?エネミーボールにゲームオーバーシーンを渡す。
+        enamyBallPrefab.gameOverScene = gameOverScene;
         enamyBallSpawner.ballPrefab = enamyBallPrefab;
         enamyBallSpawner.SpawnBall();
        
