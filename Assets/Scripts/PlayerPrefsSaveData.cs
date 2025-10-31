@@ -33,6 +33,18 @@ public class PlayerPrefsSaveData : ISaveData
         return PlayerPrefs.GetInt($"SHEEP{id}", 0);
     }
 
+    // ストーリー関連のセーブデータ
+    // ストーリーとバトルシーン
+    public void SaveStoryProgress(int storyIndex)
+    {
+        PlayerPrefs.SetInt("STORY_INDEX", storyIndex);
+        PlayerPrefs.Save();
+    }
+    public int LoadStoryProgress()
+    {
+        return PlayerPrefs.GetInt("STORY_INDEX", 0);
+    }
+
     public void UserName(string name)
     {
         PlayerPrefs.SetString("USERNAME", name);

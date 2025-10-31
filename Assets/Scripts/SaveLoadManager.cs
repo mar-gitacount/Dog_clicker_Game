@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System;
 public class SaveLoadManager : MonoBehaviour
 {
+
+    // どのストーリーか、ストーリーか、ストーリー後のゲーム画面か。
+    
+
     // 保存対象所持金
     [SerializeField]private Wallet wallet;
     // 犬の頭数
@@ -67,6 +71,7 @@ public class SaveLoadManager : MonoBehaviour
         public string username;
         public string password;
         public List<SheepCount> sheepCounts = new List<SheepCount>(); // Listを使用
+        public int storyIndex;
     }
 
     [System.Serializable]

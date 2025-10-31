@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UsernameLoginUI.cs" />
     <Compile Include="Assets\Scripts\HP.cs" />
+    <Compile Include="Assets\Scripts\EnamyData.cs" />
     <Compile Include="Assets\Scripts\SimpleGoogleLogin.cs" />
     <Compile Include="Assets\Scripts\ItemCoditions\EnoughMoneyCondition.cs" />
     <Compile Include="Assets\Scripts\ISaveData.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Assets\Scripts\Sheep.cs" />
     <Compile Include="Assets\GoogleSignIn\GoogleSignIn.cs" />
     <Compile Include="Assets\Scripts\SheepManager.cs" />
+    <Compile Include="Assets\Scripts\Story.cs" />
     <Compile Include="Assets\Scripts\GoogleLoginManager.cs" />
     <Compile Include="Assets\Scripts\DogGenerator.cs" />
     <Compile Include="Assets\Scripts\Enamy.cs" />
