@@ -39,4 +39,14 @@ public class DebugSaveData : ISaveData
         return "DebugPassword";
     }
     // Task SaveToCloud();
+
+    public void SaveStoryProgress(int storyIndex)
+    {
+        
+        
+    }
+    public int LoadStoryProgress()
+    {
+        return 0;
+    }
 }

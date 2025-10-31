@@ -23,6 +23,10 @@ public interface ISaveData
     string LoadUserName();
     void password(string password);
     string LoadPassword();
+
+    void SaveStoryProgress(int storyIndex);
+
+    int LoadStoryProgress();
     // void SaveData(SaveData data);
     // Task SaveToCloud(); // 非同期メソッドに変更
 }

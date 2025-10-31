@@ -34,6 +34,8 @@ public class GameMain : MonoBehaviour
     // 一時停止ボタン
     public Button pauseButton;
 
+    private ISaveData saveData;
+
 
     // 売却ボタンを押下した時に呼ばれる関数,表示されている毛を全て取得し、所持金に追加する。
     private void SellAllWool()
@@ -52,13 +54,16 @@ public class GameMain : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        saveData = new PlayerPrefsSaveData();
+        // !ストーリーからの動線の場合、セーブデータを参照してそのメインバトルへ
+        // !ストーリーシーンとメインシーンはセーブデータを参照するが、この二つは、切り離して考える。
         // 金額が0かつ犬がいない場合、ゲーム説明画面へ移動する。
-
         // var face = Instantiate(facePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         sellButton.onClick.AddListener(SellAllWool);
         ShowRandomText();
-
         pauseButton.onClick.AddListener(TogglePause);
+        int storyIndex = saveData.LoadStoryProgress();
+        Debug.Log("メインでロードしたストーリーインデックス: " + storyIndex);
     }
 
     // Update is called once per frame
@@ -97,7 +102,8 @@ public class GameMain : MonoBehaviour
             }
 
             timer = 0f;
-            // UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
+            // ゲームオーバーシーンへ移動
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
         }
         else if (Input.GetKeyDown(KeyCode.Space) && timer == 0f)
         {

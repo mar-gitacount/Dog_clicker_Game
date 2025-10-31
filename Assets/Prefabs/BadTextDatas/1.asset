@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38c8d98ebf70a04eb5f724144b8fd64, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  text: "\u305F\u3059\u3051\u3066\u3001\u305F\u3059\u3051\u3066"
+  text: 
