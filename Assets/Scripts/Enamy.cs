@@ -21,23 +21,42 @@ public class Enamy : MonoBehaviour
     public TextEditor[] EnamyBallKindArray;
 
     private ISaveData saveData;
+    public EnamyData enemydata;
+    // 最初のプレイヤーの所持金
+    public int startingMoney = 0;
+    public HP enamyHp;
+
+    public int enamyIndex = 0;
+    
+    public int storyindex = 1;
     void Start()
     {
+        Debug.Log("エネミースタート処理開始");
         // SpawnBall();
         // enamyAtackGenerator = GetComponent<EnamyAtackGenerator>();
-
+        startingMoney = (int)wallet.money;
         enamyAtackGenerator.wallet = wallet;
         enamyAtackGenerator.hp = hp;
         enamyAtackGenerator.CreateEnamyBall();
         saveData = new PlayerPrefsSaveData();
+
+        // !あとでけす
+        // enamyIndex = 1;
+        saveData.SaveStoryProgress(1);
+        
+
         int storyIndex = saveData.LoadStoryProgress();
         // GameObject enemyPrefab = Resources.Load<GameObject>("EnamyDatas/" + storyIndex);
         // GameObject enemyPrefab = Resources.Load<GameObject>("EnamyDatas/1");
         // 保存されたストーリー進行度に基づいてエネミーデータを読み込む
-        var enemyPrefab = Resources.LoadAll<EnamyData>("EnamyDatas/"+ storyIndex);
+        var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/"+ storyIndex);
         if (enemyPrefab != null)
         {
             Debug.Log("エネミーデータの読み込み:" + storyIndex);
+            // Debug.Log("敵のHP" + enemyPrefab[0].hp);
+            enemydata = enemyPrefab;
+            // 既存のenamyHPオブジェクトに固有のデータを設定
+            enamyHp.hp = enemydata.hp;
         }
         else
         {
@@ -49,9 +68,43 @@ public class Enamy : MonoBehaviour
 
     public void Update()
     {
-        // Ball が null か、画面外に出た場合
+        Debug.Log("マネー:" + wallet.money);
+        Debug.Log("敵のHpupdate" + enamyHp.hp);
+        Debug.Log("エネミーインデックス:" + enamyIndex);
+        // storyData配列に基づいて、次のエネミーデータを読み込む。
+        var storyData = Resources.Load<StoryData>("StoryDatas/" + storyindex);
+       
+        // エネミーのHPが0以下になったら、次のエネミーデータを読み込む。
+        if(enamyHp.hp <= 0)
+        {
+            enamyIndex += 1;
+            Debug.Log("ストーリーの大きさ:" + storyData.enamys.Length);
+            // ストーリー内のエネミーデータがもうなければ、処理を終了する。
+            if (storyData.enamys.Length <= enamyIndex)
+            {
+                // 敵を倒したときの処理、ストーリーシーンへ移動や他の敵の生成など
+                Debug.Log("ストーリー内のエネミーデータがもうありません。");
+                // ストーリーシーンへ移動する。
+                UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
+                return;
+            }
+            // ストーリー内にあるエネミーデータインデックスを参照する。
+            // 新しく敵オブジェクトを作成する。
+            Debug.Log("ストーリーデータ内の次のエネミーデータインデックス:" + enamyIndex);
+            int enamydata = storyData.enamys[enamyIndex];
+            // var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/"+ enamydata);
+            
+            var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/" + enamydata);
+            enamyHp.hp = enemyPrefab.hp;
+            Debug.Log("ストーリーデータ内の次のエネミーデータインデックス:" + enamydata);
+            
+            return;
+        }
+        
+       
         if (currentBall == null || IsBallOutOfScreen(currentBall))
         {
+            
             if (currentBall != null)
             {
                 // Destroy(currentBall.gameObject); // まだ存在する場合は削除
