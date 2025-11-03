@@ -36,6 +36,10 @@ public class GameMain : MonoBehaviour
 
     private ISaveData saveData;
 
+    public HP EnamyHp;
+
+    public StoryData storyData;
+
 
     // 売却ボタンを押下した時に呼ばれる関数,表示されている毛を全て取得し、所持金に追加する。
     private void SellAllWool()
@@ -44,6 +48,22 @@ public class GameMain : MonoBehaviour
         var wools = FindObjectsByType<Wool>(FindObjectsSortMode.None);
         foreach (var wool in wools)
         {
+            // 敵のHPを減らす。
+            EnamyHp.hp -= (int)wool.price;
+            
+            if(EnamyHp.hp < 0)
+            {
+                // storyDataを参照し、配列がなければ、ストーリーシーンへ移動する。
+
+                Debug.Log("敵のHPが0以下になりました。ストーリーシーンに移動します。");
+                int storyIndex = saveData.LoadStoryProgress();
+                int currentIndex = storyIndex + 1;
+                saveData.SaveStoryProgress(currentIndex); // ストーリー進行度を更新
+                // UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
+                
+                return;
+            }
+            Debug.Log("各犬の値段" + wool.price);
             wool.sell(wallet);
         }
         SoundManeger.Instance.Play("コイン");
@@ -70,7 +90,8 @@ public class GameMain : MonoBehaviour
     void Update()
     {
         if (isPaused) return;
-
+        // 以下0になったらゲームクリア処理。ストーリーデータを参照する。
+        Debug.Log(EnamyHp.hp + "敵のHPメイン");
         // 右クリックでSellAllWool実行
         if (Input.GetMouseButtonDown(1))
         {

@@ -11,6 +11,10 @@ public class Coin : MonoBehaviour
 
     // 移動待ち時間
     private float waitTime;
+
+    // 敵のHP
+    public HP enamyhp;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +25,7 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log("hpコイン参照の敵HP:" + enamyhp.hp);
         // カウントダウン
         waitTime -= Time.deltaTime;
         if(waitTime > 0) return;

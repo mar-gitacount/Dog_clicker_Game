@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bde08d0b0407664da6f695812e13191, type: 3}
-  m_Name: 1
+  m_Name: 2
   m_EditorClassIdentifier: 
   enamyKinds: enamy1
-  hp: 100
+  hp: 20
   attackPower: 0
   moveSpeed: 0
   picturePath: 

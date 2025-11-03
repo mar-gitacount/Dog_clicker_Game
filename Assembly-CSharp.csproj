@@ -115,6 +115,7 @@
     <Compile Include="Assets\Scripts\ItemButton.cs" />
     <Compile Include="Assets\Scripts\SoundManeger.cs" />
     <Compile Include="Assets\Scripts\Wool.cs" />
+    <Compile Include="Assets\Scripts\StoryData.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\DogDataUSE.cs" />

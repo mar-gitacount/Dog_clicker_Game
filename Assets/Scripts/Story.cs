@@ -62,9 +62,12 @@ public class Story : MonoBehaviour
             if (currentTextIndex >= storyTextDatas.Length)
             {
                 Debug.Log("ストーリーが終了しました。");
-                saveData.SaveStoryProgress(1); // デフォルトでストーリー1を保存
+                int storyIndex = saveData.LoadStoryProgress();
+                // int currentIndex = storyIndex + 1;
+                // ストーリーが終了したので、セーブデータを更新する。
+                // saveData.SaveStoryProgress(currentIndex); // デフォルトでストーリー1を保存
                 // ゲームメインシーンへ移動する処理を入れる。
-                // UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
                 return;
             }
             storyTextData.text = storyTextDatas[currentTextIndex].text;
