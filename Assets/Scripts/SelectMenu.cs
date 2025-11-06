@@ -14,7 +14,7 @@ public class SelectMenu : MonoBehaviour
         ("TitleScene", "タイトル"),
         ("MainScene", "メイン"),
         // ("ShopScene", "ショップ"),
-        ("LoginOrSinUpScene 1", "ログイン")
+        // ("LoginOrSinUpScene 1", "ログイン")
     };
 
     void Awake()
@@ -37,6 +37,7 @@ public class SelectMenu : MonoBehaviour
             menuButton.SetOnClick(() =>
             {
                 // saveLoadManager.SaveToCloud(); // ここでセーブ
+                // saveLoadManager.saveToLocal(); // ローカルにセーブ
                 SceneManager.LoadScene(sceneName); // シーン遷移
             });
         }

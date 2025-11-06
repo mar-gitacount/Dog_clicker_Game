@@ -31,12 +31,29 @@ public class SaveLoadManager : MonoBehaviour
         // !デバッグ用
         // saveData = new DebugSaveData();
     }
+
+    public async void saveToLocal()
+    {
+        //所持金を保存する。
+        saveData.SaveMoney(wallet.money);
+        // 全ての羊の頭数を保存する。
+        Debug.Log($"ローカルセーブ処理開始 所持金:{wallet.money}");
+
+        for (var index = 0; index < shop.dogButtonList.Count; index++)
+        {
+            Debug.Log($"ローカルセーブ処理 犬インデックス:{index} 頭数:{shop.dogButtonList[index].currentCnt}");
+            var dogButton = shop.dogButtonList[index];
+            saveData.SaveDogCnt(index,dogButton.currentCnt);
+            // PlayerPrefs.SetInt($"DOG{index}",dogButton.currentCnt);
+        } 
+    }
+
     void OnApplicationPause(bool pause)
     {
         Debug.Log($"アプリタスクキル時{wallet.money}");
 
         saveData.SaveMoney(wallet.money);
-        SaveToCloud();
+        // SaveToCloud();
          for (var index = 0; index < shop.dogButtonList.Count; index++)
         {
             var dogButton = shop.dogButtonList[index];
@@ -52,7 +69,7 @@ public class SaveLoadManager : MonoBehaviour
         saveData.SaveMoney(wallet.money);
         // await saveData.SaveToCloud(); // ← () をつけてメソッドを呼び出す
         // クラウドに保存する。
-        SaveToCloud();
+        // SaveToCloud();
         // await saveData.SaveToCloud.data.money = wallet.money.ToString();
         // PlayerPrefs.SetString("MONEY",wallet.money.ToString());
         // 全ての羊の頭数を保存する。
@@ -237,18 +254,18 @@ public class SaveLoadManager : MonoBehaviour
         // wallet.money = saveData.LoadMoney();
         // SaveToCloud();
         // 以下android端末だと駄目
-        LoadFromCloud();
-        return;
-        // wallet.money = BigInteger.Parse(PlayerPrefs.GetString("MONEY","0"));
+        // LoadFromCloud();
+        // return;
+        wallet.money = BigInteger.Parse(PlayerPrefs.GetString("MONEY", "0"));
         // 全ての犬の頭数をロードする。→ショップオブジェクトから引用している。
         // ?犬データ追加テスト
-        for(var index = 0; index < dogdatause.dogButtonList.Count; index ++)
+        for (var index = 0; index < dogdatause.dogButtonList.Count; index++)
         {
             var dogButton = dogdatause.dogButtonList[index];
             var dogCnt = saveData.LoadDogCnt(index);
             dogButton.currentCnt = dogCnt;
-           
-            for(var i = 0; i < dogCnt; i++)
+
+            for (var i = 0; i < dogCnt; i++)
             {
                 // dogButton.dogGenerator.CreateDog(dogButton.dogdata);
             }
@@ -257,10 +274,10 @@ public class SaveLoadManager : MonoBehaviour
         for (var index = 0; index < shop.dogButtonList.Count; index++)
         {
             // 元犬データ、クラウドにあるわけではなく、ローカルにそのデータがある。
-           
+
             var dogButton = shop.dogButtonList[index];
             // クラウドの処理にかえる
-             // クラウドからのIDをindexで取得する。
+            // クラウドからのIDをindexで取得する。
             var dogCnt = saveData.LoadDogCnt(index);
             dogButton.currentCnt = dogCnt;
             Debug.Log($"{dogCnt}は犬の数");
@@ -274,6 +291,11 @@ public class SaveLoadManager : MonoBehaviour
 
         }
         Debug.Log("ロード");
+    }
+    public void Update()
+    {
+        saveToLocal();
+        Debug.Log($"セーブ所持金:{wallet.money}");
     }
 
 }
