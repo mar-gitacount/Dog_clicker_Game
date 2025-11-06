@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class Enamy : MonoBehaviour
 {
@@ -27,12 +29,14 @@ public class Enamy : MonoBehaviour
     public HP enamyHp;
 
     public int enamyIndex = 0;
-    
+
     public int storyindex = 1;
+    SaveLoadManager saveLoadManager;
     void Start()
     {
         Debug.Log("エネミースタート処理開始");
         // SpawnBall();
+    
         // enamyAtackGenerator = GetComponent<EnamyAtackGenerator>();
         startingMoney = (int)wallet.money;
         enamyAtackGenerator.wallet = wallet;
@@ -68,7 +72,7 @@ public class Enamy : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log("マネー:" + wallet.money);
+        
         Debug.Log("敵のHpupdate" + enamyHp.hp);
         Debug.Log("エネミーインデックス:" + enamyIndex);
         // storyData配列に基づいて、次のエネミーデータを読み込む。
@@ -84,8 +88,15 @@ public class Enamy : MonoBehaviour
             {
                 // 敵を倒したときの処理、ストーリーシーンへ移動や他の敵の生成など
                 Debug.Log("ストーリー内のエネミーデータがもうありません。");
+                // saveData.SaveMoney(wallet.money);
+                
+                
+                Debug.Log("マネー:" + wallet.money);
+                // saveLoadManager.saveToLocal(); 
                 // ストーリーシーンへ移動する。
-                UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
+                StartCoroutine(LoadNextScene());
+                // UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
+
                 return;
             }
             // ストーリー内にあるエネミーデータインデックスを参照する。
@@ -123,5 +134,10 @@ public class Enamy : MonoBehaviour
     void SpawnBall()
     {
         currentBall = Instantiate(ballPrefab, transform.position, transform.rotation);
+    }
+    IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(3f); // 少し待ってログ確認
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
     }
 }

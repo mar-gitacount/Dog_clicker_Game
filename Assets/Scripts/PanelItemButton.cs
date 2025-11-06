@@ -18,7 +18,7 @@ public class PanelItemButton : MonoBehaviour
     void Awake()
     {
         // ボタンのクリックイベントでTitleSceneへ遷移
-        // button.onClick.AddListener(() => SceneManager.LoadScene(itemName));
+        button.onClick.AddListener(() => SceneManager.LoadScene(itemName));
     }
     public void SetLabel(string label)
     {
@@ -42,8 +42,9 @@ public class PanelItemButton : MonoBehaviour
         // ここでセーブ処理を呼び出す
         // セーブ処理
         Debug.Log("セーブ処理を実行します。");
-        
-        saveLoadManager.SaveToCloud();
+
+        // saveLoadManager.SaveToCloud();
+        saveLoadManager.saveToLocal();
 
         // 必要ならローカルセーブも
         // saveLoadManager.SaveToLocal();
