@@ -101,6 +101,7 @@
     <Compile Include="Assets\GoogleSignIn\Impl\NativeFuture.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
+    <Compile Include="Assets\Scripts\SaveLoadStart.cs" />
     <Compile Include="Assets\Scripts\EnamyBall.cs" />
     <Compile Include="Assets\Scripts\GameMain.cs" />
     <Compile Include="Assets\Scripts\SaveLoadManager.cs" />

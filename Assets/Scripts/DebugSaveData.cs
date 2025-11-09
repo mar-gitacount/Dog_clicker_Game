@@ -49,4 +49,12 @@ public class DebugSaveData : ISaveData
     {
         return 0;
     }
+    public void SavenNow(int saveIndex)
+    {
+
+    }
+    public int LoadNow()
+    {
+        return 0;
+    }
 }

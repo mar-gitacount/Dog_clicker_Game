@@ -51,18 +51,18 @@ public class GameMain : MonoBehaviour
             // 敵のHPを減らす。
             EnamyHp.hp -= (int)wool.price;
             
-            if(EnamyHp.hp < 0)
-            {
-                // storyDataを参照し、配列がなければ、ストーリーシーンへ移動する。
+            // if(EnamyHp.hp < 0)
+            // {
+            //     // storyDataを参照し、配列がなければ、ストーリーシーンへ移動する。
 
-                Debug.Log("敵のHPが0以下になりました。ストーリーシーンに移動します。");
-                int storyIndex = saveData.LoadStoryProgress();
-                int currentIndex = storyIndex + 1;
-                saveData.SaveStoryProgress(currentIndex); // ストーリー進行度を更新
-                // UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
+            //     Debug.Log("敵のHPが0以下になりました。ストーリーシーンに移動します。");
+            //     int storyIndex = saveData.LoadStoryProgress();
+            //     int currentIndex = storyIndex + 1;
+            //     saveData.SaveStoryProgress(currentIndex); // ストーリー進行度を更新
+            //     // UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
                 
-                return;
-            }
+            //     return;
+            // }
             Debug.Log("各犬の値段" + wool.price);
             wool.sell(wallet);
         }

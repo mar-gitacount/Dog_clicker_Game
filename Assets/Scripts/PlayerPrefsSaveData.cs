@@ -37,11 +37,13 @@ public class PlayerPrefsSaveData : ISaveData
     // ストーリーとバトルシーン
     public void SaveStoryProgress(int storyIndex)
     {
+        Debug.Log($"ストーリー進行度を保存しました: {storyIndex}");
         PlayerPrefs.SetInt("STORY_INDEX", storyIndex);
         PlayerPrefs.Save();
     }
     public int LoadStoryProgress()
     {
+        Debug.Log($"ストーリー進行度をロードしました: {PlayerPrefs.GetInt("STORY_INDEX", 0)}");
         return PlayerPrefs.GetInt("STORY_INDEX", 0);
     }
 
@@ -64,7 +66,19 @@ public class PlayerPrefsSaveData : ISaveData
     {
         return PlayerPrefs.GetString("PASSWORD", "");
     }
-
+    // 現段階のセーブ番号
+    public int saveNumber = 0;
+    // 現在のセーブ番号を保存セーブ画面を開いたときに呼び出す。
+    public void SavenNow(int number)
+    {
+        saveNumber = number;
+        PlayerPrefs.SetInt("SAVE_NUMBER", saveNumber);
+    }
+    public int LoadNow()
+    {
+        saveNumber = PlayerPrefs.GetInt("SAVE_NUMBER", 0);
+        return saveNumber;
+    }
     // クラウド用のデータ構造
     // [System.Serializable]
     // public class SaveData

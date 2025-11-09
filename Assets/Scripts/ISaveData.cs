@@ -27,6 +27,8 @@ public interface ISaveData
     void SaveStoryProgress(int storyIndex);
 
     int LoadStoryProgress();
+    void SavenNow(int saveIndex);
+    int LoadNow();
     // void SaveData(SaveData data);
     // Task SaveToCloud(); // 非同期メソッドに変更
 }
