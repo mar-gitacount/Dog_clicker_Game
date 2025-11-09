@@ -30,7 +30,7 @@ public class Enamy : MonoBehaviour
 
     public int enamyIndex = 0;
 
-    public int storyindex = 1;
+    public int storyIndex;
     SaveLoadManager saveLoadManager;
     void Start()
     {
@@ -46,10 +46,10 @@ public class Enamy : MonoBehaviour
 
         // !あとでけす
         // enamyIndex = 1;
-        saveData.SaveStoryProgress(1);
+        // saveData.SaveStoryProgress(1);
         
-
-        int storyIndex = saveData.LoadStoryProgress();
+        // セーブデータをロード
+        storyIndex = saveData.LoadStoryProgress();
         // GameObject enemyPrefab = Resources.Load<GameObject>("EnamyDatas/" + storyIndex);
         // GameObject enemyPrefab = Resources.Load<GameObject>("EnamyDatas/1");
         // 保存されたストーリー進行度に基づいてエネミーデータを読み込む
@@ -65,6 +65,13 @@ public class Enamy : MonoBehaviour
         else
         {
             Debug.LogWarning("エネミーデータの読み込みに失敗しました:" + storyIndex);
+            StartCoroutine(LoadNextScene());
+            //読みこむ失敗したらストーリー画面へ遷移させる。
+       
+            storyIndex = 10000;
+            enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/" + storyIndex);
+            enemydata = enemyPrefab;
+            enamyHp.hp = enemydata.hp;
         }
         
 
@@ -76,8 +83,8 @@ public class Enamy : MonoBehaviour
         Debug.Log("敵のHpupdate" + enamyHp.hp);
         Debug.Log("エネミーインデックス:" + enamyIndex);
         // storyData配列に基づいて、次のエネミーデータを読み込む。
-        var storyData = Resources.Load<StoryData>("StoryDatas/" + storyindex);
-       
+        var storyData = Resources.Load<StoryData>("StoryDatas/" + storyIndex);
+        Debug.Log("ストーリーデータの読み込み:" + storyIndex);
         // エネミーのHPが0以下になったら、次のエネミーデータを読み込む。
         if(enamyHp.hp <= 0)
         {
@@ -89,14 +96,14 @@ public class Enamy : MonoBehaviour
                 // 敵を倒したときの処理、ストーリーシーンへ移動や他の敵の生成など
                 Debug.Log("ストーリー内のエネミーデータがもうありません。");
                 // saveData.SaveMoney(wallet.money);
-                
-                
+                Debug.Log("ストーリー進行度をセーブします。" + storyIndex + "右に1足す" + (storyIndex + 1));
+                int currentIndex = storyIndex + 1;
+                saveData.SaveStoryProgress(currentIndex); // ストーリー進行度を更新
                 Debug.Log("マネー:" + wallet.money);
                 // saveLoadManager.saveToLocal(); 
                 // ストーリーシーンへ移動する。
                 StartCoroutine(LoadNextScene());
                 // UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
-
                 return;
             }
             // ストーリー内にあるエネミーデータインデックスを参照する。

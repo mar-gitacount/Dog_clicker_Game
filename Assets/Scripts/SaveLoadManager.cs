@@ -7,6 +7,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using System.Threading.Tasks;
 using System;
+using System.IO;
 public class SaveLoadManager : MonoBehaviour
 {
 
@@ -30,24 +31,54 @@ public class SaveLoadManager : MonoBehaviour
         saveData = new PlayerPrefsSaveData();
         // !デバッグ用
         // saveData = new DebugSaveData();
+        saveData.LoadNow();
     }
 
     public async void saveToLocal()
     {
+        saveData.SavenNow(1);
         //所持金を保存する。
         saveData.SaveMoney(wallet.money);
         // 全ての羊の頭数を保存する。
         Debug.Log($"ローカルセーブ処理開始 所持金:{wallet.money}");
-
+        Debug.Log($"{saveData.LoadNow()}はセーブナウの値");
         for (var index = 0; index < shop.dogButtonList.Count; index++)
         {
             Debug.Log($"ローカルセーブ処理 犬インデックス:{index} 頭数:{shop.dogButtonList[index].currentCnt}");
             var dogButton = shop.dogButtonList[index];
-            saveData.SaveDogCnt(index,dogButton.currentCnt);
+            saveData.SaveDogCnt(index, dogButton.currentCnt);
             // PlayerPrefs.SetInt($"DOG{index}",dogButton.currentCnt);
-        } 
+        }
     }
 
+    private string GetSavePath(int slot)
+    {
+        return Application.persistentDataPath + $"/saveData_{slot}.json";
+    }
+
+    public void JsonSaveToLocal(SaveData data, int slot)
+    {
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(GetSavePath(slot), json);
+        Debug.Log($"セーブデータ{slot}を保存しました: {GetSavePath(slot)}");
+    }
+    
+    public SaveData JsonLoadFromLocal(int slot)
+    {
+        string path = GetSavePath(slot);
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+            Debug.Log($"セーブデータ{slot}をロードしました: {path}");
+            return data;
+        }
+        else
+        {
+            Debug.LogWarning($"セーブデータ{slot}が見つかりません: {path}");
+            return null;
+        }
+    }
     void OnApplicationPause(bool pause)
     {
         Debug.Log($"アプリタスクキル時{wallet.money}");
@@ -256,6 +287,7 @@ public class SaveLoadManager : MonoBehaviour
         // 以下android端末だと駄目
         // LoadFromCloud();
         // return;
+        
         wallet.money = BigInteger.Parse(PlayerPrefs.GetString("MONEY", "0"));
         // 全ての犬の頭数をロードする。→ショップオブジェクトから引用している。
         // ?犬データ追加テスト
@@ -294,6 +326,11 @@ public class SaveLoadManager : MonoBehaviour
     }
     public void Update()
     {
+        // JsonSaveToLocal(new SaveData
+        // {
+        //     money = wallet.money.ToString(),
+            
+        // }, 1);
         saveToLocal();
         Debug.Log($"セーブ所持金:{wallet.money}");
     }
