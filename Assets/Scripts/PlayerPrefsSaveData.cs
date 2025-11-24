@@ -6,9 +6,11 @@ using Unity.Services.CloudSave;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using System.Threading.Tasks;
-
+using System;
+using System.IO;
 public class PlayerPrefsSaveData : ISaveData
 {
+ 
     public void SaveMoney(BigInteger money)
     {
         PlayerPrefs.SetString("MONEY", money.ToString());
@@ -20,6 +22,12 @@ public class PlayerPrefsSaveData : ISaveData
     {
         PlayerPrefs.SetInt($"SHEEP{id}", cnt);
         PlayerPrefs.Save();
+    }
+
+    public void SaveDogCntdata(int id, int cnt)
+    {
+        // Implement the interface method by delegating to the existing SaveDogCnt
+        SaveDogCnt(id, cnt);
     }
 
     public BigInteger LoadMoney()
@@ -68,17 +76,104 @@ public class PlayerPrefsSaveData : ISaveData
     }
     // 現段階のセーブ番号
     public int saveNumber = 0;
+    public int lotId = 0;
     // 現在のセーブ番号を保存セーブ画面を開いたときに呼び出す。
-    public void SavenNow(int number)
+    // ロットナンバーとストーリーを保存する。
+    public void SavenNow(int number,int saveLotId=0)
     {
         saveNumber = number;
-        PlayerPrefs.SetInt("SAVE_NUMBER", saveNumber);
+        Debug.Log("現在のセーブ番号を保存しました。" + saveNumber);
+        PlayerPrefs.SetInt($"SAVE_NUMBER", saveNumber);
     }
+    // セーブナンバー関数で保存した番号をロードする。
     public int LoadNow()
     {
-        saveNumber = PlayerPrefs.GetInt("SAVE_NUMBER", 0);
+        saveNumber = PlayerPrefs.GetInt($"SAVE_NUMBER",0); 
+        // 存在しない場合は0を返す。
+        Debug.Log("現在のセーブ番号をロードしました。" + saveNumber);
         return saveNumber;
     }
+
+    // ロットナンバーをセーブする関数
+    public void SaveLotId(int slot=0)
+    {
+        // 現在のセーブ番号を取得して保存する。
+        saveNumber = PlayerPrefs.GetInt($"SAVE_NUMBER",0); 
+        // スロットごとにセーブする。
+        PlayerPrefs.SetInt($"LOT_ID{slot}", saveNumber);
+        Debug.Log("現在のセーブ番号"+saveNumber+"現在のロットナンバーを保存しました。" + slot);
+    }
+
+    public int LoadLotId(int slot=0)
+    {
+        lotId = PlayerPrefs.GetInt($"LOT_ID{slot}",0);
+        // !ロットIDがわたされていて、それに対応するセーブ番号をロードする。それをロットIDのみに変える
+
+        Debug.Log("現在のロットナンバーをロードしました。" + lotId);
+        return lotId;
+    }
+    // 時間を保存する
+    public void SaveTime(int time,int slot=0)
+    {
+        string now = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+        // 時間
+        // PlayerPrefs.SetInt($"SAVE_TIME{slot}", time);
+        // 日付
+        PlayerPrefs.SetString($"SAVE_DATETIME{slot}", now);
+        Debug.Log(slot + "セーブ時間を保存しました。" + now);
+    }
+    public string LoadTime(int slot=0)
+    {
+        string time = PlayerPrefs.GetString($"SAVE_DATETIME{slot}","未保存");
+        Debug.Log(slot + "セーブ時間をロードしました。" + time);
+        return time;
+    }
+
+
+       private string GetSavePath(int slot)
+    {
+        return Application.persistentDataPath + $"/saveData_{slot}.json";
+    }
+
+
+    public SaveData JsonSaveToLocal(SaveData data, int slot)
+    {
+        string json = JsonUtility.ToJson(data, true);
+        // 現在のセーブ番号を取得して保存する。
+        int slotNum = LoadNow();
+        File.WriteAllText(GetSavePath(slot), json);
+        Debug.Log($"セーブデータパス: {GetSavePath(slot)}");
+        Debug.Log($"{data.sheepCounts}セーブデータ{slot}を保存しました: {GetSavePath(slot)}");
+        
+        foreach (SheepCount sc in data.sheepCounts)
+        {
+            Debug.Log($"ID: {sc.Key}, Count: {sc.Value}");
+        }
+        return data;
+
+    }
+
+    public SaveData JsonLoadFromLocal(int slot=0)
+    {
+        string path = GetSavePath(slot);
+        Debug.Log($"ロードしたセーブデータパス確認: {path}");
+        int slotNum = LoadNow();
+        Debug.Log($"セーブデータパス: {slotNum}");
+        if (File.Exists(path.ToString()))
+        {
+            
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+            Debug.Log($"セーブデータ{slot}をロードしました: {path}");
+            return data;
+        }
+        else
+        {
+            Debug.LogWarning($"セーブデータ{slot}が見つかりません: {path}");
+            return null;
+        }
+    }
+
     // クラウド用のデータ構造
     // [System.Serializable]
     // public class SaveData
