@@ -23,7 +23,9 @@ public class SaveLoadManager : MonoBehaviour
     [SerializeField]DogDataUse dogdatause;
     // セーブロードインターフェイスフォーマットを変える。
     private ISaveData saveData;
-    // クラウド処理もこのスクリプトに書く。
+
+    int currentSaveSlot; // デフォルトのセーブスロット
+    private Dictionary<int, int> savedogDataDict = new Dictionary<int,int>();
 
 
     void Awake()
@@ -31,24 +33,55 @@ public class SaveLoadManager : MonoBehaviour
         saveData = new PlayerPrefsSaveData();
         // !デバッグ用
         // saveData = new DebugSaveData();
-        saveData.LoadNow();
+        currentSaveSlot = saveData.LoadNow();
+        if(currentSaveSlot == 0)
+        {
+            JsonSaveToLocal(new SaveData
+            {
+                money = wallet.money.ToString(),
+                saveIndex = 0
+
+            }, currentSaveSlot);
+        }
     }
 
     public async void saveToLocal()
     {
-        saveData.SavenNow(1);
+        
+        // saveData.SavenNow(1);
+        saveData.LoadNow();
+
         //所持金を保存する。
         saveData.SaveMoney(wallet.money);
         // 全ての羊の頭数を保存する。
         Debug.Log($"ローカルセーブ処理開始 所持金:{wallet.money}");
         Debug.Log($"{saveData.LoadNow()}はセーブナウの値");
+        // SheepCount[] sheepCountsList = new SheepCount[shop.dogButtonList.Count];
+        List<SheepCount> sheepCounts = new List<SheepCount>();
+
         for (var index = 0; index < shop.dogButtonList.Count; index++)
         {
             Debug.Log($"ローカルセーブ処理 犬インデックス:{index} 頭数:{shop.dogButtonList[index].currentCnt}");
             var dogButton = shop.dogButtonList[index];
             saveData.SaveDogCnt(index, dogButton.currentCnt);
+            // 犬データをリストに追加する。
+            sheepCounts.Add(new SheepCount
+            {
+                Key = $"SHEEP{index}",
+                Value = dogButton.currentCnt
+            });
+
             // PlayerPrefs.SetInt($"DOG{index}",dogButton.currentCnt);
         }
+
+
+        // JsonSaveToLocal(new SaveData
+        // {
+        //     money = wallet.money.ToString(),
+        //     sheepCounts = new List<SheepCount>(sheepCounts),
+        //     storyIndex = saveData.LoadStoryProgress()
+        // }, currentSaveSlot);
+        Debug.Log($"ローカルセーブ処理完了");
     }
 
     private string GetSavePath(int slot)
@@ -59,15 +92,25 @@ public class SaveLoadManager : MonoBehaviour
     public void JsonSaveToLocal(SaveData data, int slot)
     {
         string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(GetSavePath(slot), json);
-        Debug.Log($"セーブデータ{slot}を保存しました: {GetSavePath(slot)}");
+        int slotNum = saveData.LoadNow();
+        File.WriteAllText(GetSavePath(slotNum), json);
+        Debug.Log($"{data.sheepCounts}セーブデータ{slot}を保存しました: {GetSavePath(slot)}");
+        foreach (SheepCount sc in data.sheepCounts)
+        {
+            Debug.Log($"ID: {sc.Key}, Count: {sc.Value}");
+        }
+
     }
     
     public SaveData JsonLoadFromLocal(int slot)
     {
         string path = GetSavePath(slot);
-        if (File.Exists(path))
+        Debug.Log($"セーブデータパス確認: {path}");
+        int slotNum = saveData.LoadNow();
+        Debug.Log($"セーブデータパス: {slotNum}");
+        if (File.Exists(path.ToString()))
         {
+            
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             Debug.Log($"セーブデータ{slot}をロードしました: {path}");
@@ -120,6 +163,10 @@ public class SaveLoadManager : MonoBehaviour
         public string password;
         public List<SheepCount> sheepCounts = new List<SheepCount>(); // Listを使用
         public int storyIndex;
+
+        // セーブ番号
+        public int saveIndex;
+        public int saveTime;
     }
 
     [System.Serializable]
@@ -287,7 +334,14 @@ public class SaveLoadManager : MonoBehaviour
         // 以下android端末だと駄目
         // LoadFromCloud();
         // return;
-        
+
+
+        // セーブデータをロードする。
+        Debug.Log($"現在のセーブスロット:{currentSaveSlot}");
+        // json形式で保存されたデータをロードする。
+        SaveData loadData = JsonLoadFromLocal(currentSaveSlot);
+        // SaveData loadData =JsonUtility.FromJson<SaveData>(JsonUtility.ToJson(JsonLoadFromLocal(currentSaveSlot)));
+        Debug.Log($"{loadData.money}はロードデータ");
         wallet.money = BigInteger.Parse(PlayerPrefs.GetString("MONEY", "0"));
         // 全ての犬の頭数をロードする。→ショップオブジェクトから引用している。
         // ?犬データ追加テスト
@@ -326,13 +380,14 @@ public class SaveLoadManager : MonoBehaviour
     }
     public void Update()
     {
-        // JsonSaveToLocal(new SaveData
-        // {
-        //     money = wallet.money.ToString(),
-            
-        // }, 1);
+        JsonSaveToLocal(new SaveData
+        {
+            money = wallet.money.ToString(),
+
+        }, currentSaveSlot);
         saveToLocal();
         Debug.Log($"セーブ所持金:{wallet.money}");
+
     }
 
 }
