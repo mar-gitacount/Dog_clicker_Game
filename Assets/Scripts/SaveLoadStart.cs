@@ -18,6 +18,7 @@ public class SaveLoadStart : MonoBehaviour
     public int saveTime;
     public string LoadTimeString;
     public SaveData saveDataJson;
+
     // 時間とか話数とか保存する。
     // Start is called before the first frame update
     void Start()
@@ -40,17 +41,19 @@ public class SaveLoadStart : MonoBehaviour
         // saveData.SaveLotId(saveIndex);
         // ロットナンバーから引用する。
         // json形式データが返ってくる。
-        storyIndex = saveData.LoadLotId(saveIndex);
+        // storyIndex = saveData.LoadLotId(saveIndex);
         // 現段階のデータをロードする。
         saveDataJson = saveData.JsonLoadFromLocal();
         // 呼び出し元からセーブロット番号を受け取り、参照する
         
-        int storyDataow = saveData.LoadNow();
+        // int storyDataow = saveData.LoadNow();
+        storyIndex = saveDataJson.storyIndex;
+        int storyDataow = saveData.JsonLoadFromLocal(saveIndex).storyIndex;
         // ボタンテキスト=ロットナンバー
         // buttonText.text = buttonText.text + "ストーリー" + storyData;
         // テキストからロットナンバーを使って保存されている時間を引用する。
         LoadTimeString = saveData.LoadTime(saveIndex).ToString();
-        buttonText.text = LoadTimeString;
+        buttonText.text = LoadTimeString+"\n"+"ストーリー"+storyDataow;
         saveLoadButton.onClick.AddListener(OnButtonClicked);
 
 
@@ -77,7 +80,7 @@ public class SaveLoadStart : MonoBehaviour
         saveData.JsonSaveToLocal(saveDataJson, saveIndex);
         // saveData.JsonSaveToLocal(storyIndex, saveIndex);
         // buttonText.text = saveIndex + $"に{storyIndex}保存しましたプレイ時間{now}";
-        buttonText.text = $"最終プレイ時間{now}";
+        buttonText.text = now + "\n" + "ストーリー" + storyIndex;
         // UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
 
     }
