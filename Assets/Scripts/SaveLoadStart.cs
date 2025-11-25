@@ -53,10 +53,8 @@ public class SaveLoadStart : MonoBehaviour
         // buttonText.text = buttonText.text + "ストーリー" + storyData;
         // テキストからロットナンバーを使って保存されている時間を引用する。
         LoadTimeString = saveData.LoadTime(saveIndex).ToString();
-        buttonText.text = LoadTimeString+"\n"+"ストーリー"+storyDataow;
+        buttonText.text = buttonText.text+":"+LoadTimeString+"\n"+"ストーリー"+storyDataow;
         saveLoadButton.onClick.AddListener(OnButtonClicked);
-
-
     }
 
     // Update is called once per frame

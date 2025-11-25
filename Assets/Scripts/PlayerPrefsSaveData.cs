@@ -138,6 +138,7 @@ public class PlayerPrefsSaveData : ISaveData
 
     public SaveData JsonSaveToLocal(SaveData data, int slot)
     {
+        // データを関数から受け取る
         string json = JsonUtility.ToJson(data, true);
         // 現在のセーブ番号を取得して保存する。
         int slotNum = LoadNow();
