@@ -15,6 +15,7 @@ public class LoadStart : MonoBehaviour
     private ISaveData saveData;
     public int loadIndex;
     public string LoadTimeString;
+    public int storyDataow;
     // ループしてボタンを生成する。
     public void SetLabel(string label)
     {
@@ -33,7 +34,8 @@ public class LoadStart : MonoBehaviour
         // ロード番号をテキストから取得する。
         saveData.SavenNow(loadIndex);
         Debug.Log(Text.text + "のLoadStartがクリックされました。");
-        
+        saveData.SaveMoney(int.Parse(saveData.JsonLoadFromLocal(loadIndex).money));
+        Text.text = "ロードしました。";
         // ロードする番号をセーブマネジメントにする。
 
         // タイトルへ移動
@@ -48,19 +50,24 @@ public class LoadStart : MonoBehaviour
         loadIndex = int.Parse(Text.text);
         // ロード時間を取得する。
         LoadTimeString = saveData.LoadTime(loadIndex).ToString();
-        int storyDataow = saveData.JsonLoadFromLocal(loadIndex).storyIndex;
+        // int money = int.Parse(saveData.JsonLoadFromLocal(loadIndex).money);
+        storyDataow = saveData.JsonLoadFromLocal(loadIndex).storyIndex;
         // ボタンを押下したら、セーブナウの番号をテキストのデータに保存する。
         // saveData.LoadNow();
         Text.text = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;
         button.onClick.AddListener(OnButtonClicked);
-
-
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        saveData = new PlayerPrefsSaveData();
+        if(saveData.LoadNow() != loadIndex)
+        {
+            // ボタンのテキストを元に戻す。
+            LoadTimeString = saveData.LoadTime(loadIndex).ToString();
+            storyDataow = saveData.JsonLoadFromLocal(loadIndex).storyIndex;
+            Text.text = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;
+        }
     }
 }
