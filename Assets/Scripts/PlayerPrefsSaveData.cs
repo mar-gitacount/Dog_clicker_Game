@@ -138,7 +138,8 @@ public class PlayerPrefsSaveData : ISaveData
 
     public SaveData JsonSaveToLocal(SaveData data, int slot)
     {
-        // データを関数から受け取る
+        // データを関数から受け取る。読み込みデータから呼び出して、保存する。
+
         string json = JsonUtility.ToJson(data, true);
         // 現在のセーブ番号を取得して保存する。
         int slotNum = LoadNow();
@@ -156,15 +157,19 @@ public class PlayerPrefsSaveData : ISaveData
 
     public SaveData JsonLoadFromLocal(int slot=0)
     {
+        // 単体の保存セーブに保存する。
         string path = GetSavePath(slot);
         Debug.Log($"ロードしたセーブデータパス確認: {path}");
         int slotNum = LoadNow();
-        Debug.Log($"セーブデータパス: {slotNum}");
+        Debug.Log($"セーブデータパス: {slotNum}");   
         if (File.Exists(path.ToString()))
-        {
-            
+        {          
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
+            // 所持金をロードして、現段階の所持金に反映する。
+            int savemonay = int.Parse(data.money);
+            Debug.Log($"ロードした所持金: {savemonay}");
+            // SaveMoney(savemonay);
             Debug.Log($"セーブデータ{slot}をロードしました: {path}");
             return data;
         }
