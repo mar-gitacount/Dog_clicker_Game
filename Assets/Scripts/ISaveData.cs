@@ -5,6 +5,7 @@ using System.Numerics;
 using UnityEngine;
 using System.Threading.Tasks;
 using System;
+using UnityEngine.Video;
 
 
 
@@ -41,6 +42,7 @@ public interface ISaveData
     string LoadTime(int slot=0);
     SaveData JsonSaveToLocal(SaveData data,int slot=0);
     SaveData JsonLoadFromLocal(int slot=0);
+    void LoadDataToCurrentSave(SaveData data);
     // void SaveData(SaveData data);
     // Task SaveToCloud(); // 非同期メソッドに変更
 }

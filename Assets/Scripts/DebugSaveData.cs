@@ -83,4 +83,8 @@ public class DebugSaveData : ISaveData
     {
         return new SaveData();
     }
+    public void LoadDataToCurrentSave(SaveData data)
+    {
+
+    }
 }

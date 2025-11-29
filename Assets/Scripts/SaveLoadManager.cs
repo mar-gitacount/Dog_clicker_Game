@@ -55,7 +55,7 @@ public class SaveLoadManager : MonoBehaviour
         saveData.SaveMoney(wallet.money);
         // 全ての羊の頭数を保存する。
         Debug.Log($"ローカルセーブ処理開始 所持金:{wallet.money}");
-        Debug.Log($"{saveData.LoadNow()}はセーブナウの値");
+        Debug.Log($"{saveData.LoadNow()}はセーブナウの値セーブマネージャー内");
         // SheepCount[] sheepCountsList = new SheepCount[shop.dogButtonList.Count];
         List<SheepCount> sheepCounts = new List<SheepCount>();
 
@@ -91,9 +91,13 @@ public class SaveLoadManager : MonoBehaviour
 
     public void JsonSaveToLocal(SaveData data, int slot)
     {
+        data.storyIndex = saveData.LoadStoryProgress();
         string json = JsonUtility.ToJson(data, true);
+
+        Debug.Log($"{data.storyIndex}はjsonのセーブデータ,{data.money}は所持金データ");
         int slotNum = saveData.LoadNow();
         File.WriteAllText(GetSavePath(slotNum), json);
+
         Debug.Log($"{data.sheepCounts}セーブデータ{slot}を保存しました: {GetSavePath(slot)}");
         foreach (SheepCount sc in data.sheepCounts)
         {
@@ -105,7 +109,7 @@ public class SaveLoadManager : MonoBehaviour
     public SaveData JsonLoadFromLocal(int slot)
     {
         string path = GetSavePath(slot);
-        Debug.Log($"セーブデータパス確認: {path}");
+        Debug.Log($"セーブデータパス確認!: {path}");
         int slotNum = saveData.LoadNow();
         Debug.Log($"セーブデータパス: {slotNum}");
         if (File.Exists(path.ToString()))
@@ -383,6 +387,7 @@ public class SaveLoadManager : MonoBehaviour
         JsonSaveToLocal(new SaveData
         {
             money = wallet.money.ToString(),
+            storyIndex = saveData.LoadStoryProgress()
 
         }, currentSaveSlot);
         saveToLocal();

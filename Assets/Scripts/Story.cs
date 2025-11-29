@@ -32,7 +32,7 @@ public class Story : MonoBehaviour
         if (saveData != null)
         {
             int storyIndex = saveData.LoadStoryProgress();
-            Debug.Log("ロードしたストーリーインデックス: " + storyIndex);
+            Debug.Log("ストーリースクリプト内のロードしたストーリーインデックス: " + storyIndex);
             // !storyIndexに基づいて、storyTextDatasや背景画像を変更する処理を追加する。
             // 例えば、storyIndexが1ならstoryTextDatasを別の配列に変更するなど。
         }
