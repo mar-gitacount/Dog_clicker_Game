@@ -90,7 +90,7 @@ public class PlayerPrefsSaveData : ISaveData
     {
         saveNumber = PlayerPrefs.GetInt($"SAVE_NUMBER",0); 
         // 存在しない場合は0を返す。
-        Debug.Log("現在のセーブ番号をロードしました。" + saveNumber);
+        Debug.Log("ロードナウ現在のセーブ番号をロードしました。" + saveNumber);
         return saveNumber;
     }
 
@@ -139,29 +139,51 @@ public class PlayerPrefsSaveData : ISaveData
     public SaveData JsonSaveToLocal(SaveData data, int slot)
     {
         // データを関数から受け取る。読み込みデータから呼び出して、保存する。
-
         string json = JsonUtility.ToJson(data, true);
         // 現在のセーブ番号を取得して保存する。
         int slotNum = LoadNow();
         File.WriteAllText(GetSavePath(slot), json);
         Debug.Log($"セーブデータパス: {GetSavePath(slot)}");
         Debug.Log($"{data.sheepCounts}セーブデータ{slot}を保存しました: {GetSavePath(slot)}");
-        
+        Debug.Log($"セーブデータ→: {data.storyIndex}");
+        // お金を保存する。
+        SaveMoney(BigInteger.Parse(data.money));
+        // ストーリーを保存する。
+        SaveStoryProgress(data.storyIndex);
+        // 犬を保存する。
         foreach (SheepCount sc in data.sheepCounts)
         {
+            SaveDogCnt(int.Parse(sc.Key), sc.Value);
             Debug.Log($"ID: {sc.Key}, Count: {sc.Value}");
         }
         return data;
-
     }
 
+    // ロードしたデータを現在のセーブデータに反映する関数
+    public void LoadDataToCurrentSave(SaveData data)
+    {
+        // 所持金をロードして、現段階の所持金に反映する。
+        SaveMoney(BigInteger.Parse(data.money));
+        // ストーリーをロードして、現段階のストーリーに反映する。
+
+        SaveStoryProgress(data.storyIndex);
+        Debug.Log($"ストーリーロードデータ→: {data.storyIndex}");
+        foreach (SheepCount sc in data.sheepCounts)
+        {
+            // 犬をロードして、現段階の犬に反映する。
+            SaveDogCnt(int.Parse(sc.Key), sc.Value);
+            Debug.Log($"ID: {sc.Key}, Count: {sc.Value}");
+        }
+    }
+
+    // セーブデータをロードする関数
     public SaveData JsonLoadFromLocal(int slot=0)
     {
         // 単体の保存セーブに保存する。
         string path = GetSavePath(slot);
         Debug.Log($"ロードしたセーブデータパス確認: {path}");
         int slotNum = LoadNow();
-        Debug.Log($"セーブデータパス: {slotNum}");   
+        Debug.Log($"ロードから呼び出したセーブデータパス: {slotNum}");   
         if (File.Exists(path.ToString()))
         {          
             string json = File.ReadAllText(path);
@@ -171,6 +193,7 @@ public class PlayerPrefsSaveData : ISaveData
             Debug.Log($"ロードした所持金: {savemonay}");
             // SaveMoney(savemonay);
             Debug.Log($"セーブデータ{slot}をロードしました: {path}");
+            // お金をロードして、現段階のお金に反映する。
             return data;
         }
         else

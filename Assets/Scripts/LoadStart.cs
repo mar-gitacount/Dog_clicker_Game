@@ -16,6 +16,8 @@ public class LoadStart : MonoBehaviour
     public int loadIndex;
     public string LoadTimeString;
     public int storyDataow;
+    public string TextLabel;
+    public SaveData saveDataJson;
     // ループしてボタンを生成する。
     public void SetLabel(string label)
     {
@@ -34,7 +36,9 @@ public class LoadStart : MonoBehaviour
         // ロード番号をテキストから取得する。
         saveData.SavenNow(loadIndex);
         Debug.Log(Text.text + "のLoadStartがクリックされました。");
-        saveData.SaveMoney(int.Parse(saveData.JsonLoadFromLocal(loadIndex).money));
+        // !saveData.SaveMoney(int.Parse(saveData.JsonLoadFromLocal(loadIndex).money));
+        // JSONデータを取得して、現在のセーブデータに反映する。
+        saveData.LoadDataToCurrentSave(saveDataJson);
         Text.text = "ロードしました。";
         // ロードする番号をセーブマネジメントにする。
 
@@ -51,10 +55,15 @@ public class LoadStart : MonoBehaviour
         // ロード時間を取得する。
         LoadTimeString = saveData.LoadTime(loadIndex).ToString();
         // int money = int.Parse(saveData.JsonLoadFromLocal(loadIndex).money);
-        storyDataow = saveData.JsonLoadFromLocal(loadIndex).storyIndex;
+        // JSONデータを取得する。
+        saveDataJson = saveData.JsonLoadFromLocal(loadIndex);
+        // JSONデータからストーリー番号を取得する。
+        storyDataow = saveDataJson.storyIndex;
         // ボタンを押下したら、セーブナウの番号をテキストのデータに保存する。
         // saveData.LoadNow();
-        Text.text = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;
+        // Text.text = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;
+        TextLabel = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;;
+        Text.text = TextLabel;
         button.onClick.AddListener(OnButtonClicked);
     }
 
@@ -66,8 +75,10 @@ public class LoadStart : MonoBehaviour
         {
             // ボタンのテキストを元に戻す。
             LoadTimeString = saveData.LoadTime(loadIndex).ToString();
-            storyDataow = saveData.JsonLoadFromLocal(loadIndex).storyIndex;
-            Text.text = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;
+            // storyDataow = saveData.LoadStoryProgress();
+            // storyDataow = saveData.JsonLoadFromLocal(loadIndex).storyIndex;
+            // Text.text = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;
+            Text.text = TextLabel;
         }
     }
 }
