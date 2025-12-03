@@ -20,11 +20,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/GameOverScene.unity
     guid: 88f8d9ce54b916c43be907a45b6ca370
-  - enabled: 0
-    path: Assets/Resources/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Resources/Scenes/StoryScene.unity
     guid: c1fd827ca4b42e64c9cbd1a52774bab2
+  - enabled: 1
+    path: Assets/Resources/Scenes/SaveScene.unity
+    guid: 631b04a04df84914898077140994f346
+  - enabled: 1
+    path: Assets/Resources/Scenes/LoadScene.unity
+    guid: 585938d68e8457f4e9fd2205cb0c8760
+  - enabled: 0
+    path: Assets/Resources/Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

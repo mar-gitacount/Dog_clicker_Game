@@ -18,6 +18,7 @@ public class SaveLoadStart : MonoBehaviour
     public int saveTime;
     public string LoadTimeString;
     public SaveData saveDataJson;
+    public String money;
 
     // 時間とか話数とか保存する。
     // Start is called before the first frame update
@@ -26,9 +27,6 @@ public class SaveLoadStart : MonoBehaviour
         // saveLoadManager.JsonLoadFromLocal(1);
         saveData = new PlayerPrefsSaveData();
         
-        // !ロード時に任意の数字を入れて以下を呼び出す。ほんとは別のスクリプトから呼び出す。
-        // なのでこのスクリプトで呼び出す必要はない。
-        saveData.SavenNow(0);
         
         
         // saveLoadManager.JsonLoadFromLocal(0);
@@ -47,13 +45,14 @@ public class SaveLoadStart : MonoBehaviour
         // 呼び出し元からセーブロット番号を受け取り、参照する
         
         // int storyDataow = saveData.LoadNow();
-        storyIndex = saveDataJson.storyIndex;
+        // storyIndex = saveDataJson.storyIndex;
         int storyDataow = saveData.JsonLoadFromLocal(saveIndex).storyIndex;
+        money = saveData.JsonLoadFromLocal(saveIndex).money;
         // ボタンテキスト=ロットナンバー
         // buttonText.text = buttonText.text + "ストーリー" + storyData;
         // テキストからロットナンバーを使って保存されている時間を引用する。
         LoadTimeString = saveData.LoadTime(saveIndex).ToString();
-        buttonText.text = buttonText.text+":"+LoadTimeString+"\n"+"ストーリー"+storyDataow;
+        buttonText.text = buttonText.text+":"+LoadTimeString+"\n"+"ストーリー:"+storyDataow+"\n"+"お金:"+money;
         saveLoadButton.onClick.AddListener(OnButtonClicked);
     }
 
@@ -68,6 +67,9 @@ public class SaveLoadStart : MonoBehaviour
         Debug.Log(saveIndex + "のOnEnableが呼ばれました。");
         // !セーブ番号を保存する。これを引用してデータをロードする。
         saveData.SaveLotId(saveIndex);
+        // 現在のロードされているセーブ番号を取得する。
+        int LoadNowNumber = saveData.LoadNow();
+        Debug.Log("現在のセーブナウ番号は" + LoadNowNumber);
         // 現在時間を保存する。
         // 日付け+時間
         string now = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
@@ -75,10 +77,12 @@ public class SaveLoadStart : MonoBehaviour
         // 時間を保存する。
         saveData.SaveTime(saveTime, saveIndex);
         // ロットナンバーでセーブデータを保存する。
-        saveData.JsonSaveToLocal(saveDataJson, saveIndex);
+        // saveData.JsonSaveToLocal(saveDataJson, saveIndex);
+        storyIndex = saveData.JsonSaveToLocal(saveDataJson, saveIndex).storyIndex;
+        money = saveDataJson.money;
         // saveData.JsonSaveToLocal(storyIndex, saveIndex);
         // buttonText.text = saveIndex + $"に{storyIndex}保存しましたプレイ時間{now}";
-        buttonText.text = now + "\n" + "ストーリー" + storyIndex;
+        buttonText.text = now + "\n" + "ストーリー:" + storyIndex+"\n"+"お金:"+money;
         // UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
 
     }
