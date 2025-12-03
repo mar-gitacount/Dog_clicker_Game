@@ -179,10 +179,14 @@ public class PlayerPrefsSaveData : ISaveData
     // セーブデータをロードする関数
     public SaveData JsonLoadFromLocal(int slot=0)
     {
+        if(slot==0)
+        {
+            slot=LoadNow();
+        }
+        
+        int slotNum = LoadNow();
         // 単体の保存セーブに保存する。
         string path = GetSavePath(slot);
-        Debug.Log($"ロードしたセーブデータパス確認: {path}");
-        int slotNum = LoadNow();
         Debug.Log($"ロードから呼び出したセーブデータパス: {slotNum}");   
         if (File.Exists(path.ToString()))
         {          

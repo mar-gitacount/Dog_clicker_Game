@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
+// using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LoadStart : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class LoadStart : MonoBehaviour
     public int storyDataow;
     public string TextLabel;
     public SaveData saveDataJson;
+    public String money;
     // ループしてボタンを生成する。
     public void SetLabel(string label)
     {
@@ -59,10 +61,11 @@ public class LoadStart : MonoBehaviour
         saveDataJson = saveData.JsonLoadFromLocal(loadIndex);
         // JSONデータからストーリー番号を取得する。
         storyDataow = saveDataJson.storyIndex;
+        money = saveDataJson.money;
         // ボタンを押下したら、セーブナウの番号をテキストのデータに保存する。
         // saveData.LoadNow();
         // Text.text = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;
-        TextLabel = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;;
+        TextLabel = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow + "\n" + "お金:"+money;
         Text.text = TextLabel;
         button.onClick.AddListener(OnButtonClicked);
     }
