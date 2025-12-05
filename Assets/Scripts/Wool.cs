@@ -14,7 +14,7 @@ public class Wool : MonoBehaviour
     // 羊の色
     public Color woolColor;
 
-     public int price = 100;
+    public int price = 100;
     // 売却処理
     public void sell(Wallet wallet)
     {

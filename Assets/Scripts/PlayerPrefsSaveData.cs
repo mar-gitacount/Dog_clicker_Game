@@ -134,8 +134,7 @@ public class PlayerPrefsSaveData : ISaveData
     {
         return Application.persistentDataPath + $"/saveData_{slot}.json";
     }
-
-
+    // jsonデータ→ローカルセーブ
     public SaveData JsonSaveToLocal(SaveData data, int slot)
     {
         // データを関数から受け取る。読み込みデータから呼び出して、保存する。
@@ -153,6 +152,7 @@ public class PlayerPrefsSaveData : ISaveData
         // 犬を保存する。
         foreach (SheepCount sc in data.sheepCounts)
         {
+
             SaveDogCnt(int.Parse(sc.Key), sc.Value);
             Debug.Log($"ID: {sc.Key}, Count: {sc.Value}");
         }
@@ -170,6 +170,7 @@ public class PlayerPrefsSaveData : ISaveData
         Debug.Log($"ストーリーロードデータ→: {data.storyIndex}");
         foreach (SheepCount sc in data.sheepCounts)
         {
+            
             // 犬をロードして、現段階の犬に反映する。
             SaveDogCnt(int.Parse(sc.Key), sc.Value);
             Debug.Log($"ID: {sc.Key}, Count: {sc.Value}");
@@ -198,6 +199,8 @@ public class PlayerPrefsSaveData : ISaveData
             // SaveMoney(savemonay);
             Debug.Log($"セーブデータ{slot}をロードしました: {path}");
             // お金をロードして、現段階のお金に反映する。
+            // !犬データをいれる。
+            
             return data;
         }
         else

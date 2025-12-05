@@ -26,6 +26,7 @@ public class SaveLoadManager : MonoBehaviour
 
     int currentSaveSlot; // デフォルトのセーブスロット
     private Dictionary<int, int> savedogDataDict = new Dictionary<int,int>();
+    // public  List<SheepCount> sheepCounts = new List<SheepCount>();
 
 
     void Awake()
@@ -58,7 +59,9 @@ public class SaveLoadManager : MonoBehaviour
         Debug.Log($"{saveData.LoadNow()}はセーブナウの値セーブマネージャー内");
         // SheepCount[] sheepCountsList = new SheepCount[shop.dogButtonList.Count];
         List<SheepCount> sheepCounts = new List<SheepCount>();
-
+        
+        // sheepCounts = new List<SheepCount>();
+        // 以下で犬が保存されている。どういうロジックかはわからない、、
         for (var index = 0; index < shop.dogButtonList.Count; index++)
         {
             Debug.Log($"ローカルセーブ処理 犬インデックス:{index} 頭数:{shop.dogButtonList[index].currentCnt}");
@@ -67,12 +70,23 @@ public class SaveLoadManager : MonoBehaviour
             // 犬データをリストに追加する。
             sheepCounts.Add(new SheepCount
             {
-                Key = $"SHEEP{index}",
+                // Key = $"SHEEP{index}",
+                Key = index.ToString(),
                 Value = dogButton.currentCnt
             });
-
             // PlayerPrefs.SetInt($"DOG{index}",dogButton.currentCnt);
         }
+        // 適したセーブデータに保存する。
+        JsonSaveToLocal(new SaveData
+        {
+            money = wallet.money.ToString(),
+            storyIndex = saveData.LoadStoryProgress(),
+            sheepCounts = sheepCounts
+            
+
+        }, currentSaveSlot);
+
+
 
 
         // JsonSaveToLocal(new SaveData
@@ -96,9 +110,9 @@ public class SaveLoadManager : MonoBehaviour
 
         Debug.Log($"{data.storyIndex}はjsonのセーブデータ,{data.money}は所持金データ");
         int slotNum = saveData.LoadNow();
-        File.WriteAllText(GetSavePath(slotNum), json);
-
+        // 犬リスト
         Debug.Log($"{data.sheepCounts}セーブデータ{slot}を保存しました: {GetSavePath(slot)}");
+        File.WriteAllText(GetSavePath(slotNum), json);
         foreach (SheepCount sc in data.sheepCounts)
         {
             Debug.Log($"ID: {sc.Key}, Count: {sc.Value}");
@@ -384,12 +398,14 @@ public class SaveLoadManager : MonoBehaviour
     }
     public void Update()
     {
-        JsonSaveToLocal(new SaveData
-        {
-            money = wallet.money.ToString(),
-            storyIndex = saveData.LoadStoryProgress()
+        // JsonSaveToLocal(new SaveData
+        // {
+        //     money = wallet.money.ToString(),
+        //     storyIndex = saveData.LoadStoryProgress(),
+        //     // sheepCounts = sheepCounts
+            
 
-        }, currentSaveSlot);
+        // }, currentSaveSlot);
         saveToLocal();
         Debug.Log($"セーブ所持金:{wallet.money}");
 
