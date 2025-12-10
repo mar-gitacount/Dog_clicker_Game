@@ -209,6 +209,18 @@ public class PlayerPrefsSaveData : ISaveData
             return null;
         }
     }
+    // 主人公の名前,第一引数:名前,第二引数:セーブスロット
+    public void SaveMainCharacterName(string name,int slot=0)
+    {
+        PlayerPrefs.SetString($"MAIN_CHARACTER_NAME{slot}", name);
+        Debug.Log($"主人公の名前を保存しました: {name} in slot {slot}");
+    }
+    public string LoadMainCharacterName(int slot=0)
+    {
+        string name = PlayerPrefs.GetString($"MAIN_CHARACTER_NAME{slot}", "");
+        Debug.Log($"主人公の名前をロードしました: {name} in slot {slot}");
+        return name;
+    }
 
     // クラウド用のデータ構造
     // [System.Serializable]

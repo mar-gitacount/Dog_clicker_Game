@@ -20,6 +20,8 @@ public class LoadStart : MonoBehaviour
     public string TextLabel;
     public SaveData saveDataJson;
     public String money;
+    public String MainCharacterName;
+
     // ループしてボタンを生成する。
     public void SetLabel(string label)
     {
@@ -65,7 +67,8 @@ public class LoadStart : MonoBehaviour
         // ボタンを押下したら、セーブナウの番号をテキストのデータに保存する。
         // saveData.LoadNow();
         // Text.text = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー" + storyDataow;
-        TextLabel = loadIndex.ToString() + ":" + LoadTimeString + "\n" + "ストーリー:" + storyDataow + "\n" + "お金:"+money;
+        MainCharacterName = saveData.LoadMainCharacterName(loadIndex);
+        TextLabel = loadIndex.ToString() + ":" + LoadTimeString + "\n"+"なまえ:"+MainCharacterName+"\n" + "ストーリー:" + storyDataow + "\n" + "お金:"+money;
         Text.text = TextLabel;
         button.onClick.AddListener(OnButtonClicked);
     }

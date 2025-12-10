@@ -43,6 +43,10 @@ public interface ISaveData
     SaveData JsonSaveToLocal(SaveData data,int slot=0);
     SaveData JsonLoadFromLocal(int slot=0);
     void LoadDataToCurrentSave(SaveData data);
+
+    // 主人公の名前,第一引数:名前,第二引数:セーブスロット
+    void SaveMainCharacterName(string name,int slot=0);
+    string LoadMainCharacterName(int slot=0);
     // void SaveData(SaveData data);
     // Task SaveToCloud(); // 非同期メソッドに変更
 }
