@@ -87,4 +87,12 @@ public class DebugSaveData : ISaveData
     {
 
     }
+    public void SaveMainCharacterName(string name,int slot=0)
+    {
+
+    }
+    public string LoadMainCharacterName(int slot=0)
+    {
+        return "DebugMainCharacterName";
+    }
 }

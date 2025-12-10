@@ -19,6 +19,7 @@ public class SaveLoadStart : MonoBehaviour
     public string LoadTimeString;
     public SaveData saveDataJson;
     public String money;
+    public String MainCharacterName;
 
     // 時間とか話数とか保存する。
     // Start is called before the first frame update
@@ -48,11 +49,13 @@ public class SaveLoadStart : MonoBehaviour
         // storyIndex = saveDataJson.storyIndex;
         int storyDataow = saveData.JsonLoadFromLocal(saveIndex).storyIndex;
         money = saveData.JsonLoadFromLocal(saveIndex).money;
+        // テキスト上の番号
+        MainCharacterName = saveData.LoadMainCharacterName(saveIndex);
         // ボタンテキスト=ロットナンバー
         // buttonText.text = buttonText.text + "ストーリー" + storyData;
         // テキストからロットナンバーを使って保存されている時間を引用する。
         LoadTimeString = saveData.LoadTime(saveIndex).ToString();
-        buttonText.text = buttonText.text+":"+LoadTimeString+"\n"+"ストーリー:"+storyDataow+"\n"+"お金:"+money;
+        buttonText.text = buttonText.text+":"+LoadTimeString+"\n"+"なまえ:"+MainCharacterName+"\n"+"ストーリー:"+storyDataow+"\n"+"お金:"+money;
         saveLoadButton.onClick.AddListener(OnButtonClicked);
     }
 
@@ -80,9 +83,10 @@ public class SaveLoadStart : MonoBehaviour
         // saveData.JsonSaveToLocal(saveDataJson, saveIndex);
         storyIndex = saveData.JsonSaveToLocal(saveDataJson, saveIndex).storyIndex;
         money = saveDataJson.money;
+        MainCharacterName = saveData.LoadMainCharacterName(LoadNowNumber);
         // saveData.JsonSaveToLocal(storyIndex, saveIndex);
         // buttonText.text = saveIndex + $"に{storyIndex}保存しましたプレイ時間{now}";
-        buttonText.text = now + "\n" + "ストーリー:" + storyIndex+"\n"+"お金:"+money;
+        buttonText.text = LoadNowNumber+":"+now + "\n" +"なまえ:"+MainCharacterName+"\n"+ "ストーリー:" + storyIndex+"\n"+"お金:"+money;
         // UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
 
     }
