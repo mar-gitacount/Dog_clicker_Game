@@ -12,7 +12,7 @@ Library: D:\game\Dog Clicker project\Temp\BurstOutput\Data\Plugins\x86_64\lib_bu
 --linker-options=PdbAltPath="Dog Clicker project_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=D:\game\Dog Clicker project\Temp\Burst
---key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.60f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.62f3/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=D:\game\Dog Clicker project\Library\Burst
 --output=D:\game\Dog Clicker project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -32,7 +32,7 @@ Library: D:\game\Dog Clicker project\Temp\BurstOutput\Data\Plugins\x86_64\lib_bu
 --linker-options=PdbAltPath="Dog Clicker project_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=D:\game\Dog Clicker project\Temp\Burst
---key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.60f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.62f3/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=D:\game\Dog Clicker project\Library\Burst
 --output=D:\game\Dog Clicker project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -50,7 +50,7 @@ Library: D:\game\Dog Clicker project\Temp\BurstOutput\Data\Plugins\x86_64\lib_bu
 --linker-options=PdbAltPath="Dog Clicker project_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=D:\game\Dog Clicker project\Temp\Burst
---key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.60f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.62f3/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=D:\game\Dog Clicker project\Library\Burst
 --output=D:\game\Dog Clicker project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
@@ -102,7 +102,7 @@ Library: D:\game\Dog Clicker project\Temp\BurstOutput\Data\Plugins\x86_64\lib_bu
 --linker-options=PdbAltPath="Dog Clicker project_Data/Plugins/x86_64/lib_burst_generated.pdb"
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=D:\game\Dog Clicker project\Temp\Burst
---key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.60f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
+--key-folder=C:/Program Files/Unity/Hub/Editor/2022.3.62f3/Editor/Data/PlaybackEngines/WindowsStandaloneSupport
 --decode-folder=D:\game\Dog Clicker project\Library\Burst
 --output=D:\game\Dog Clicker project\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/

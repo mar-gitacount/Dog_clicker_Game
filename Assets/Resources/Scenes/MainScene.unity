@@ -1868,7 +1868,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2099534269
+  m_SortingLayerID: 90456247
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 2740903205098542255, guid: 7d9a81ac5fa4b754ab1154c48ea7f5f8, type: 3}
@@ -3178,7 +3178,7 @@ MonoBehaviour:
   startingMoney: 0
   enamyHp: {fileID: 1643434159}
   enamyIndex: 0
-  storyindex: 1
+  storyIndex: 0
 --- !u!1 &1094122459
 GameObject:
   m_ObjectHideFlags: 0
