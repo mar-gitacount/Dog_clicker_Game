@@ -9,17 +9,8 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/TitleScene.unity
     guid: adfebfde9983d6b4ea7e96e07cd95a00
   - enabled: 1
-    path: Assets/Resources/Scenes/LoginOrSinUpScene 1.unity
-    guid: 3fdde2b0feef9b946bd76b59dc2d26d0
-  - enabled: 1
-    path: Assets/Resources/Scenes/MainScene.unity
-    guid: 2ddd18acf8a961b45b0f6a76476e8f8f
-  - enabled: 1
-    path: Assets/Resources/Scenes/MenuScene.unity
-    guid: 2599e86e69e47ed41a37033fe8c02fb5
-  - enabled: 1
-    path: Assets/Resources/Scenes/GameOverScene.unity
-    guid: 88f8d9ce54b916c43be907a45b6ca370
+    path: Assets/Resources/Scenes/UserNameInputScene.unity
+    guid: 969ad5afdf9c8cf45beceb3ae72f7604
   - enabled: 1
     path: Assets/Resources/Scenes/StoryScene.unity
     guid: c1fd827ca4b42e64c9cbd1a52774bab2
@@ -27,10 +18,18 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/SaveScene.unity
     guid: 631b04a04df84914898077140994f346
   - enabled: 1
+    path: Assets/Resources/Scenes/MenuScene.unity
+    guid: 2599e86e69e47ed41a37033fe8c02fb5
+  - enabled: 1
+    path: Assets/Resources/Scenes/MainScene.unity
+    guid: 2ddd18acf8a961b45b0f6a76476e8f8f
+  - enabled: 1
+    path: Assets/Resources/Scenes/LoginOrSinUpScene 1.unity
+    guid: 3fdde2b0feef9b946bd76b59dc2d26d0
+  - enabled: 1
     path: Assets/Resources/Scenes/LoadScene.unity
     guid: 585938d68e8457f4e9fd2205cb0c8760
-  - enabled: 0
-    path: Assets/Resources/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - enabled: 1
+    path: Assets/Resources/Scenes/GameOverScene.unity
+    guid: 88f8d9ce54b916c43be907a45b6ca370
+  m_configObjects: {}

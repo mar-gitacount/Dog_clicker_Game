@@ -52,7 +52,7 @@ public class TitleSchene : MonoBehaviour
     async void Start()
     {
         saveData = new PlayerPrefsSaveData();
-        await InitializeUnityServices();
+        // await InitializeUnityServices();
         button.onClick.AddListener(ChangeScene);
         foreach (var dogData in dogDatas)
         {
@@ -83,7 +83,17 @@ public class TitleSchene : MonoBehaviour
     {
         button.interactable = false;
         var loadingTask = ShowLoadingAnimation();
-
+        saveData = new PlayerPrefsSaveData();
+        int loadNow = saveData.LoadNow();
+        string MainCharacterName = saveData.LoadMainCharacterName(loadNow);
+        if(MainCharacterName == "")
+        {
+            // 名前を設定してない場合、名前入力シーンへ移動
+            SceneManager.LoadScene("UserNameInputScene");
+            return;
+        }
+        SceneManager.LoadScene("MenuScene");
+        return;
         // すでにサインイン済みかチェック
         if (!AuthenticationService.Instance.IsSignedIn)
         {
@@ -102,6 +112,7 @@ public class TitleSchene : MonoBehaviour
                 return;
             }
         }
+
 
         // サインイン済みならそのままメニューシーンへ
         SceneManager.LoadScene("MenuScene");
