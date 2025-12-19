@@ -8,11 +8,17 @@ public class NameInput : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private Button yesButton;
     [SerializeField] private Button CancelButton;
+    [SerializeField] private Button menuButton;
     [SerializeField] private Text CharacterNamedisplayText;
     private ISaveData saveData;
 
     // [SerializeField] private FilterCanvas filterPrefab;
     public FilterCanvas filter;
+
+    // public Filter nomalFilter;
+
+    // public BackButton backButton;
+    [SerializeField] private BuckButtonCanvas backbutton;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +26,7 @@ public class NameInput : MonoBehaviour
         Debug.Log($"現在の名前入力フィールドの値: {nameInputField.text}");
         button.onClick.AddListener(OnButtonClicked);
         yesButton.onClick.AddListener(NameInputValue);
+        menuButton.onClick.AddListener(MenuButtonClicked);
         CancelButton.onClick.AddListener(CancelButtonClicked);
         nameInputField.text = saveData.LoadMainCharacterName(saveData.LoadNow());
 
@@ -42,6 +49,13 @@ public class NameInput : MonoBehaviour
         // キャンセルボタンがクリックされたときの処理
         filter.gameObject.SetActive(false);
         Debug.Log("キャンセルボタンがクリックされました。");
+    }
+
+    // メニューボタンを押下したとき
+    private void MenuButtonClicked()
+    {
+        // nomalFilter.gameObject.SetActive(true);
+        backbutton.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
