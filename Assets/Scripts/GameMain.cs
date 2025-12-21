@@ -40,7 +40,19 @@ public class GameMain : MonoBehaviour
 
     public StoryData storyData;
 
+    // 戻るボタン
+    [SerializeField] private BuckButtonCanvas backbutton;
 
+    // メニューボタン
+    [SerializeField] private Button menuButton;
+
+
+    // メニューボタン押下時→戻るボタン表示
+    private void MenuButtonClicked()
+    {
+        // nomalFilter.gameObject.SetActive(true);
+        backbutton.gameObject.SetActive(true);
+    }
     // 売却ボタンを押下した時に呼ばれる関数,表示されている毛を全て取得し、所持金に追加する。
     private void SellAllWool()
     {
@@ -83,6 +95,8 @@ public class GameMain : MonoBehaviour
         ShowRandomText();
         pauseButton.onClick.AddListener(TogglePause);
         int storyIndex = saveData.LoadStoryProgress();
+        
+        menuButton.onClick.AddListener(MenuButtonClicked);
         Debug.Log("メインでロードしたストーリーインデックス: " + storyIndex);
     }
 
