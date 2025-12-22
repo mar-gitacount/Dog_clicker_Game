@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\GameMain.cs" />
     <Compile Include="Assets\Scripts\SaveLoadManager.cs" />
     <Compile Include="Assets\Scripts\Comment.cs" />
+    <Compile Include="Assets\Scripts\MenuObject.cs" />
     <Compile Include="Assets\Scripts\ItemActions\testAction.cs" />
     <Compile Include="Assets\Scripts\DogData.cs" />
     <Compile Include="Assets\Scripts\LoadManagement.cs" />

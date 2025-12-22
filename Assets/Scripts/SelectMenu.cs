@@ -15,6 +15,7 @@ public class SelectMenu : MonoBehaviour
         ("MainScene", "メイン"),
         ("LoadScene", "ロード"),
         ("SaveScene", "セーブ"),
+        ("UserNameInputScene", "名前入力"),
         // ("ShopScene", "ショップ"),
         // ("LoginOrSinUpScene 1", "ログイン")
     };
