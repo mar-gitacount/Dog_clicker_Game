@@ -83,7 +83,12 @@ public class SaveLoadStart : MonoBehaviour
         // saveData.JsonSaveToLocal(saveDataJson, saveIndex);
         storyIndex = saveData.JsonSaveToLocal(saveDataJson, saveIndex).storyIndex;
         money = saveDataJson.money;
+        // 名前を取得する。→テキストに表示する。
+        
         MainCharacterName = saveData.LoadMainCharacterName(LoadNowNumber);
+        Debug.Log("現在の名前は" + MainCharacterName);
+        
+        saveData.SaveMainCharacterName(MainCharacterName, saveIndex);
         // saveData.JsonSaveToLocal(storyIndex, saveIndex);
         // buttonText.text = saveIndex + $"に{storyIndex}保存しましたプレイ時間{now}";
         buttonText.text = LoadNowNumber+":"+now + "\n" +"なまえ:"+MainCharacterName+"\n"+ "ストーリー:" + storyIndex+"\n"+"お金:"+money;
