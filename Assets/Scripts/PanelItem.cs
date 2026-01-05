@@ -25,7 +25,7 @@ public class PanelItem : MonoBehaviour
             panelItemButton.SetOnClick(() => {
                 if (saveLoadManager != null)
                 {
-                    saveLoadManager.SaveToCloud(); // セーブ処理を追加
+                    // saveLoadManager.SaveToCloud(); // セーブ処理を追加
                 }
                 else
                 {
