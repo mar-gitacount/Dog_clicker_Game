@@ -43,8 +43,6 @@ public class Enamy : MonoBehaviour
         enamyAtackGenerator.hp = hp;
         enamyAtackGenerator.CreateEnamyBall();
         saveData = new PlayerPrefsSaveData();
-
-        // !あとでけす
         // enamyIndex = 1;
         // saveData.SaveStoryProgress(1);
         
@@ -53,10 +51,12 @@ public class Enamy : MonoBehaviour
         // GameObject enemyPrefab = Resources.Load<GameObject>("EnamyDatas/" + storyIndex);
         // GameObject enemyPrefab = Resources.Load<GameObject>("EnamyDatas/1");
         // 保存されたストーリー進行度に基づいてエネミーデータを読み込む
-        var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/"+ storyIndex);
+        var storyData = Resources.Load<StoryData>("StoryDatas/" + storyIndex);
+        var enamyIndex = storyData.enamys[0];
+        var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/"+ enamyIndex);
         if (enemyPrefab != null)
         {
-            Debug.Log("エネミーデータの読み込み:" + storyIndex);
+            Debug.Log("エネミーデータの読み込み:" + enamyIndex);
             // Debug.Log("敵のHP" + enemyPrefab[0].hp);
             enemydata = enemyPrefab;
             // 既存のenamyHPオブジェクトに固有のデータを設定
@@ -80,7 +80,7 @@ public class Enamy : MonoBehaviour
     public void Update()
     {
         
-        Debug.Log("敵のHpupdate" + enamyHp.hp);
+        Debug.Log("エネミーHP(エネミーオブジェクト)" + enamyHp.hp);
         Debug.Log("エネミーインデックス:" + enamyIndex);
         // storyData配列に基づいて、次のエネミーデータを読み込む。
         var storyData = Resources.Load<StoryData>("StoryDatas/" + storyIndex);
@@ -88,8 +88,7 @@ public class Enamy : MonoBehaviour
         // エネミーのHPが0以下になったら、次のエネミーデータを読み込む。
         if(enamyHp.hp <= 0)
         {
-            enamyIndex += 1;
-            Debug.Log("ストーリーの大きさ:" + storyData.enamys.Length);
+            Debug.Log("ストーリーの内の敵の数:" + storyData.enamys.Length);
             // ストーリー内のエネミーデータがもうなければ、処理を終了する。
             if (storyData.enamys.Length <= enamyIndex)
             {
@@ -111,11 +110,11 @@ public class Enamy : MonoBehaviour
             Debug.Log("ストーリーデータ内の次のエネミーデータインデックス:" + enamyIndex);
             int enamydata = storyData.enamys[enamyIndex];
             // var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/"+ enamydata);
-            
+            Debug.Log("HP0ストーリーデータ内の次のエネミーデータインデックス:" + enamydata);
             var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/" + enamydata);
             enamyHp.hp = enemyPrefab.hp;
-            Debug.Log("ストーリーデータ内の次のエネミーデータインデックス:" + enamydata);
-            
+            // Debug.Log("ストーリーデータ内の次のエネミーデータインデックス:" + enamydata);
+            enamyIndex += 1;
             return;
         }
         

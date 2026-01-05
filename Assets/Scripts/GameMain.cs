@@ -58,28 +58,18 @@ public class GameMain : MonoBehaviour
     {
         //画面上の全てのWoolスクリプトが付いたオブジェクトを検索してWool配列woolsに格納
         var wools = FindObjectsByType<Wool>(FindObjectsSortMode.None);
+        
         foreach (var wool in wools)
         {
+            Debug.Log("敵のHP=" + EnamyHp.hp);
+            Debug.Log("各犬の値段=" + wool.price + "敵のHP=" + EnamyHp.hp);
             // 敵のHPを減らす。
             EnamyHp.hp -= (int)wool.price;
-            
-            // if(EnamyHp.hp < 0)
-            // {
-            //     // storyDataを参照し、配列がなければ、ストーリーシーンへ移動する。
-
-            //     Debug.Log("敵のHPが0以下になりました。ストーリーシーンに移動します。");
-            //     int storyIndex = saveData.LoadStoryProgress();
-            //     int currentIndex = storyIndex + 1;
-            //     saveData.SaveStoryProgress(currentIndex); // ストーリー進行度を更新
-            //     // UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
-                
-            //     return;
-            // }
+            Debug.Log("敵のHP=" + EnamyHp.hp);
             Debug.Log("各犬の値段" + wool.price);
             wool.sell(wallet);
         }
         SoundManeger.Instance.Play("コイン");
-
     }
 
 
@@ -103,6 +93,7 @@ public class GameMain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("エネミーHP(メイン)" + EnamyHp.hp);
         if (isPaused) return;
         // 以下0になったらゲームクリア処理。ストーリーデータを参照する。
         Debug.Log(EnamyHp.hp + "敵のHPメイン");

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   enamyKinds: enamy1
-  hp: 100
+  hp: 50
   attackPower: 0
   moveSpeed: 0
   picturePath: 

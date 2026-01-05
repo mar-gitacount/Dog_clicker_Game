@@ -22,4 +22,4 @@ MonoBehaviour:
   maxCount: 10
   woolCnt: 40
   isTouchable: 0
-  isDontTouchble: 1
+  isDontTouchble: 0
