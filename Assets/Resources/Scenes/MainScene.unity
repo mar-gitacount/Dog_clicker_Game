@@ -3322,7 +3322,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094103852}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -3451,6 +3451,7 @@ MonoBehaviour:
   ballPrefab: {fileID: 4707647680068489607, guid: db94faa9f1f505c43a18a17686c9deb6, type: 3}
   wallet: {fileID: 143259305}
   hp: {fileID: 1170871196}
+  enamySpriteRenderer: {fileID: 1094103854}
   enamyAtackGenerator: {fileID: 4604752859082588866, guid: 4f2f9fc19b3472f44962e664f2487832, type: 3}
   enemydata: {fileID: 0}
   startingMoney: 0

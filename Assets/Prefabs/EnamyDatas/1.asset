@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0323ac2a733569044a97be7e2f083067, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bde08d0b0407664da6f695812e13191, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  sotryTexts: 
-  enamys: 010000000100000001000000010000000100000001000000
+  enamySpriteRenderer: {fileID: 0}
+  enamyKinds: 
+  hp: 0
+  attackPower: 0
+  moveSpeed: 0
+  picturePath: 
+  color: {r: 0, g: 0, b: 0, a: 0}
