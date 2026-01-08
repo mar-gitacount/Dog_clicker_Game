@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bde08d0b0407664da6f695812e13191, type: 3}
   m_Name: 3
   m_EditorClassIdentifier: 
+  enamySpriteRenderer: {fileID: 0}
   enamyKinds: enamy1
-  hp: 150
+  hp: 30
   attackPower: 0
   moveSpeed: 0
-  picturePath: 
+  picturePath: 2
+  color: {r: 0.3207547, g: 0.05749373, b: 0.05749373, a: 1}
