@@ -13,5 +13,7 @@ public class EnamyData : ScriptableObject
     public float moveSpeed;
     public string picturePath;
     public Color color;
+    public string[] enamyAtackKinds;
+
    
 }
