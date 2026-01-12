@@ -19,3 +19,7 @@ MonoBehaviour:
   moveSpeed: 0
   picturePath: 2
   color: {r: 1, g: 0, b: 0, a: 1}
+  enamyAtackKinds:
+  - green
+  - red
+  - blue

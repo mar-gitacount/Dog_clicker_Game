@@ -15,10 +15,17 @@ public class EnamyAtackGenerator : MonoBehaviour
 
     public Wallet wallet;
     public HP hp;
+    public string[] EnamyAtackKinds;
 
     // 敵の攻撃データの引数を受け取る
     public void CreateEnamyBall()
     {
+        
+        int index = Random.Range(0, EnamyAtackKinds.Length);
+        string randomAttack = EnamyAtackKinds[index];
+        Debug.Log("エネミーアタックジェネレーターで生成する攻撃種類:" + randomAttack);
+
+        enamyBallPrefab.EnamyAtackKinds = EnamyAtackKinds;
         // enamyBallPrefab.Initialize();
         // EnemyBallに画像などのデータなどを渡す。
         // Enamyball秒数を参照して、Spawnを出す。
@@ -26,6 +33,8 @@ public class EnamyAtackGenerator : MonoBehaviour
         // Instantiate(enamyBallPrefab, transform.position, Quaternion.identity);
         enamyBallPrefab.wallet = wallet;
         enamyBallPrefab.hp = hp;
+        // 攻撃の種類
+        enamyBallPrefab.EnamyAtackKind = randomAttack;
         // ?エネミーボールにゲームオーバーシーンを渡す。
         enamyBallPrefab.gameOverScene = gameOverScene;
         enamyBallSpawner.ballPrefab = enamyBallPrefab;

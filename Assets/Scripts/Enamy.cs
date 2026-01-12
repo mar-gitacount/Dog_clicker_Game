@@ -48,7 +48,10 @@ public class Enamy : MonoBehaviour
         startingMoney = (int)wallet.money;
         enamyAtackGenerator.wallet = wallet;
         enamyAtackGenerator.hp = hp;
-        enamyAtackGenerator.CreateEnamyBall();
+    
+        
+       
+       
         saveData = new PlayerPrefsSaveData();
 
 
@@ -56,8 +59,10 @@ public class Enamy : MonoBehaviour
         var storyData = Resources.Load<StoryData>("StoryDatas/" + storyIndex);
 
         // ?テストコード
-        // ?以下をストーリーからではなく、データから読み込むように変更する。
         enemydata = Resources.Load<EnamyData>("EnamyDatas/"+ storyData.enamys[0]);
+       
+        Initialize();
+        return;
         string enamypicturePath = enemydata.picturePath;
         Sprite newSprite  = Resources.Load<Sprite>("EnamySprites/"+ enamypicturePath);
         // newSprite.color = enemydata.color;
@@ -119,6 +124,11 @@ public class Enamy : MonoBehaviour
        
         // int enamydata = storyData.enamys[enamyIndex];
         enemydata = Resources.Load<EnamyData>("EnamyDatas/"+ storyData.enamys[enamyIndex]);
+        Debug.Log("エネミーアタックジェネレーターに攻撃種類を代入する。" + enemydata.enamyAtackKinds.Length);
+        // EnamyAtackGeneratorに攻撃種類を代入する。
+        enamyAtackGenerator.EnamyAtackKinds = enemydata.enamyAtackKinds;
+
+        enamyAtackGenerator.CreateEnamyBall();
 
         string enamyPicturePath = enemydata.picturePath;
         // 画像を変更する。
@@ -127,12 +137,12 @@ public class Enamy : MonoBehaviour
         Vector2 worldSize = enamySpriteRenderer.sprite.bounds.size;
         Vector3 scale = enamySpriteRenderer.transform.lossyScale;
         Vector2 actualSize = new Vector2(worldSize.x * scale.x, worldSize.y * scale.y);
-
-        enamySpriteRenderer.sprite = newSprite;
-        // var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/"+ enamydata);
-       
-        // var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/" + enamydata);
-        // enamyHp.hp = enemyPrefab.hp;
+        if(newSprite != null)
+        {
+            enamySpriteRenderer.sprite = newSprite;
+            Debug.Log("エネミー画像の読み込み成功:" + enamyPicturePath);
+        }
+        
         enamySpriteRenderer.color = enemydata.color;
         enamyHp.hp = enemydata.hp;
 
@@ -150,6 +160,8 @@ public class Enamy : MonoBehaviour
         if(enamyHp.hp <= 0)
         {
             Debug.Log("エネミーのHPが0以下になりました。次のエネミーデータを読み込みます。");
+            enamyIndex += 1;
+
             if(storyData.enamys.Length <= enamyIndex)
             {
                 Debug.Log("ストーリー内のエネミーデータがもうありません。");
@@ -164,47 +176,8 @@ public class Enamy : MonoBehaviour
                 // UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
                 return;
             }
-            enamyIndex += 1;
             Initialize();
             return;
-        //     Debug.Log("ストーリーの内の敵の数:" + storyData.enamys.Length);
-        //     // ストーリー内のエネミーデータがもうなければ、処理を終了する。
-        //     if (storyData.enamys.Length <= enamyIndex)
-        //     {
-        //         // 敵を倒したときの処理、ストーリーシーンへ移動や他の敵の生成など
-        //         Debug.Log("ストーリー内のエネミーデータがもうありません。");
-        //         // saveData.SaveMoney(wallet.money);
-        //         Debug.Log("ストーリー進行度をセーブします。" + storyIndex + "右に1足す" + (storyIndex + 1));
-        //         int currentIndex = storyIndex + 1;
-        //         saveData.SaveStoryProgress(currentIndex); // ストーリー進行度を更新
-        //         Debug.Log("マネー:" + wallet.money);
-        //         // saveLoadManager.saveToLocal(); 
-        //         // ストーリーシーンへ移動する。
-        //         StartCoroutine(LoadNextScene());
-        //         // UnityEngine.SceneManagement.SceneManager.LoadScene("StoryScene");
-        //         return;
-        //     }
-        //     // ストーリー内にあるエネミーデータインデックスを参照する。
-        //     // 新しく敵オブジェクトを作成する。
-        //     Debug.Log("ストーリーデータ内の次のエネミーデータインデックス:" + enamyIndex);
-        //     int enamydata = storyData.enamys[enamyIndex];
-        //     // 敵の画像パスを取得する。
-        //     string enamyPicturePath = enemydata.picturePath;
-        //     // 画像を変更する。
-        //     Sprite newSprite  = Resources.Load<Sprite>("EnamySprites/" + enamyPicturePath);
-        //     enemydata.enamyRenderder = newSprite.GetComponent<SpriteRenderer>();
-        //     Vector2 worldSize = enemydata.enamyRenderder.sprite.bounds.size;
-        //     Vector3 scale = enemydata.enamyRenderder.transform.lossyScale;
-        //     Vector2 actualSize = new Vector2(worldSize.x * scale.x, worldSize.y * scale.y);
-
-        //     enamySpriteRenderer.sprite = newSprite;
-        //     // var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/"+ enamydata);
-        //     Debug.Log("HP0ストーリーデータ内の次のエネミーデータインデックス:" + enamydata);
-        //     var enemyPrefab = Resources.Load<EnamyData>("EnamyDatas/" + enamydata);
-        //     enamyHp.hp = enemyPrefab.hp;
-        //     // Debug.Log("ストーリーデータ内の次のエネミーデータインデックス:" + enamydata);
-        //     enamyIndex += 1;
-        //     return;
         }
         
        
