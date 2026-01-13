@@ -18,10 +18,12 @@ public class Story : MonoBehaviour
     // ストーリーテキストデータ
     [SerializeField] private TextData[] storyTextDatas;
     [SerializeField] private Text storyTextData;
+    private int StoryDatasIndex;
     private ISaveData saveData;
     private int currentTextIndex = 0;
     // private Text TextData[] testStoryTexts;
     private GameObject bgObject;
+    private StoryData storyData;
     
 
     
@@ -32,7 +34,10 @@ public class Story : MonoBehaviour
         if (saveData != null)
         {
             int storyIndex = saveData.LoadStoryProgress();
-            Debug.Log("ストーリースクリプト内のロードしたストーリーインデックス: " + storyIndex);
+            storyData = Resources.Load<StoryData>("StoryDatas/" + storyIndex);
+            // ストーリーのテキストデータ配列を取得
+            StoryDatasIndex = storyData.sotryTexts.Length;
+            Debug.Log("ストーリー番号" + storyIndex + "ストーリースクリプト内のロードしたストーリーインデックス: " + storyData.sotryTexts[0]);
             // !storyIndexに基づいて、storyTextDatasや背景画像を変更する処理を追加する。
             // 例えば、storyIndexが1ならstoryTextDatasを別の配列に変更するなど。
         }
@@ -40,7 +45,6 @@ public class Story : MonoBehaviour
         {
             Debug.LogWarning("SaveLoadManagerが見つかりません。セーブデータを読み込めませんでした。");
         }
-
         Debug.Log("ストーリースクリプトのStartが呼ばれました。");
         storyTextData.text = storyTextDatas[0].text;
         
@@ -54,12 +58,8 @@ public class Story : MonoBehaviour
         GameObject bgObject = GameObject.Find("bg");
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("右クリック押した！");
-            // !とりあえず背景を変えるテスト
-            SpriteRenderer bgRenderer = bgObject.GetComponent<SpriteRenderer>();
-            Sprite newStorybg = Resources.Load<Sprite>("Images/bgtest");
-            bgRenderer.sprite = newStorybg;
-            if (currentTextIndex >= storyTextDatas.Length)
+
+            if (StoryDatasIndex <= 0)
             {
                 Debug.Log("ストーリーが終了しました。");
                 int storyIndex = saveData.LoadStoryProgress();
@@ -70,8 +70,16 @@ public class Story : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
                 return;
             }
-            storyTextData.text = storyTextDatas[currentTextIndex].text;
+            Debug.Log("ストーリー番号"+storyData.sotryTexts[0]);
+            Debug.Log("右クリック押した！");
+            storyTextData.text = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text;
+            // !とりあえず背景を変えるテスト
+            SpriteRenderer bgRenderer = bgObject.GetComponent<SpriteRenderer>();
+            Sprite newStorybg = Resources.Load<Sprite>("Images/bgtest");
+            bgRenderer.sprite = newStorybg;
+            // storyTextData.text = storyTextDatas[currentTextIndex].text;
             currentTextIndex++;
+            StoryDatasIndex--;
         }
         
     }

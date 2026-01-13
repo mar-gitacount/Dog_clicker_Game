@@ -93,21 +93,44 @@ public class EnamyBall : MonoBehaviour
 
     private void green()
     {
+        Debug.Log("緑色の処理が実行されました。");
         // 緑色の処理をここに追加
         EnamyballRenderer.color = Color.green;
-        Debug.Log("緑色の処理が実行されました。");
+        if (transform.position.y <= -1.5f)
+        {
+            
+            Destroy(gameObject);
+            // Debug.Log($"エネミーボールのHP: {hp.hp}");
+        }
+       
     }
     private void red()
     {
         // 赤色の処理をここに追加
         Debug.Log("赤色の処理が実行されました。");
+        if (transform.position.y <= -1.5f)
+        {
+            // HPを減らす
+            hp.hp -= 1f;
+            HP -= 1f;
+            // wallet.money -= 1;
+            Destroy(gameObject);
+            // Debug.Log($"エネミーボールのHP: {hp.hp}");
+        }
     }
     private void blue()
     {
+        Debug.Log("青色の処理が実行されました。");
         EnamyballRenderer.color = Color.blue;
+        if (transform.position.y <= -1.5f)
+        {
+            
+            Destroy(gameObject);
+            // Debug.Log($"エネミーボールのHP: {hp.hp}");
+        }
 
         // 青色の処理をここに追加
-        Debug.Log("青色の処理が実行されました。");
+        
     }
 
     void Update()
@@ -124,7 +147,6 @@ public class EnamyBall : MonoBehaviour
         // 位置が下になったらマイナス1
         // 籠の位置を確認する。
         // ?籠の位置をもう少しちゃんと取得する。
-       
         // HP0になったらゲームオーバー
         GameObject bgObject = GameObject.Find("bg");
         SpriteRenderer bgsr = bgObject.GetComponent<SpriteRenderer>();
@@ -161,27 +183,19 @@ public class EnamyBall : MonoBehaviour
                 break;
             case "red":
                 // hp.hp -= 1;
-                if (transform.position.y <= -1.5f)
-                {
-                    // HPを減らす
-                    hp.hp -= 1f;
-                    HP -= 1f;
-                    // wallet.money -= 1;
-                    Destroy(gameObject);
-                    // Debug.Log($"エネミーボールのHP: {hp.hp}");
-                }
+             
                 Destroy(gameObject);
                 Debug.Log("赤色のエネミーボールがクリックされました。HPが1減ります。");
                 break;
             case "blue":
-                wallet.money += 10;
+                // wallet.money += 10;
                 hp.hp -= 1;
                 Destroy(gameObject);
                 Debug.Log("青色のエネミーボールがクリックされました。所持金が10増えます。");
                 break;
             default:
                 Debug.Log("未知のエネミーボールがクリックされました。");
-               
+                Destroy(gameObject);
                 break;
         }
         

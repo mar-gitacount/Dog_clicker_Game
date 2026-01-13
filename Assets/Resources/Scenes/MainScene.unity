@@ -1539,11 +1539,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db01621d853cbf4e87f8bbd1e949de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnamyballRenderer: {fileID: 0}
   _rigidbody2D: {fileID: 387518182}
   HP: 6
   wallet: {fileID: 0}
   hp: {fileID: 0}
   gameOverScene: {fileID: 0}
+  EnamyAtackKind: 
+  EnamyAtackKinds: []
 --- !u!1 &391713099
 GameObject:
   m_ObjectHideFlags: 0
@@ -7302,6 +7305,10 @@ PrefabInstance:
     - target: {fileID: 6072110286490561464, guid: db94faa9f1f505c43a18a17686c9deb6, type: 3}
       propertyPath: m_Name
       value: testBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072110286490561464, guid: db94faa9f1f505c43a18a17686c9deb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7067011493314010253, guid: db94faa9f1f505c43a18a17686c9deb6, type: 3}
       propertyPath: m_LocalPosition.x

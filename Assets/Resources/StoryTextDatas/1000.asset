@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0323ac2a733569044a97be7e2f083067, type: 3}
-  m_Name: 1
+  m_Script: {fileID: 11500000, guid: e38c8d98ebf70a04eb5f724144b8fd64, type: 3}
+  m_Name: 1000
   m_EditorClassIdentifier: 
-  sotryTexts: e8030000
-  enamys: 010000000200000003000000
+  text: "\u3064\u307E\u3093\u306D\u3048\u3088\u304A\u524D\u306E\u30B2\u30FC\u30E0!!!"
