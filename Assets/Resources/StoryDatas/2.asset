@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0323ac2a733569044a97be7e2f083067, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  sotryTexts: 
+  sotryTexts: e8030000
   enamys: 0100000002000000

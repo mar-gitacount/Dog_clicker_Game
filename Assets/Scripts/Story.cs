@@ -24,7 +24,11 @@ public class Story : MonoBehaviour
     // private Text TextData[] testStoryTexts;
     private GameObject bgObject;
     private StoryData storyData;
+
+    public TypeWriter typeWriter;
     
+
+    float timer = 0f;
 
     
     void Start()
@@ -35,8 +39,14 @@ public class Story : MonoBehaviour
         {
             int storyIndex = saveData.LoadStoryProgress();
             storyData = Resources.Load<StoryData>("StoryDatas/" + storyIndex);
+            string teststorytext = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[0]).text;
+            Debug.Log("ロードしたストーリーテキスト:" + teststorytext);
             // ストーリーのテキストデータ配列を取得
-            StoryDatasIndex = storyData.sotryTexts.Length;
+            typeWriter.StartTyping(Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[0]).text);
+            
+            // storyTextData.text = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text;
+            StoryDatasIndex = storyData.sotryTexts.Length-1;
+            currentTextIndex += 1;
             Debug.Log("ストーリー番号" + storyIndex + "ストーリースクリプト内のロードしたストーリーインデックス: " + storyData.sotryTexts[0]);
             // !storyIndexに基づいて、storyTextDatasや背景画像を変更する処理を追加する。
             // 例えば、storyIndexが1ならstoryTextDatasを別の配列に変更するなど。
@@ -46,7 +56,7 @@ public class Story : MonoBehaviour
             Debug.LogWarning("SaveLoadManagerが見つかりません。セーブデータを読み込めませんでした。");
         }
         Debug.Log("ストーリースクリプトのStartが呼ばれました。");
-        storyTextData.text = storyTextDatas[0].text;
+        // storyTextData.text = storyTextDatas[0].text;
         
         // クリックされたら、次のテキストに変更する処理を入れる。
     }
@@ -58,6 +68,7 @@ public class Story : MonoBehaviour
         GameObject bgObject = GameObject.Find("bg");
         if (Input.GetMouseButtonDown(0))
         {
+            storyTextData.text = "";
 
             if (StoryDatasIndex <= 0)
             {
@@ -72,7 +83,10 @@ public class Story : MonoBehaviour
             }
             Debug.Log("ストーリー番号"+storyData.sotryTexts[0]);
             Debug.Log("右クリック押した！");
-            storyTextData.text = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text;
+            // string insertText = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text;
+            typeWriter.StartTyping(Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text);
+            
+            // storyTextData.text = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text;
             // !とりあえず背景を変えるテスト
             SpriteRenderer bgRenderer = bgObject.GetComponent<SpriteRenderer>();
             Sprite newStorybg = Resources.Load<Sprite>("Images/bgtest");
