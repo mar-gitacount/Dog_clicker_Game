@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sotryTexts: 02000000e8030000
   enamys: 010000000200000003000000
+  SoundWithDataText:
+  - keyboard2
+  - keyboard2
