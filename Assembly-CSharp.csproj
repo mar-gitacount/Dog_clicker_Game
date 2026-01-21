@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\Enamy.cs" />
     <Compile Include="Assets\Scripts\Face.cs" />
     <Compile Include="Assets\Scripts\ItemCoditions\WoolTenCount.cs" />
+    <Compile Include="Assets\Scripts\TextPosYGetter.cs" />
     <Compile Include="Assets\GoogleSignIn\GoogleSignInStatusCode.cs" />
     <Compile Include="Assets\Scripts\PlayerPrefsSaveData.cs" />
     <Compile Include="Assets\GoogleSignIn\GoogleSignInUser.cs" />
