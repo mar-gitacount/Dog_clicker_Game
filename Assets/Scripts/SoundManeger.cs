@@ -12,6 +12,8 @@ public class SoundManeger : MonoBehaviour
         public AudioClip audioClip;
         // 前回再生した時間
         public float playedTime;
+
+        public bool loopFlg = false;
     }
     // 一度再生してから、次再生するまでの間隔(秒)
     [SerializeField]private float playableDistance = 0.2f;
@@ -28,6 +30,7 @@ public class SoundManeger : MonoBehaviour
         private set;
         get;
     } 
+    public bool loopPlayFlg = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -68,18 +71,84 @@ public class SoundManeger : MonoBehaviour
         // 再生できない
         if(audioSource == null) return;
         audioSource.clip = clip;
+
+        // 以下ループ再生設定
+        // audioSource.loop = true;
+        
         audioSource.Play();
+    }
+    
+    // ループ再生用メソッド
+    public void loopPlay(AudioClip clip)
+    {
+        var audioSource = GetUnusedAudioSource();
+        // 再生できない
+        if(audioSource == null) return;
+        // audioSource.clip = clip;
+        // まだ再生していなければ再生する。
+        if(!audioSource.isPlaying)
+        {
+            // 他の音を止める。
+            audioSource.clip = clip;
+        }
+        //  再生していたら、何もしない。
+        else
+        {
+            return;
+        }
+        // 以下ループ再生設定
+        audioSource.loop = true;
+        
+        audioSource.Play();
+    }
+    // public void loopPlay(String name)
+    // {
+    //     if(soundDictionay.TryGetValue(name,out var soudData))
+    //     {
+    //         loopPlay(soudData.audioClip);
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning($"その別名は登録されていません{name}");
+    //     }
+    // }
+
+    // すべての音を停止する。
+    public void StopAllSounds()
+    {
+        foreach(var audioSource in audioSourceList)
+        {
+            audioSource.Stop();
+        }
     }
     public void Play(String name)
     {
         if(soundDictionay.TryGetValue(name,out var soudData))
         {
+            if(soudData.loopFlg)
+            {
+                loopPlay(soudData.audioClip);
+                return;
+            }
+           
+
             // まだ再生する。
-            if(Time.realtimeSinceStartup - soudData.playedTime < playableDistance) return;
+            if(Time.realtimeSinceStartup - soudData.playedTime < playableDistance) 
+            {
+                // if(loopPlayFlg)
+                // {
+                //     loopPlay(soudData.audioClip);
+                //     return;
+                // }
+                return;
+            }
+
+           
             // 次回用に今回の再生時間の保持
             soudData.playedTime = Time.realtimeSinceStartup;
             // 見つかったら再生
             Play(soudData.audioClip);
+
         }
         else
         {

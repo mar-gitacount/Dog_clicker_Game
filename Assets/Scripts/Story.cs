@@ -41,9 +41,12 @@ public class Story : MonoBehaviour
             storyData = Resources.Load<StoryData>("StoryDatas/" + storyIndex);
             string teststorytext = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[0]).text;
             Debug.Log("ロードしたストーリーテキスト:" + teststorytext);
+            // ?以下をループ再生等などに変更する。
+            // typeWriter.storySoundsData = storyData.SoundWithDataText[currentTextIndex];
+            
             // ストーリーのテキストデータ配列を取得
             typeWriter.StartTyping(Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[0]).text);
-            
+            // SoundManeger.Instance.Play(storyData.SoundWithDataText[currentTextIndex]);
             // storyTextData.text = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text;
             StoryDatasIndex = storyData.sotryTexts.Length-1;
             currentTextIndex += 1;
@@ -84,9 +87,16 @@ public class Story : MonoBehaviour
             Debug.Log("ストーリー番号"+storyData.sotryTexts[0]);
             Debug.Log("右クリック押した！");
             // string insertText = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text;
+            Debug.Log("ストーリーテキストの音データ"+storyData.SoundWithDataText[currentTextIndex]+"ストーリーテキストのインデックス"+currentTextIndex);
+       
             typeWriter.StartTyping(Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text);
             
-            // storyTextData.text = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text;
+            //! 以下フラグをどうに扱うか要検討
+            // SoundManeger.Instance.loopPlayFlg = true;
+            SoundManeger.Instance.Play(storyData.SoundWithDataText[currentTextIndex]);
+            
+            // SoundManeger.Instance.loopPlay(storyData.SoundWithDataText[currentTextIndex]);
+            storyTextData.text = Resources.Load<TextData>("StoryTextDatas/" + storyData.sotryTexts[currentTextIndex]).text;
             // !とりあえず背景を変えるテスト
             SpriteRenderer bgRenderer = bgObject.GetComponent<SpriteRenderer>();
             Sprite newStorybg = Resources.Load<Sprite>("Images/bgtest");
