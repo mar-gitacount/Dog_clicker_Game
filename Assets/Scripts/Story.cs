@@ -18,6 +18,11 @@ public class Story : MonoBehaviour
     // ストーリーテキストデータ
     [SerializeField] private TextData[] storyTextDatas;
     [SerializeField] private Text storyTextData;
+
+    [SerializeField] private Button StorySkipButton;
+
+    // 戻るボタンのキャンバス
+    [SerializeField] private GameObject BuckBttonCanvas;
     private int StoryDatasIndex;
     private ISaveData saveData;
     private int currentTextIndex = 0;
@@ -34,7 +39,16 @@ public class Story : MonoBehaviour
     void Start()
     {
         saveData = new PlayerPrefsSaveData();
-
+        StorySkipButton.onClick.AddListener(() =>
+        {
+            Debug.Log("ストーリースキップボタンがクリックされました。");
+            int storyIndex = saveData.LoadStoryProgress();
+            // int currentIndex = storyIndex + 1;
+            // ストーリーが終了したので、セーブデータを更新する。
+            // saveData.SaveStoryProgress(currentIndex); // デフォルトでストーリー1を保存
+            // ゲームメインシーンへ移動する処理を入れる。
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+        });
         if (saveData != null)
         {
             int storyIndex = saveData.LoadStoryProgress();
@@ -69,10 +83,26 @@ public class Story : MonoBehaviour
     {
         // クリックしたら、次のテキストに変更する処理を入れる。
         GameObject bgObject = GameObject.Find("bg");
+       
         if (Input.GetMouseButtonDown(0))
         {
-            storyTextData.text = "";
-
+            if (BuckBttonCanvas.activeSelf)
+            {
+                Debug.Log("戻るボタンキャンバスがアクティブなので、クリック処理を無効化します。");
+                return;
+            }
+            float y = Input.mousePosition.y;
+            if (y <= 700f)
+            {
+                Debug.Log("yは700以下");
+                
+            }
+           else
+           {
+                Debug.Log("yは700より上");
+                return;
+            }
+        
             if (StoryDatasIndex <= 0)
             {
                 Debug.Log("ストーリーが終了しました。");
@@ -81,6 +111,9 @@ public class Story : MonoBehaviour
                 // ストーリーが終了したので、セーブデータを更新する。
                 // saveData.SaveStoryProgress(currentIndex); // デフォルトでストーリー1を保存
                 // ゲームメインシーンへ移動する処理を入れる。
+
+
+                // return;
                 UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
                 return;
             }
