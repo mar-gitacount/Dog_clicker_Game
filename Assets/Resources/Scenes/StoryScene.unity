@@ -2460,6 +2460,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094122459}
   m_CullTransparentMesh: 1
+--- !u!1 &1119529172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5820206294432901624, guid: 3ad004c82da1bd041b0062ec342fcc94, type: 3}
+  m_PrefabInstance: {fileID: 1459445111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1123607636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,7 +3067,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8556045576254458980, guid: 3ad004c82da1bd041b0062ec342fcc94, type: 3}
   m_PrefabInstance: {fileID: 1459445111}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1119529172}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1324ea4a085f5a94eb9bf00a48aa188d, type: 3}
@@ -4312,6 +4317,7 @@ MonoBehaviour:
   storyTextDatas: []
   storyTextData: {fileID: 107653615}
   StorySkipButton: {fileID: 1818595883}
+  BuckBttonCanvas: {fileID: 1119529172}
   typeWriter: {fileID: 87482454}
 --- !u!1 &2116799169
 GameObject:
